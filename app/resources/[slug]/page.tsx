@@ -155,7 +155,7 @@ export default async function ResourcePage({
 
       <CtaSection
         title="Turn the guidance into evidence"
-        description="See how Field Service Pro captures the data behind every obligation — offline, evidence-led, and reconciled end to end."
+        description="See how ClearView AMS captures the data behind every obligation — offline, evidence-led, and reconciled end to end."
       />
     </>
   );

@@ -333,11 +333,11 @@ export const decentHomesReadiness: Resource = {
     {
       type: "heading",
       id: "how-field-service-pro-helps",
-      text: "How Field Service Pro helps",
+      text: "How ClearView AMS helps",
     },
     {
       type: "paragraph",
-      text: "Field Service Pro is built around the exact evidence the Decent Homes Standard demands. Stock condition surveys are captured against a controlled question set, fully offline, with photographs bound to the specific component or hazard they evidence and every action attributed to a named surveyor with a timestamp. The data model treats the property as the asset, with components beneath it and issues beneath those, so each kitchen, bathroom, roof and heating system is a discrete record carrying its own age, condition and renewal plan — exactly the structure the repair and facilities criteria need.",
+      text: "ClearView AMS is built around the exact evidence the Decent Homes Standard demands. Stock condition surveys are captured against a controlled question set, fully offline, with photographs bound to the specific component or hazard they evidence and every action attributed to a named surveyor with a timestamp. The data model treats the property as the asset, with components beneath it and issues beneath those, so each kitchen, bathroom, roof and heating system is a discrete record carrying its own age, condition and renewal plan — exactly the structure the repair and facilities criteria need.",
     },
     {
       type: "paragraph",

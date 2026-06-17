@@ -301,11 +301,11 @@ export const awaabsLawReadiness: Resource = {
     {
       type: "heading",
       id: "how-field-service-pro-helps",
-      text: "How Field Service Pro helps",
+      text: "How ClearView AMS helps",
     },
     {
       type: "paragraph",
-      text: "Field Service Pro was built around exactly the evidence discipline Awaab's Law demands. Surveys are captured offline-first, so a surveyor working in a basement flat or a dead-signal stairwell — precisely where damp is worst — loses nothing; drafts and photos persist on the device and sync when a connection returns.",
+      text: "ClearView AMS was built around exactly the evidence discipline Awaab's Law demands. Surveys are captured offline-first, so a surveyor working in a basement flat or a dead-signal stairwell — precisely where damp is worst — loses nothing; drafts and photos persist on the device and sync when a connection returns.",
     },
     {
       type: "bullets",

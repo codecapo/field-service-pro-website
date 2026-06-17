@@ -1,8 +1,8 @@
 export const site = {
-  name: "Field Service Pro",
+  name: "ClearView AMS",
   tagline: "The offline-first asset management platform for social housing.",
-  appUrl: "https://app.fieldservicepro.example",
-  email: "hello@fieldservicepro.example",
+  appUrl: "https://app.clearviewams.com",
+  email: "hello@clearviewams.com",
 };
 
 export const nav = [
@@ -140,7 +140,7 @@ export const differentiators = [
 
 /* ── Comparison table vs the field ── */
 export const comparison = {
-  columns: ["Field Service Pro", "Legacy housing AMS", "Generic CMMS / inspection apps"],
+  columns: ["ClearView AMS", "Legacy housing AMS", "Generic CMMS / inspection apps"],
   rows: [
     {
       capability: "Full offline field capture (no signal)",
@@ -453,7 +453,7 @@ export const faqs = [
   },
   {
     q: "How does it fit alongside our existing AMS or CRM?",
-    a: "Field Service Pro is built to feed a single source of truth. It exports stable-key, referentially-joined data that loads cleanly into a warehouse or BI tool, and its conflict-control model is designed to reconcile against external systems rather than overwrite them.",
+    a: "ClearView AMS is built to feed a single source of truth. It exports stable-key, referentially-joined data that loads cleanly into a warehouse or BI tool, and its conflict-control model is designed to reconcile against external systems rather than overwrite them.",
   },
   {
     q: "Is it installable without an app store?",

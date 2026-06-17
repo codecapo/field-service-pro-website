@@ -7,7 +7,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Book a demo",
   description:
-    "See the offline survey-to-output spine running on a real batch of your stock. Book a walkthrough with the Field Service Pro team.",
+    "See the offline survey-to-output spine running on a real batch of your stock. Book a walkthrough with the ClearView AMS team.",
 };
 
 const points = [

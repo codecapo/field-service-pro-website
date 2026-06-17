@@ -47,7 +47,7 @@ export default function PlatformPage() {
             </div>
 
             <FeatureComposite
-              url="app.fieldservicepro.example/overview"
+              url="app.clearviewams.com/overview"
               screen={<ServicesScreen />}
               browserWidth={740}
             >
@@ -136,9 +136,9 @@ function ModuleMockup({ kind }: { kind: string }) {
     qa: <SurveyListScreen />,
   };
   const browser: Record<string, { url: string; node: React.ReactNode }> = {
-    sync: { url: "app.fieldservicepro.example/overview", node: <DashboardPanel /> },
-    outputs: { url: "app.fieldservicepro.example/reporting", node: <DashboardPanel /> },
-    access: { url: "app.fieldservicepro.example/properties/100023001", node: <AssetRegister /> },
+    sync: { url: "app.clearviewams.com/overview", node: <DashboardPanel /> },
+    outputs: { url: "app.clearviewams.com/reporting", node: <DashboardPanel /> },
+    access: { url: "app.clearviewams.com/properties/100023001", node: <AssetRegister /> },
   };
 
   if (phone[kind]) {

@@ -88,7 +88,7 @@ function Hero() {
               className="reveal max-w-xl text-lg text-muted-foreground text-balance"
               style={{ animationDelay: "120ms" }}
             >
-              Field Service Pro captures stock condition surveys fully offline,
+              ClearView AMS captures stock condition surveys fully offline,
               never overwrites the master record, and turns every survey into
               evidence-led data your whole organisation can trust.
             </p>
@@ -386,7 +386,7 @@ function PlatformShowcase() {
         ]}
         visual={
           <FeatureComposite
-            url="app.fieldservicepro.example/overview"
+            url="app.clearviewams.com/overview"
             screen={<ServicesScreen />}
             browserWidth={740}
           >
@@ -408,7 +408,7 @@ function PlatformShowcase() {
           { icon: Database, title: "Power BI–ready feeds", body: "Stable-key exports load cleanly into your warehouse — no manual interpretation." },
         ]}
         visual={
-          <ScaledBrowser url="app.fieldservicepro.example/compliance">
+          <ScaledBrowser url="app.clearviewams.com/compliance">
             <ComplianceBoard />
           </ScaledBrowser>
         }
@@ -425,7 +425,7 @@ function PlatformShowcase() {
           { icon: Layers, title: "Snapshot vs live record", body: "History stays intact; the live master updates only after QA acceptance." },
         ]}
         visual={
-          <ScaledBrowser url="app.fieldservicepro.example/properties/100023001">
+          <ScaledBrowser url="app.clearviewams.com/properties/100023001">
             <AssetRegister />
           </ScaledBrowser>
         }

@@ -35,7 +35,7 @@ export default function StockMovementPage() {
                 with the programmes that depend on them.
               </p>
             </div>
-            <ScaledBrowser url="app.fieldservicepro.example/movement">
+            <ScaledBrowser url="app.clearviewams.com/movement">
               <StockMovementBoard />
             </ScaledBrowser>
           </div>
@@ -65,7 +65,7 @@ export default function StockMovementPage() {
           },
         ]}
         visual={
-          <ScaledBrowser url="app.fieldservicepro.example/movement">
+          <ScaledBrowser url="app.clearviewams.com/movement">
             <StockMovementBoard />
           </ScaledBrowser>
         }
@@ -96,7 +96,7 @@ export default function StockMovementPage() {
           },
         ]}
         visual={
-          <ScaledBrowser url="app.fieldservicepro.example/overview">
+          <ScaledBrowser url="app.clearviewams.com/overview">
             <DashboardPanel />
           </ScaledBrowser>
         }
@@ -125,7 +125,7 @@ export default function StockMovementPage() {
           },
         ]}
         visual={
-          <ScaledBrowser url="app.fieldservicepro.example/movement">
+          <ScaledBrowser url="app.clearviewams.com/movement">
             <StockMovementBoard />
           </ScaledBrowser>
         }

@@ -14,7 +14,7 @@ import { personas } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Solutions",
   description:
-    "How Field Service Pro serves local authorities, housing associations, supplier surveyors and compliance teams — each with the same trustworthy field data.",
+    "How ClearView AMS serves local authorities, housing associations, supplier surveyors and compliance teams — each with the same trustworthy field data.",
 };
 
 const icons = {

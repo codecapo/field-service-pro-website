@@ -282,11 +282,11 @@ export const hhsrsFieldReference: Resource = {
     {
       type: "heading",
       id: "how-field-service-pro-helps",
-      text: "How Field Service Pro helps",
+      text: "How ClearView AMS helps",
     },
     {
       type: "paragraph",
-      text: "Field Service Pro is built around the issue-level model that defensible HHSRS practice demands. Every hazard is captured as a structured issue record with a unique identifier, a hazard type, a Category 1 or Category 2 rating, a controlled urgent-review reason code, a link to the specific component it affects, and its own photographs — bound to that issue rather than dropped into a loose gallery. One hazard can spawn several issues, each with its own action and priority, so a category stays honestly open until all of its remedial work is closed with evidence.",
+      text: "ClearView AMS is built around the issue-level model that defensible HHSRS practice demands. Every hazard is captured as a structured issue record with a unique identifier, a hazard type, a Category 1 or Category 2 rating, a controlled urgent-review reason code, a link to the specific component it affects, and its own photographs — bound to that issue rather than dropped into a loose gallery. One hazard can spawn several issues, each with its own action and priority, so a category stays honestly open until all of its remedial work is closed with evidence.",
     },
     {
       type: "paragraph",

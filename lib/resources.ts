@@ -20,7 +20,7 @@ const surveyDataDictionary: Resource = {
   blocks: [
     {
       type: "paragraph",
-      text: "A stock condition survey is only as useful as the data it leaves behind. Field Service Pro emits every accepted survey as eight flat tables with stable string keys, so the same record reconciles across the PDF report and the structured export — and loads cleanly into a warehouse or BI tool with no manual interpretation.",
+      text: "A stock condition survey is only as useful as the data it leaves behind. ClearView AMS emits every accepted survey as eight flat tables with stable string keys, so the same record reconciles across the PDF report and the structured export — and loads cleanly into a warehouse or BI tool with no manual interpretation.",
     },
     {
       type: "callout",

@@ -35,7 +35,7 @@ export default function SurveysPage() {
                 record until it passes QA.
               </p>
             </div>
-            <FeatureComposite url="app.fieldservicepro.example/surveys" screen={<ServicesScreen />}>
+            <FeatureComposite url="app.clearviewams.com/surveys" screen={<ServicesScreen />}>
               <DashboardPanel />
             </FeatureComposite>
           </div>

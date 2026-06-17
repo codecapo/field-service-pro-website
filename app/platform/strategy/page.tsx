@@ -43,7 +43,7 @@ export default function StrategyPage() {
               </p>
             </div>
 
-            <ScaledBrowser url="app.fieldservicepro.example/strategy">
+            <ScaledBrowser url="app.clearviewams.com/strategy">
               <StrategyBoard />
             </ScaledBrowser>
           </div>
@@ -73,7 +73,7 @@ export default function StrategyPage() {
           },
         ]}
         visual={
-          <ScaledBrowser url="app.fieldservicepro.example/strategy">
+          <ScaledBrowser url="app.clearviewams.com/strategy">
             <StrategyBoard />
           </ScaledBrowser>
         }
@@ -104,7 +104,7 @@ export default function StrategyPage() {
           },
         ]}
         visual={
-          <ScaledBrowser url="app.fieldservicepro.example/overview">
+          <ScaledBrowser url="app.clearviewams.com/overview">
             <DashboardPanel />
           </ScaledBrowser>
         }
@@ -133,7 +133,7 @@ export default function StrategyPage() {
           },
         ]}
         visual={
-          <ScaledBrowser url="app.fieldservicepro.example/strategy">
+          <ScaledBrowser url="app.clearviewams.com/strategy">
             <StrategyBoard />
           </ScaledBrowser>
         }

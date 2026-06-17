@@ -43,7 +43,7 @@ export default function RepairsPage() {
               </p>
             </div>
 
-            <ScaledBrowser url="app.fieldservicepro.example/repairs">
+            <ScaledBrowser url="app.clearviewams.com/repairs">
               <RepairsBoard />
             </ScaledBrowser>
           </div>
@@ -73,7 +73,7 @@ export default function RepairsPage() {
           },
         ]}
         visual={
-          <ScaledBrowser url="app.fieldservicepro.example/repairs">
+          <ScaledBrowser url="app.clearviewams.com/repairs">
             <RepairsBoard />
           </ScaledBrowser>
         }
@@ -104,7 +104,7 @@ export default function RepairsPage() {
           },
         ]}
         visual={
-          <ScaledBrowser url="app.fieldservicepro.example/overview">
+          <ScaledBrowser url="app.clearviewams.com/overview">
             <DashboardPanel />
           </ScaledBrowser>
         }
@@ -133,7 +133,7 @@ export default function RepairsPage() {
           },
         ]}
         visual={
-          <ScaledBrowser url="app.fieldservicepro.example/repairs">
+          <ScaledBrowser url="app.clearviewams.com/repairs">
             <RepairsBoard />
           </ScaledBrowser>
         }

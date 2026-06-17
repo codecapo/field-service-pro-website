@@ -353,11 +353,11 @@ export const stockConditionSurveyPlaybook: Resource = {
     {
       type: "heading",
       id: "how-field-service-pro-helps",
-      text: "How Field Service Pro helps",
+      text: "How ClearView AMS helps",
     },
     {
       type: "paragraph",
-      text: "Field Service Pro is built around exactly this playbook. It models the property as the asset, with components and issues joined by stable keys, and pre-loads assigned packs with a checksum and version for fully offline working. Surveyors capture components, run required-vs-observed safety checks, raise typed HHSRS issues with controlled reason codes, and attach photos bound to the precise record they evidence — all with no signal and all persisting across app restarts.",
+      text: "ClearView AMS is built around exactly this playbook. It models the property as the asset, with components and issues joined by stable keys, and pre-loads assigned packs with a checksum and version for fully offline working. Surveyors capture components, run required-vs-observed safety checks, raise typed HHSRS issues with controlled reason codes, and attach photos bound to the precise record they evidence — all with no signal and all persisting across app restarts.",
     },
     {
       type: "paragraph",

@@ -22,7 +22,7 @@ const entries: {
   {
     group: "Stock condition surveys",
     ref: "§12–14",
-    url: "app.fieldservicepro.example/surveys/100023001",
+    url: "app.clearviewams.com/surveys/100023001",
     blurb: "The offline-first capture spine — photos, components and issue-level HHSRS.",
     features: ["Offline capture", "Count-driven components", "HHSRS Cat 1/2", "Stock intelligence"],
     node: <SurveyBoard />,
@@ -31,7 +31,7 @@ const entries: {
   {
     group: "Asset register & hierarchy",
     ref: "§5–7, §19",
-    url: "app.fieldservicepro.example/properties/100023001",
+    url: "app.clearviewams.com/properties/100023001",
     blurb: "A live, effective-dated register of property, block and component.",
     features: ["Property → block → component", "Lifecycle data", "Classification", "Snapshot vs live"],
     node: <AssetRegister />,
@@ -40,7 +40,7 @@ const entries: {
   {
     group: "Evidence-led compliance",
     ref: "§8–11",
-    url: "app.fieldservicepro.example/compliance",
+    url: "app.clearviewams.com/compliance",
     blurb: "A controlled denominator and certificate drill-through — never false-green.",
     features: ["Applicability + evidence", "Certificate store", "KPI cycles", "Unknown = exception"],
     node: <ComplianceBoard />,
@@ -49,7 +49,7 @@ const entries: {
   {
     group: "Repairs, warranty & investment",
     ref: "§15–17",
-    url: "app.fieldservicepro.example/repairs",
+    url: "app.clearviewams.com/repairs",
     blurb: "Demand and spend joined to the asset, feeding planned investment.",
     features: ["Repairs feed (SOR, cost)", "Repeat-failure flags", "Warranty", "Lifecycle → programme"],
     node: <RepairsBoard />,
@@ -58,7 +58,7 @@ const entries: {
   {
     group: "Stock movement, tenure & leasehold",
     ref: "§18, §20–21",
-    url: "app.fieldservicepro.example/movement",
+    url: "app.clearviewams.com/movement",
     blurb: "Effective-dated movement, the RTB pipeline and leasehold obligations.",
     features: ["Monthly reconciliation", "RTB & Section 125", "Section 20 recharge", "Programme impact"],
     node: <StockMovementBoard />,
@@ -67,7 +67,7 @@ const entries: {
   {
     group: "Delegated management & integrations",
     ref: "§22–23",
-    url: "app.fieldservicepro.example/assurance",
+    url: "app.clearviewams.com/assurance",
     blurb: "Restricted partner environments with Newham assurance, and governed contacts.",
     features: ["RBAC by portfolio", "Partner evidence", "Accept/reject assurance", "CRM / Northgate sync"],
     node: <DelegatedBoard />,
@@ -76,7 +76,7 @@ const entries: {
   {
     group: "Strategy, sustainability & risk",
     ref: "§24–25, §30–31",
-    url: "app.fieldservicepro.example/strategy",
+    url: "app.clearviewams.com/strategy",
     blurb: "Net-zero readiness, void turnaround, disrepair risk and NPV-grade data.",
     features: ["Void turnaround", "EPC / retrofit", "Disrepair & Ombudsman", "NPV readiness"],
     node: <StrategyBoard />,
@@ -85,7 +85,7 @@ const entries: {
   {
     group: "Data, governance & reporting",
     ref: "§4A, §26–29",
-    url: "app.fieldservicepro.example/reporting",
+    url: "app.clearviewams.com/reporting",
     blurb: "A single source of truth with audit, maker-checker control and day-one reporting.",
     features: ["Named-user RBAC + audit", "No silent overwrite", "Stable-key BI feeds", "Saved views"],
     node: <DashboardPanel />,

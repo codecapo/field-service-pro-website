@@ -35,7 +35,7 @@ export default function DelegatedPage() {
               </p>
             </div>
 
-            <ScaledBrowser url="app.fieldservicepro.example/assurance">
+            <ScaledBrowser url="app.clearviewams.com/assurance">
               <DelegatedBoard />
             </ScaledBrowser>
           </div>
@@ -65,7 +65,7 @@ export default function DelegatedPage() {
           },
         ]}
         visual={
-          <ScaledBrowser url="app.fieldservicepro.example/assurance">
+          <ScaledBrowser url="app.clearviewams.com/assurance">
             <DelegatedBoard />
           </ScaledBrowser>
         }
@@ -96,7 +96,7 @@ export default function DelegatedPage() {
           },
         ]}
         visual={
-          <ScaledBrowser url="app.fieldservicepro.example/overview">
+          <ScaledBrowser url="app.clearviewams.com/overview">
             <DashboardPanel />
           </ScaledBrowser>
         }
@@ -125,7 +125,7 @@ export default function DelegatedPage() {
           },
         ]}
         visual={
-          <ScaledBrowser url="app.fieldservicepro.example/assurance">
+          <ScaledBrowser url="app.clearviewams.com/assurance">
             <DelegatedBoard />
           </ScaledBrowser>
         }
