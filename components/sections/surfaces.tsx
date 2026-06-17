@@ -1,10 +1,14 @@
 import Link from "next/link";
 import {
+  ArrowLeftRight,
   ArrowRight,
   BarChart3,
   Building2,
   ClipboardList,
+  Handshake,
   ShieldCheck,
+  TrendingUp,
+  Wrench,
   type LucideIcon,
 } from "lucide-react";
 import { Card, Container, SectionHeading, cn } from "@/components/ui";
@@ -15,6 +19,10 @@ const surfaceIcons: Record<string, LucideIcon> = {
   assets: Building2,
   compliance: ShieldCheck,
   reporting: BarChart3,
+  repairs: Wrench,
+  movement: ArrowLeftRight,
+  delegated: Handshake,
+  strategy: TrendingUp,
 };
 
 export function SurfacesSection({

@@ -38,6 +38,30 @@ export const platformSurfaces = [
     icon: "reporting",
     description: "Dashboards, the day-one report library and Power BI–ready feeds.",
   },
+  {
+    label: "Repairs & investment",
+    href: "/platform/repairs",
+    icon: "repairs",
+    description: "Repairs demand and spend joined to the asset, feeding planned investment.",
+  },
+  {
+    label: "Stock movement",
+    href: "/platform/stock-movement",
+    icon: "movement",
+    description: "Effective-dated movement, the RTB pipeline and leasehold obligations.",
+  },
+  {
+    label: "Delegated management",
+    href: "/platform/delegated",
+    icon: "delegated",
+    description: "Restricted partner environments with Newham assurance and governed contacts.",
+  },
+  {
+    label: "Strategy & risk",
+    href: "/platform/strategy",
+    icon: "strategy",
+    description: "Net-zero readiness, void turnaround, disrepair risk and NPV-grade data.",
+  },
 ] as const;
 
 /* ── The survey-to-AMS spine (staged flow, mirrors the product) ── */

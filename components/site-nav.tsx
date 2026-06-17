@@ -4,12 +4,16 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
+  ArrowLeftRight,
   BarChart3,
   Building2,
   ChevronDown,
   ClipboardList,
+  Handshake,
   Menu,
   ShieldCheck,
+  TrendingUp,
+  Wrench,
   X,
   type LucideIcon,
 } from "lucide-react";
@@ -22,6 +26,10 @@ const surfaceIcons: Record<string, LucideIcon> = {
   assets: Building2,
   compliance: ShieldCheck,
   reporting: BarChart3,
+  repairs: Wrench,
+  movement: ArrowLeftRight,
+  delegated: Handshake,
+  strategy: TrendingUp,
 };
 
 export function SiteNav() {

@@ -1,15 +1,13 @@
 import Link from "next/link";
 import { Logo } from "@/components/logo";
-import { site } from "@/lib/site";
+import { platformSurfaces, site } from "@/lib/site";
 
 const footerNav = [
   {
     heading: "Platform",
     links: [
       { label: "Overview", href: "/platform" },
-      { label: "Offline capture", href: "/platform#capture" },
-      { label: "Sync & conflict control", href: "/platform#sync" },
-      { label: "Reports & exports", href: "/platform#outputs" },
+      ...platformSurfaces.map((s) => ({ label: s.label, href: s.href })),
     ],
   },
   {

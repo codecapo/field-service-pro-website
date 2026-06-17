@@ -53,6 +53,7 @@ const entries: {
     blurb: "Demand and spend joined to the asset, feeding planned investment.",
     features: ["Repairs feed (SOR, cost)", "Repeat-failure flags", "Warranty", "Lifecycle → programme"],
     node: <RepairsBoard />,
+    href: "/platform/repairs",
   },
   {
     group: "Stock movement, tenure & leasehold",
@@ -61,6 +62,7 @@ const entries: {
     blurb: "Effective-dated movement, the RTB pipeline and leasehold obligations.",
     features: ["Monthly reconciliation", "RTB & Section 125", "Section 20 recharge", "Programme impact"],
     node: <StockMovementBoard />,
+    href: "/platform/stock-movement",
   },
   {
     group: "Delegated management & integrations",
@@ -69,6 +71,7 @@ const entries: {
     blurb: "Restricted partner environments with Newham assurance, and governed contacts.",
     features: ["RBAC by portfolio", "Partner evidence", "Accept/reject assurance", "CRM / Northgate sync"],
     node: <DelegatedBoard />,
+    href: "/platform/delegated",
   },
   {
     group: "Strategy, sustainability & risk",
@@ -77,6 +80,7 @@ const entries: {
     blurb: "Net-zero readiness, void turnaround, disrepair risk and NPV-grade data.",
     features: ["Void turnaround", "EPC / retrofit", "Disrepair & Ombudsman", "NPV readiness"],
     node: <StrategyBoard />,
+    href: "/platform/strategy",
   },
   {
     group: "Data, governance & reporting",
