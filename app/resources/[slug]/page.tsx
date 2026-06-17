@@ -71,7 +71,7 @@ export default async function ResourcePage({
 
       {/* body */}
       <Container className="py-14 md:py-16">
-        <div className="gap-12 lg:grid lg:grid-cols-[220px_1fr]">
+        <div className={toc.length > 0 ? "gap-12 lg:grid lg:grid-cols-[220px_1fr]" : ""}>
           {/* TOC */}
           {toc.length > 0 && (
             <aside className="hidden lg:block">
@@ -95,7 +95,9 @@ export default async function ResourcePage({
           )}
 
           {/* content */}
-          <article className="min-w-0 max-w-2xl">
+          <article
+            className={`min-w-0 ${toc.length > 0 ? "max-w-2xl" : "mx-auto max-w-3xl"}`}
+          >
             <ResourceBlocks blocks={resource.blocks} />
 
             {/* sources & attribution */}
