@@ -93,7 +93,7 @@ const rbacRoleMatrix: Resource = {
       rows: [
         ["System administrator", "Admin", "Manage users and roles; see the role matrix", "Governs access; not a field capture role"],
         ["Survey manager", "Manage", "Assign survey batches, pre-load packs, monitor sync", "Cannot accept their own surveys through QA"],
-        ["Newham (internal) surveyor", "Surveys", "Capture assigned surveys, photos, issues offline", "Sees only assigned properties"],
+        ["Internal surveyor", "Surveys", "Capture assigned surveys, photos, issues offline", "Sees only assigned properties"],
         ["External supplier surveyor", "Surveys", "Capture assigned surveys offline", "Restricted to an allow-list of assigned UPRNs only — never the wider portfolio"],
         ["QA reviewer", "QA", "Accept / reject submitted surveys with comments", "Read-only on capture; decisions are audited"],
       ],

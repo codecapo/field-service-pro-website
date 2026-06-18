@@ -68,7 +68,7 @@ const entries: {
     group: "Delegated management & integrations",
     ref: "§22–23",
     url: "app.clearviewams.com/assurance",
-    blurb: "Restricted partner environments with Newham assurance, and governed contacts.",
+    blurb: "Restricted partner environments with landlord assurance, and governed contacts.",
     features: ["RBAC by portfolio", "Partner evidence", "Accept/reject assurance", "CRM / Northgate sync"],
     node: <DelegatedBoard />,
     href: "/platform/delegated",

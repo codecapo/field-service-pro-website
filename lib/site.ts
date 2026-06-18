@@ -54,7 +54,7 @@ export const platformSurfaces = [
     label: "Delegated management",
     href: "/platform/delegated",
     icon: "delegated",
-    description: "Restricted partner environments with Newham assurance and governed contacts.",
+    description: "Restricted partner environments with landlord assurance and governed contacts.",
   },
   {
     label: "Strategy & risk",
@@ -368,7 +368,7 @@ export const capabilityMap: {
     group: "Delegated management & integrations",
     ref: "§22–23",
     intro:
-      "Restricted partner environments with Newham assurance, and contact data governed from its source of truth.",
+      "Restricted partner environments with landlord assurance, and contact data governed from its source of truth.",
     items: [
       { title: "Partner environments shaped by RBAC (portfolio / mgmt category)", status: "delivery" },
       { title: "Partner evidence upload limited to managed stock", status: "delivery" },

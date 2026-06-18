@@ -10,7 +10,7 @@ import { DelegatedBoard } from "@/components/mockups/delegated-board";
 export const metadata: Metadata = {
   title: "Delegated management",
   description:
-    "Restricted partner environments with Newham assurance — PFI, TMO and managing-agent stock governed by RBAC, with accept/reject submissions and source-of-truth contact integration.",
+    "Restricted partner environments with landlord assurance — PFI, TMO and managing-agent stock governed by RBAC, with accept/reject submissions and source-of-truth contact integration.",
 };
 
 export default function DelegatedPage() {
@@ -30,7 +30,7 @@ export default function DelegatedPage() {
               </h1>
               <p className="text-lg text-muted-foreground text-balance">
                 Give PFI, TMO and managing-agent partners their own restricted
-                environment, while Newham retains assurance over every workstream and
+                environment, while the landlord retains assurance over every workstream and
                 governs contact data from its source of truth.
               </p>
             </div>
@@ -46,7 +46,7 @@ export default function DelegatedPage() {
         status="live"
         eyebrow="Partner environments"
         title="Restricted environments, shaped by RBAC"
-        description="Partners only ever see — and only ever touch — the stock they manage. Access is scoped by portfolio and management category, with Newham assurance retained at block level."
+        description="Partners only ever see — and only ever touch — the stock they manage. Access is scoped by portfolio and management category, with landlord assurance retained at block level."
         points={[
           {
             icon: Lock,
@@ -61,7 +61,7 @@ export default function DelegatedPage() {
           {
             icon: ShieldCheck,
             title: "Block-level assurance retained",
-            body: "In mixed-tenure blocks, Newham keeps assurance over communal and block-level duties even where a unit isn't owned.",
+            body: "In mixed-tenure blocks, the landlord keeps assurance over communal and block-level duties even where a unit isn't owned.",
           },
         ]}
         visual={
@@ -77,12 +77,12 @@ export default function DelegatedPage() {
         status="live"
         eyebrow="Assurance"
         title="Accept or reject every partner submission"
-        description="Delegated evidence doesn't update the live record until Newham accepts it. The same maker-checker gate behind the survey QA flow assures delegated stock — with a full audit trail."
+        description="Delegated evidence doesn't update the live record until the landlord accepts it. The same maker-checker gate behind the survey QA flow assures delegated stock — with a full audit trail."
         points={[
           {
             icon: ShieldCheck,
             title: "Pending-assurance accept/reject",
-            body: "Partner submissions land as pending-assurance; a Newham reviewer accepts or rejects with comments before anything is trusted.",
+            body: "Partner submissions land as pending-assurance; an assurance reviewer accepts or rejects with comments before anything is trusted.",
           },
           {
             icon: Users,

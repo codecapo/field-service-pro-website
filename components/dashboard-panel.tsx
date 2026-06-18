@@ -23,7 +23,7 @@ export function DashboardPanel({ className }: { className?: string }) {
             <span className="grid size-6 place-items-center rounded-md bg-primary text-[11px] font-bold text-primary-foreground">
               N
             </span>
-            <span className="text-sm font-semibold">Newham AMS</span>
+            <span className="text-sm font-semibold">ClearView AMS</span>
           </div>
           <nav className="mt-4 flex flex-col gap-0.5">
             <NavItem icon={Home} label="Home" active />
