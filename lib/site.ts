@@ -1,8 +1,8 @@
 export const site = {
-  name: "ClearView AMS",
+  name: "Haven AMS",
   tagline: "The offline-first asset management platform for social housing.",
-  appUrl: "https://app.clearviewams.com",
-  email: "hello@clearviewams.com",
+  appUrl: "https://app.havenams.com",
+  email: "hello@havenams.com",
 };
 
 export const nav = [
@@ -36,35 +36,11 @@ export const platformSurfaces = [
     label: "Reporting & analytics",
     href: "/platform/reporting",
     icon: "reporting",
-    description: "Dashboards, the day-one report library and Power BI–ready feeds.",
-  },
-  {
-    label: "Repairs & investment",
-    href: "/platform/repairs",
-    icon: "repairs",
-    description: "Repairs demand and spend joined to the asset, feeding planned investment.",
-  },
-  {
-    label: "Stock movement",
-    href: "/platform/stock-movement",
-    icon: "movement",
-    description: "Effective-dated movement, the RTB pipeline and leasehold obligations.",
-  },
-  {
-    label: "Delegated management",
-    href: "/platform/delegated",
-    icon: "delegated",
-    description: "Restricted partner environments with landlord assurance and governed contacts.",
-  },
-  {
-    label: "Strategy & risk",
-    href: "/platform/strategy",
-    icon: "strategy",
-    description: "Net-zero readiness, void turnaround, disrepair risk and NPV-grade data.",
+    description: "Dashboards, the No Access report and Power BI–ready, reconciled feeds.",
   },
 ] as const;
 
-/* ── The survey-to-AMS spine (staged flow, mirrors the product) ── */
+/* ── The survey-to-AMS flow (staged flow, mirrors the product) ── */
 export const stages = [
   {
     key: "assign",
@@ -140,7 +116,7 @@ export const differentiators = [
 
 /* ── Comparison table vs the field ── */
 export const comparison = {
-  columns: ["ClearView AMS", "Legacy housing AMS", "Generic CMMS / inspection apps"],
+  columns: ["Haven AMS", "Legacy housing AMS", "Generic CMMS / inspection apps"],
   rows: [
     {
       capability: "Full offline field capture (no signal)",
@@ -293,118 +269,86 @@ export const capabilityMap: {
 }[] = [
   {
     group: "Stock condition surveys",
-    ref: "§12–14",
-    intro:
-      "The offline-first capture spine that's live today — and the slice the rest of the platform is built around.",
+    ref: "Live",
+    intro: "The offline-first capture flow — live today.",
     items: [
       { title: "Offline survey capture with photos, persists across restarts", status: "live" },
-      { title: "Pre-loaded packs with checksum & version, external-supplier batch access", status: "live" },
-      { title: "Add components on site (count-driven instances)", status: "live" },
+      { title: "Template-driven question sets + no-code Survey Builder (multi-survey library)", status: "live" },
+      { title: "Conditional routing, count-driven components, submit-time validation", status: "live" },
+      { title: "Pre-loaded packs with checksum & version; external-supplier batch access", status: "live" },
       { title: "Issue-level HHSRS — Category 1/2, controlled reason codes", status: "live" },
-      { title: "Property-level stock intelligence summary", status: "delivery" },
-      { title: "Pre-populated revalidation from the prior survey", status: "delivery" },
-      { title: "Decent Homes failure reasons & damp/mould case model", status: "delivery" },
-      { title: "Scale to thousands of properties (paginated / indexed)", status: "delivery" },
+      { title: "No-access close-out with reason & evidence", status: "live" },
+      { title: "Pre-populated revalidation from the prior accepted survey", status: "delivery" },
     ],
   },
   {
-    group: "Asset register & hierarchy",
-    ref: "§5–7, §19",
-    intro:
-      "A live, effective-dated register of property, block and component — the foundation everything else sits on.",
+    group: "Evidence & photos",
+    ref: "Live",
+    intro: "Every photo bound to the record it evidences.",
     items: [
-      { title: "Persisted live Property record (not just a survey snapshot)", status: "delivery" },
-      { title: "Block / communal asset as a first-class record", status: "roadmap" },
-      { title: "Durable component register (Kitchen 1, Boiler 1, Lift 1)", status: "roadmap" },
-      { title: "Portfolio → block → property → component drill-through", status: "roadmap" },
-      { title: "Classification & rule model (tenure, ownership, mgmt category)", status: "roadmap" },
-      { title: "Split responsibility / duty-holder matrix per duty area", status: "roadmap" },
-      { title: "Asset lifecycle statuses & activation gate", status: "roadmap" },
+      { title: "Camera capture + library upload (e.g. call-attempt screenshots)", status: "live" },
+      { title: "Auto timestamp, GPS location & geofence distance", status: "live" },
+      { title: "Low-quality flagging; private storage with short-lived signed URLs", status: "live" },
+      { title: "Parent-linked to a question, component, issue or access event", status: "live" },
     ],
   },
   {
-    group: "Evidence-led compliance",
-    ref: "§8–11",
-    intro:
-      "A controlled denominator and certificate drill-through, where 'unknown' is an exception — never false-green.",
+    group: "Asset register & search",
+    ref: "Live",
+    intro: "A live property, block & component register with authoritative addresses.",
     items: [
-      { title: "Per-programme applicability (gas, EICR, FRA, asbestos, lifts…)", status: "roadmap" },
-      { title: "Controlled denominator governance with protected removal", status: "roadmap" },
-      { title: "System-derived compliance status from evidence & validity", status: "roadmap" },
+      { title: "Property, block & component records (units linked to their block)", status: "live" },
+      { title: "Full-text search by address, UPRN, postcode or reference", status: "live" },
+      { title: "Authoritative UPRNs via Ordnance Survey Places (address → UPRN)", status: "live" },
+      { title: "USRN (street) + TOID (building) via OS Linked Identifiers", status: "live" },
+      { title: "Council block lists exploded into individual surveyable units", status: "live" },
+      { title: "Satellite map per property; one-click Excel (.xlsx) export", status: "live" },
+      { title: "Confidence labelling (verified vs unverified records)", status: "live" },
+    ],
+  },
+  {
+    group: "Compliance & safety capture",
+    ref: "Live",
+    intro: "Evidence-led capture of the regulated risks — never false-green.",
+    items: [
+      { title: "HHSRS Category 1/2 hazards with controlled reason codes", status: "live" },
+      { title: "Awaab's Law damp & mould severity grading", status: "live" },
+      { title: "Required-vs-observed safety alarms (a shortfall raises an issue)", status: "live" },
       { title: "Certificate / evidence document store linked to the asset", status: "delivery" },
-      { title: "Dashboard → asset → certificate drill-through", status: "roadmap" },
-      { title: "Statutory vs internal-target vs breach KPI cycles", status: "roadmap" },
-      { title: "Cross-service access risk & coordinated access", status: "delivery" },
     ],
   },
   {
-    group: "Repairs, warranty & investment",
-    ref: "§15–17",
-    intro:
-      "Demand and spend intelligence joined to the asset, feeding planned investment and lifecycle.",
+    group: "QA, sync & assurance",
+    ref: "Live",
+    intro: "A maker-checker gate and a no-silent-overwrite sync.",
     items: [
-      { title: "Repairs feed (cost, trade, SOR, contractor, completion)", status: "roadmap" },
-      { title: "Repair aggregation & repeat-failure flagging", status: "roadmap" },
-      { title: "Component warranty / defect-liability intelligence", status: "roadmap" },
-      { title: "Lifecycle data on components (life, replacement year, cost)", status: "delivery" },
-      { title: "Need lifecycle: observed → approved → completed → reset", status: "roadmap" },
-      { title: "High-cost property / block dashboards & BI export", status: "roadmap" },
-    ],
-  },
-  {
-    group: "Stock movement, tenure & leasehold",
-    ref: "§18, §20–21",
-    intro:
-      "Effective-dated movement, RTB pipeline and leasehold obligations kept reconciled with programmes.",
-    items: [
-      { title: "Monthly stock movement reconciliation with effective dating", status: "roadmap" },
-      { title: "Movements trigger programme impact review", status: "roadmap" },
-      { title: "RTB pipeline & Section 125 status", status: "roadmap" },
-      { title: "Section 20 consultation & leasehold recharge", status: "roadmap" },
-      { title: "Completed sale updates tenure & programme applicability", status: "roadmap" },
-    ],
-  },
-  {
-    group: "Delegated management & integrations",
-    ref: "§22–23",
-    intro:
-      "Restricted partner environments with landlord assurance, and contact data governed from its source of truth.",
-    items: [
-      { title: "Partner environments shaped by RBAC (portfolio / mgmt category)", status: "delivery" },
-      { title: "Partner evidence upload limited to managed stock", status: "delivery" },
-      { title: "Accept/reject of partner submissions (assurance gate)", status: "delivery" },
-      { title: "Central delegated-stock assurance dashboard", status: "roadmap" },
-      { title: "CRM / Northgate contact display & write-back with conflict report", status: "roadmap" },
-    ],
-  },
-  {
-    group: "Strategy, sustainability & risk",
-    ref: "§24–25, §30–31",
-    intro:
-      "Net-zero readiness, void turnaround, disrepair risk and NPV-grade data for option appraisal.",
-    items: [
-      { title: "Energy / retrofit fields & candidate grouping", status: "delivery" },
-      { title: "Disrepair, complaints, Ombudsman & resident-risk linkage", status: "delivery" },
-      { title: "Controlled void classification & turnaround pathway", status: "roadmap" },
-      { title: "Historic void episodes & blockers", status: "roadmap" },
-      { title: "NPV / option-appraisal data capture & export", status: "delivery" },
-      { title: "Built-in NPV calculation & scenario modelling", status: "roadmap" },
-    ],
-  },
-  {
-    group: "Data, governance & reporting",
-    ref: "§4A, §26–29",
-    intro:
-      "A single source of truth with source-lineage, maker-checker control and day-one reporting — the layer the whole AMS reuses.",
-    items: [
+      { title: "Submit → QA accept/reject with comments, fully audited", status: "live" },
+      { title: "No-silent-overwrite conflict control (master-version compare)", status: "live" },
+      { title: "Offline queue with retry; dead-lettered items surfaced for action", status: "live" },
+      { title: "Reconciliation report — every survey returns data + components + images", status: "live" },
       { title: "Named-user RBAC, least-privilege, per-scope restriction", status: "live" },
       { title: "Audit trail across capture, photo, QA & sync events", status: "live" },
-      { title: "No-silent-overwrite conflict control", status: "live" },
+    ],
+  },
+  {
+    group: "Reporting & outputs",
+    ref: "Live",
+    intro: "One accepted source → reports and BI-ready data that reconcile.",
+    items: [
       { title: "Stable-key structured export (Power BI / warehouse ready)", status: "live" },
-      { title: "Maker-checker / protected-change workflow generalised", status: "delivery" },
-      { title: "Source + confidence + last-verified lineage on key fields", status: "roadmap" },
-      { title: "Data-quality dashboards (missing, duplicate, low-confidence)", status: "roadmap" },
-      { title: "Day-one report library & super-user saved views", status: "roadmap" },
+      { title: "PDF report + CSV + XLSX from a single accepted source", status: "live" },
+      { title: "No Access report — properties stuck, 1 / 2 / 3+ repeat-visit buckets", status: "live" },
+      { title: "Issues / HHSRS portfolio dashboard", status: "live" },
+    ],
+  },
+  {
+    group: "Data residency & isolation",
+    ref: "Live",
+    intro: "UK-resident, and isolated per council.",
+    items: [
+      { title: "Per-council isolated backend — no shared database between councils", status: "live" },
+      { title: "UK data residency (London region)", status: "live" },
+      { title: "Private photo storage; row-level security; signed-URL reads", status: "live" },
     ],
   },
 ];
@@ -453,7 +397,7 @@ export const faqs = [
   },
   {
     q: "How does it fit alongside our existing AMS or CRM?",
-    a: "ClearView AMS is built to feed a single source of truth. It exports stable-key, referentially-joined data that loads cleanly into a warehouse or BI tool, and its conflict-control model is designed to reconcile against external systems rather than overwrite them.",
+    a: "Haven AMS is built to feed a single source of truth. It exports stable-key, referentially-joined data that loads cleanly into a warehouse or BI tool, and its conflict-control model is designed to reconcile against external systems rather than overwrite them.",
   },
   {
     q: "Is it installable without an app store?",

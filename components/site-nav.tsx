@@ -117,7 +117,7 @@ export function SiteNav() {
                         className="flex items-center justify-between border-t border-border bg-muted/40 px-5 py-3 text-sm font-medium hover:bg-muted"
                       >
                         Platform overview
-                        <span className="text-primary">See the whole spine →</span>
+                        <span className="text-primary">See the whole flow →</span>
                       </Link>
                     </div>
                   </div>

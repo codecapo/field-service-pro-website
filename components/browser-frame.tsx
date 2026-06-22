@@ -5,7 +5,7 @@ import { cn } from "@/components/ui";
    an app screenshot. Provides the outer border, radius and frame shadow, so the
    content inside should be borderless. */
 export function BrowserFrame({
-  url = "app.clearviewams.com",
+  url = "app.havenams.com",
   children,
   className,
 }: {

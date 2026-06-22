@@ -5,7 +5,7 @@ import { FeatureShowcase } from "@/components/sections/feature-showcase";
 import { CtaSection } from "@/components/sections/cta";
 import { FeatureComposite } from "@/components/feature-composite";
 import { DashboardPanel } from "@/components/dashboard-panel";
-import { PhoneFrame, ServicesScreen, KitchenScreen, IssuesScreen } from "@/components/phone";
+import { PhoneFrame, LivePhone, ServicesScreen, KitchenScreen, IssuesScreen } from "@/components/phone";
 
 export const metadata: Metadata = {
   title: "Surveys",
@@ -35,7 +35,7 @@ export default function SurveysPage() {
                 record until it passes QA.
               </p>
             </div>
-            <FeatureComposite url="app.clearviewams.com/surveys" screen={<ServicesScreen />}>
+            <FeatureComposite url="app.havenams.com/surveys" screen={<ServicesScreen />}>
               <DashboardPanel />
             </FeatureComposite>
           </div>
@@ -54,9 +54,7 @@ export default function SurveysPage() {
         ]}
         visual={
           <div className="flex justify-center">
-            <PhoneFrame badges>
-              <ServicesScreen />
-            </PhoneFrame>
+            <LivePhone badges path="/surveys" fallback={<ServicesScreen />} />
           </div>
         }
       />

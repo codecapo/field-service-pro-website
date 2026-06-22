@@ -5,10 +5,6 @@ import { ScaledBrowser } from "@/components/browser-frame";
 import { DashboardPanel } from "@/components/dashboard-panel";
 import { ComplianceBoard, AssetRegister } from "@/components/mockups";
 import { SurveyBoard } from "@/components/mockups/survey-board";
-import { RepairsBoard } from "@/components/mockups/repairs-board";
-import { StockMovementBoard } from "@/components/mockups/stock-movement-board";
-import { DelegatedBoard } from "@/components/mockups/delegated-board";
-import { StrategyBoard } from "@/components/mockups/strategy-board";
 
 const entries: {
   group: string;
@@ -21,73 +17,37 @@ const entries: {
 }[] = [
   {
     group: "Stock condition surveys",
-    ref: "§12–14",
-    url: "app.clearviewams.com/surveys/100023001",
-    blurb: "The offline-first capture spine — photos, components and issue-level HHSRS.",
-    features: ["Offline capture", "Count-driven components", "HHSRS Cat 1/2", "Stock intelligence"],
+    ref: "Live",
+    url: "app.havenams.com/surveys/100023001",
+    blurb: "The offline-first capture flow — photos, components and issue-level HHSRS.",
+    features: ["Offline capture", "Count-driven components", "HHSRS Cat 1/2", "No-access close-out"],
     node: <SurveyBoard />,
     href: "/platform/surveys",
   },
   {
-    group: "Asset register & hierarchy",
-    ref: "§5–7, §19",
-    url: "app.clearviewams.com/properties/100023001",
-    blurb: "A live, effective-dated register of property, block and component.",
-    features: ["Property → block → component", "Lifecycle data", "Classification", "Snapshot vs live"],
+    group: "Asset register & search",
+    ref: "Live",
+    url: "app.havenams.com/assets/5071190",
+    blurb: "A live property, block & component register with authoritative OS addresses.",
+    features: ["Full-text search", "OS UPRN / USRN / TOID", "Block → unit", "Excel export"],
     node: <AssetRegister />,
     href: "/platform/asset-register",
   },
   {
-    group: "Evidence-led compliance",
-    ref: "§8–11",
-    url: "app.clearviewams.com/compliance",
-    blurb: "A controlled denominator and certificate drill-through — never false-green.",
-    features: ["Applicability + evidence", "Certificate store", "KPI cycles", "Unknown = exception"],
+    group: "Compliance & safety capture",
+    ref: "Live",
+    url: "app.havenams.com/compliance",
+    blurb: "Evidence-led capture of the regulated risks — never false-green.",
+    features: ["HHSRS Cat 1/2", "Awaab's Law damp/mould", "Required-vs-observed alarms", "Audit trail"],
     node: <ComplianceBoard />,
     href: "/platform/compliance",
   },
   {
-    group: "Repairs, warranty & investment",
-    ref: "§15–17",
-    url: "app.clearviewams.com/repairs",
-    blurb: "Demand and spend joined to the asset, feeding planned investment.",
-    features: ["Repairs feed (SOR, cost)", "Repeat-failure flags", "Warranty", "Lifecycle → programme"],
-    node: <RepairsBoard />,
-    href: "/platform/repairs",
-  },
-  {
-    group: "Stock movement, tenure & leasehold",
-    ref: "§18, §20–21",
-    url: "app.clearviewams.com/movement",
-    blurb: "Effective-dated movement, the RTB pipeline and leasehold obligations.",
-    features: ["Monthly reconciliation", "RTB & Section 125", "Section 20 recharge", "Programme impact"],
-    node: <StockMovementBoard />,
-    href: "/platform/stock-movement",
-  },
-  {
-    group: "Delegated management & integrations",
-    ref: "§22–23",
-    url: "app.clearviewams.com/assurance",
-    blurb: "Restricted partner environments with landlord assurance, and governed contacts.",
-    features: ["RBAC by portfolio", "Partner evidence", "Accept/reject assurance", "CRM / Northgate sync"],
-    node: <DelegatedBoard />,
-    href: "/platform/delegated",
-  },
-  {
-    group: "Strategy, sustainability & risk",
-    ref: "§24–25, §30–31",
-    url: "app.clearviewams.com/strategy",
-    blurb: "Net-zero readiness, void turnaround, disrepair risk and NPV-grade data.",
-    features: ["Void turnaround", "EPC / retrofit", "Disrepair & Ombudsman", "NPV readiness"],
-    node: <StrategyBoard />,
-    href: "/platform/strategy",
-  },
-  {
-    group: "Data, governance & reporting",
-    ref: "§4A, §26–29",
-    url: "app.clearviewams.com/reporting",
-    blurb: "A single source of truth with audit, maker-checker control and day-one reporting.",
-    features: ["Named-user RBAC + audit", "No silent overwrite", "Stable-key BI feeds", "Saved views"],
+    group: "Reporting & outputs",
+    ref: "Live",
+    url: "app.havenams.com/reporting",
+    blurb: "One accepted source → reports and BI-ready data that reconcile.",
+    features: ["No Access report", "Reconciliation", "PDF + CSV + XLSX", "Power BI–ready"],
     node: <DashboardPanel />,
     href: "/platform/reporting",
   },
@@ -98,9 +58,9 @@ export function MockupMatrix() {
     <section id="surfaces" className="border-t border-border bg-muted/30 py-20 md:py-28">
       <Container>
         <SectionHeading
-          eyebrow="The full platform"
-          title="Every requirement of a modern AMS — see it work"
-          description="Mapped to the Asset Management Systems requirements (§4A–§31). One platform, one data model, every surface built out."
+          eyebrow="The platform"
+          title="See it work"
+          description="One platform, one data model — the surfaces that are live today."
         />
 
         <div className="mt-14 grid gap-x-10 gap-y-14 lg:grid-cols-2">

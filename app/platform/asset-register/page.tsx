@@ -35,7 +35,7 @@ export default function AssetRegisterPage() {
                 classification that stay current as QA-accepted surveys flow in.
               </p>
             </div>
-            <ScaledBrowser url="app.clearviewams.com/properties/100023001">
+            <ScaledBrowser url="app.havenams.com/properties/100023001">
               <AssetRegister />
             </ScaledBrowser>
           </div>
@@ -65,7 +65,7 @@ export default function AssetRegisterPage() {
           },
         ]}
         visual={
-          <ScaledBrowser url="app.clearviewams.com/properties/100023001">
+          <ScaledBrowser url="app.havenams.com/properties/100023001">
             <AssetRegister />
           </ScaledBrowser>
         }
@@ -96,7 +96,7 @@ export default function AssetRegisterPage() {
           },
         ]}
         visual={
-          <ScaledBrowser url="app.clearviewams.com/overview">
+          <ScaledBrowser url="app.havenams.com/overview">
             <DashboardPanel />
           </ScaledBrowser>
         }
@@ -125,7 +125,7 @@ export default function AssetRegisterPage() {
           },
         ]}
         visual={
-          <ScaledBrowser url="app.clearviewams.com/properties/100023001">
+          <ScaledBrowser url="app.havenams.com/properties/100023001">
             <AssetRegister />
           </ScaledBrowser>
         }

@@ -8,15 +8,15 @@ const geistSans = Geist({ variable: "--font-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://clearviewams.com"),
+  metadataBase: new URL("https://havenams.com"),
   title: {
-    default: "ClearView AMS — the offline-first asset management platform for social housing",
-    template: "%s · ClearView AMS",
+    default: "Haven AMS — the offline-first asset management platform for social housing",
+    template: "%s · Haven AMS",
   },
   description:
     "An evidence-led asset management platform built for councils and housing associations. Capture stock condition surveys fully offline, never overwrite the master record, and turn the field into a single source of truth.",
   openGraph: {
-    title: "ClearView AMS",
+    title: "Haven AMS",
     description:
       "Offline-first asset management for social housing — survey capture, evidence-led compliance, and a single source of truth.",
     type: "website",

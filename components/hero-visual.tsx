@@ -1,5 +1,5 @@
 import { cn } from "@/components/ui";
-import { PhoneFrame, ServicesScreen } from "@/components/phone";
+import { LivePhone, ServicesScreen } from "@/components/phone";
 
 /* Untitled-UI style hero visual: a single phone with the app screen inside,
    floating over a soft radial halo. Static — no competing dashboard panel. */
@@ -15,9 +15,7 @@ export function HeroVisual({ className }: { className?: string }) {
             "radial-gradient(circle, color-mix(in oklch, var(--primary) 18%, transparent) 0%, transparent 62%)",
         }}
       />
-      <PhoneFrame badges>
-        <ServicesScreen />
-      </PhoneFrame>
+      <LivePhone badges path="/surveys" fallback={<ServicesScreen />} />
     </div>
   );
 }

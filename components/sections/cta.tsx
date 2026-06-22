@@ -4,7 +4,7 @@ import { Container } from "@/components/ui";
 
 export function CtaSection({
   title = "Bring your field data in from the cold.",
-  description = "See the offline survey-to-output spine running on a real batch of your stock. No app store, no signal required.",
+  description = "See the offline survey-to-output flow running on a real batch of your stock. No app store, no signal required.",
 }: {
   title?: string;
   description?: string;

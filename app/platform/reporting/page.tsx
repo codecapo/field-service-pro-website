@@ -41,7 +41,7 @@ export default function ReportingPage() {
                 board, in a PDF and in an export always reconcile.
               </p>
             </div>
-            <ScaledBrowser url="app.clearviewams.com/reporting">
+            <ScaledBrowser url="app.havenams.com/reporting">
               <DashboardPanel />
             </ScaledBrowser>
           </div>
@@ -71,7 +71,7 @@ export default function ReportingPage() {
           },
         ]}
         visual={
-          <ScaledBrowser url="app.clearviewams.com/reporting">
+          <ScaledBrowser url="app.havenams.com/reporting">
             <DashboardPanel />
           </ScaledBrowser>
         }
@@ -102,7 +102,7 @@ export default function ReportingPage() {
           },
         ]}
         visual={
-          <ScaledBrowser url="app.clearviewams.com/reporting/decent-homes">
+          <ScaledBrowser url="app.havenams.com/reporting/decent-homes">
             <DashboardPanel />
           </ScaledBrowser>
         }
@@ -131,7 +131,7 @@ export default function ReportingPage() {
           },
         ]}
         visual={
-          <ScaledBrowser url="app.clearviewams.com/reporting/exports">
+          <ScaledBrowser url="app.havenams.com/reporting/exports">
             <DashboardPanel />
           </ScaledBrowser>
         }

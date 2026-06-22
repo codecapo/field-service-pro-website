@@ -20,7 +20,7 @@ import { CtaSection } from "@/components/sections/cta";
 export const metadata: Metadata = {
   title: "Security & data governance",
   description:
-    "Named-user access, no silent overwrite, full audit trails and evidence-led data governance — security built into the survey spine, not bolted on.",
+    "Named-user access, no silent overwrite, full audit trails and evidence-led data governance — security built into the survey flow, not bolted on.",
 };
 
 const pillars = [
@@ -91,7 +91,7 @@ export default function SecurityPage() {
       <Section>
         <SectionHeading
           eyebrow="Controls"
-          title="Security built into the spine"
+          title="Security built into the flow"
         />
         <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {pillars.map((p) => (

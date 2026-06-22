@@ -7,7 +7,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Book a demo",
   description:
-    "See the offline survey-to-output spine running on a real batch of your stock. Book a walkthrough with the ClearView AMS team.",
+    "See the offline survey-to-output flow running on a real batch of your stock. Book a walkthrough with the Haven AMS team.",
 };
 
 const points = [
@@ -44,7 +44,7 @@ export default function ContactPage() {
               See it survive the field
             </h1>
             <p className="text-lg text-muted-foreground text-balance">
-              A 30-minute walkthrough of the survey-to-AMS spine — on your stock,
+              A 30-minute walkthrough of the survey-to-AMS flow — on your stock,
               your inspection type, your questions. No slideware.
             </p>
 

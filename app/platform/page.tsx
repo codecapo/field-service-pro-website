@@ -37,7 +37,7 @@ export default function PlatformPage() {
                 The platform
               </Badge>
               <h1 className="text-4xl font-semibold tracking-tight md:text-5xl text-balance">
-                A controlled spine from the field to the source of truth
+                A controlled flow from the field to the source of truth
               </h1>
               <p className="text-lg text-muted-foreground text-balance">
                 Each module does one job well — and together they guarantee that
@@ -47,7 +47,7 @@ export default function PlatformPage() {
             </div>
 
             <FeatureComposite
-              url="app.clearviewams.com/overview"
+              url="app.havenams.com/overview"
               screen={<ServicesScreen />}
               browserWidth={740}
             >
@@ -55,7 +55,7 @@ export default function PlatformPage() {
             </FeatureComposite>
           </div>
 
-          {/* spine strip */}
+          {/* flow strip */}
           <div className="mt-16 grid gap-3 sm:grid-cols-3 lg:grid-cols-6">
             {stages.map((s, i) => (
               <div
@@ -78,7 +78,7 @@ export default function PlatformPage() {
         <SectionHeading
           align="left"
           eyebrow="Available today"
-          title="The survey-to-output spine, in seven modules"
+          title="The survey-to-output flow, in seven modules"
           description="Live and demoable now — each module does one job well, and together they guarantee every survey is captured offline, evidenced, reviewed and reconciled before it touches the live record."
           className="mb-14 max-w-3xl"
         />
@@ -120,7 +120,7 @@ export default function PlatformPage() {
       <ComparisonSection />
       <CtaSection
         title="Want the deep dive?"
-        description="We'll walk your team through the spine end-to-end on a real batch of your stock."
+        description="We'll walk your team through the flow end-to-end on a real batch of your stock."
       />
     </>
   );
@@ -136,9 +136,9 @@ function ModuleMockup({ kind }: { kind: string }) {
     qa: <SurveyListScreen />,
   };
   const browser: Record<string, { url: string; node: React.ReactNode }> = {
-    sync: { url: "app.clearviewams.com/overview", node: <DashboardPanel /> },
-    outputs: { url: "app.clearviewams.com/reporting", node: <DashboardPanel /> },
-    access: { url: "app.clearviewams.com/properties/100023001", node: <AssetRegister /> },
+    sync: { url: "app.havenams.com/overview", node: <DashboardPanel /> },
+    outputs: { url: "app.havenams.com/reporting", node: <DashboardPanel /> },
+    access: { url: "app.havenams.com/properties/100023001", node: <AssetRegister /> },
   };
 
   if (phone[kind]) {

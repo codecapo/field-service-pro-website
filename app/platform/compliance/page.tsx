@@ -43,7 +43,7 @@ export default function CompliancePage() {
               </p>
             </div>
 
-            <ScaledBrowser url="app.clearviewams.com/compliance">
+            <ScaledBrowser url="app.havenams.com/compliance">
               <ComplianceBoard />
             </ScaledBrowser>
           </div>
@@ -73,7 +73,7 @@ export default function CompliancePage() {
           },
         ]}
         visual={
-          <ScaledBrowser url="app.clearviewams.com/compliance">
+          <ScaledBrowser url="app.havenams.com/compliance">
             <ComplianceBoard />
           </ScaledBrowser>
         }
@@ -104,7 +104,7 @@ export default function CompliancePage() {
           },
         ]}
         visual={
-          <ScaledBrowser url="app.clearviewams.com/compliance/eicr">
+          <ScaledBrowser url="app.havenams.com/compliance/eicr">
             <DashboardPanel />
           </ScaledBrowser>
         }
@@ -133,7 +133,7 @@ export default function CompliancePage() {
           },
         ]}
         visual={
-          <ScaledBrowser url="app.clearviewams.com/compliance">
+          <ScaledBrowser url="app.havenams.com/compliance">
             <ComplianceBoard />
           </ScaledBrowser>
         }

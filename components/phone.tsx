@@ -22,10 +22,13 @@ import { cn } from "@/components/ui";
 
 export function PhoneFrame({
   children,
+  src,
   badges = false,
   className,
 }: {
-  children: React.ReactNode;
+  children?: React.ReactNode;
+  /** When set, the screen shows a live iframe (the real field PWA) instead of children. */
+  src?: string;
   badges?: boolean;
   className?: string;
 }) {
@@ -69,13 +72,50 @@ export function PhoneFrame({
                 <BatteryMedium className="size-4" />
               </div>
             </div>
-            {children}
+            {src ? (
+              <iframe
+                src={src}
+                title="Haven AMS field app — live demo"
+                loading="lazy"
+                className="w-full flex-1 border-0 bg-background"
+              />
+            ) : (
+              children
+            )}
           </div>
         </div>
       </div>
 
       <div className="absolute -inset-x-8 -bottom-8 top-16 -z-0 rounded-full bg-primary/15 blur-3xl" />
     </div>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────────
+   LivePhone — embeds the real field PWA (a no-login DEMO build) live
+   inside the phone when NEXT_PUBLIC_DEMO_APP_URL is set; otherwise it
+   renders the static screen `fallback`. So prod shows the real app and
+   local/CI still builds without a demo instance.
+   ───────────────────────────────────────────────────────────── */
+export function LivePhone({
+  path = "",
+  fallback,
+  badges = false,
+  className,
+}: {
+  path?: string;
+  fallback: React.ReactNode;
+  badges?: boolean;
+  className?: string;
+}) {
+  const base = process.env.NEXT_PUBLIC_DEMO_APP_URL;
+  if (base) {
+    return <PhoneFrame src={`${base}${path}`} badges={badges} className={className} />;
+  }
+  return (
+    <PhoneFrame badges={badges} className={className}>
+      {fallback}
+    </PhoneFrame>
   );
 }
 

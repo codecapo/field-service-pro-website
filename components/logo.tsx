@@ -1,14 +1,14 @@
 import Link from "next/link";
 import { cn } from "@/components/ui";
 
-/* ClearView AMS — mark: a magnifying glass over a building (a "clear view"
+/* Haven AMS — mark: a magnifying glass over a building (a "clear view"
    of the property / asset). */
 export function Logo({ className }: { className?: string }) {
   return (
     <Link
       href="/"
       className={cn("inline-flex items-center gap-2.5", className)}
-      aria-label="ClearView AMS — home"
+      aria-label="Haven AMS — home"
     >
       <span className="grid size-8 place-items-center rounded-lg bg-primary text-primary-foreground shadow-sm">
         <svg
@@ -32,7 +32,7 @@ export function Logo({ className }: { className?: string }) {
         </svg>
       </span>
       <span className="text-[15px] font-semibold tracking-tight text-foreground">
-        ClearView<span className="font-medium text-muted-foreground">AMS</span>
+        Haven<span className="font-medium text-muted-foreground">AMS</span>
       </span>
     </Link>
   );

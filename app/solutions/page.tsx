@@ -14,7 +14,7 @@ import { personas } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Solutions",
   description:
-    "How ClearView AMS serves local authorities, housing associations, supplier surveyors and compliance teams — each with the same trustworthy field data.",
+    "How Haven AMS serves local authorities, housing associations, supplier surveyors and compliance teams — each with the same trustworthy field data.",
 };
 
 const icons = {
@@ -33,7 +33,7 @@ const detail: Record<string, string[]> = {
   has: [
     "Issue-level HHSRS with Category 1/2 and controlled reason codes",
     "Decent Homes and damp/mould captured as structured, photo-evidenced records",
-    "Mixed-tenure and delegated stock handled with per-scope access",
+    "Mixed-tenure stock handled with per-scope, named-user access",
   ],
   suppliers: [
     "Capture everything offline in dead-signal estates — nothing is lost",
@@ -62,7 +62,7 @@ export default function SolutionsPage() {
               Trustworthy field data for every team that depends on it
             </h1>
             <p className="text-lg text-muted-foreground text-balance">
-              The same offline-first, evidence-led spine — shaped to how each part
+              The same offline-first, evidence-led flow — shaped to how each part
               of your organisation actually works.
             </p>
           </div>
@@ -116,7 +116,7 @@ export default function SolutionsPage() {
         <Card className="flex flex-col items-center gap-4 bg-gradient-to-br from-primary/[0.06] to-card py-12 text-center">
           <SectionHeading
             title="Not sure where you fit?"
-            description="If your teams capture condition, compliance or inspection data in the field, the spine applies. Let's map it to your operating model."
+            description="If your teams capture condition, compliance or inspection data in the field, the flow applies. Let's map it to your operating model."
           />
           <Button href="/contact">
             Talk to us <ArrowRight className="size-4" />

@@ -43,7 +43,7 @@ export default function HomePage() {
       <Hero />
       <CredibilityBand />
       <ProblemSection />
-      <SpineSection />
+      <FlowSection />
       <DifferentiatorsSection />
       <ComparisonSection />
       <FeatureBento />
@@ -52,7 +52,7 @@ export default function HomePage() {
         tinted
         eyebrow="The full platform"
         title="Explore every surface of the AMS"
-        description="From offline field capture to the live asset register, evidence-led compliance and day-one reporting — every main surface, built on one spine."
+        description="From offline field capture to the live asset register, evidence-led compliance and day-one reporting — every main surface, built on one flow."
       />
       <RolesSection />
       <StatsSection />
@@ -88,7 +88,7 @@ function Hero() {
               className="reveal max-w-xl text-lg text-muted-foreground text-balance"
               style={{ animationDelay: "120ms" }}
             >
-              ClearView AMS captures stock condition surveys fully offline,
+              Haven AMS captures stock condition surveys fully offline,
               never overwrites the master record, and turns every survey into
               evidence-led data your whole organisation can trust.
             </p>
@@ -197,14 +197,14 @@ function ProblemSection() {
   );
 }
 
-/* ─────────────────── The survey-to-AMS spine ─────────────────── */
-function SpineSection() {
+/* ─────────────────── The survey-to-AMS flow ─────────────────── */
+function FlowSection() {
   return (
     <section className="border-y border-border bg-muted/30 py-20 md:py-28">
       <Container>
         <SectionHeading
           eyebrow="How it works"
-          title="One controlled spine, field to source of truth"
+          title="One controlled flow, field to source of truth"
           description="Every survey follows the same evidence-led path — and nothing reaches the live record until it has earned its place there."
         />
         <div className="mt-14 grid gap-6 md:grid-cols-3">
@@ -266,7 +266,7 @@ function FeatureBento() {
       <Container>
         <SectionHeading
           eyebrow="The platform"
-          title="Everything the survey-to-AMS spine needs"
+          title="Everything the survey-to-AMS flow needs"
           description="A complete capture-to-output toolchain, with the asset register and compliance layers built on the same foundation."
         />
         <div className="mt-12 grid gap-4 md:grid-cols-6">
@@ -386,7 +386,7 @@ function PlatformShowcase() {
         ]}
         visual={
           <FeatureComposite
-            url="app.clearviewams.com/overview"
+            url="app.havenams.com/overview"
             screen={<ServicesScreen />}
             browserWidth={740}
           >
@@ -408,7 +408,7 @@ function PlatformShowcase() {
           { icon: Database, title: "Power BI–ready feeds", body: "Stable-key exports load cleanly into your warehouse — no manual interpretation." },
         ]}
         visual={
-          <ScaledBrowser url="app.clearviewams.com/compliance">
+          <ScaledBrowser url="app.havenams.com/compliance">
             <ComplianceBoard />
           </ScaledBrowser>
         }
@@ -425,7 +425,7 @@ function PlatformShowcase() {
           { icon: Layers, title: "Snapshot vs live record", body: "History stays intact; the live master updates only after QA acceptance." },
         ]}
         visual={
-          <ScaledBrowser url="app.clearviewams.com/properties/100023001">
+          <ScaledBrowser url="app.havenams.com/properties/100023001">
             <AssetRegister />
           </ScaledBrowser>
         }
