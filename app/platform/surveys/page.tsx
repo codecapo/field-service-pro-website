@@ -3,6 +3,7 @@ import {
   Camera,
   CalendarCheck,
   ClipboardCheck,
+  Droplets,
   Flame,
   GitMerge,
   Hammer,
@@ -11,7 +12,7 @@ import {
   SlidersHorizontal,
   WifiOff,
 } from "lucide-react";
-import { Badge, Card, Container, Section, SectionHeading } from "@/components/ui";
+import { Button, Card, Container, Section, SectionHeading } from "@/components/ui";
 import { FeatureShowcase } from "@/components/sections/feature-showcase";
 import { CtaSection } from "@/components/sections/cta";
 import { FeatureComposite } from "@/components/feature-composite";
@@ -21,7 +22,7 @@ import { PhoneFrame, LivePhone, ServicesScreen, KitchenScreen, IssuesScreen } fr
 export const metadata: Metadata = {
   title: "Field operations",
   description:
-    "Offline-first field operations for social housing. Stock condition surveys today — photos bound to the record, issue-level HHSRS, a QA gate before the live master — and any inspection the same template engine runs.",
+    "Haven helps housing teams capture surveys, inspections and site updates where the work happens — then bring that information back clearly for review, reporting and action.",
 };
 
 export default function SurveysPage() {
@@ -30,22 +31,31 @@ export default function SurveysPage() {
       <header className="relative overflow-hidden border-b border-border">
         <div className="absolute inset-0 bg-hero-glow" />
         <Container className="relative py-20 md:py-24">
-          <div className="grid items-center gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+          <div className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
             <div className="flex flex-col gap-5">
-              <Badge>
-                <span className="size-1.5 rounded-full bg-primary" />
-                Platform · Field operations
-              </Badge>
+              <p className="text-sm font-semibold text-primary">Field operations</p>
               <h1 className="text-4xl font-semibold tracking-tight md:text-5xl text-balance">
-                Field capture that survives the field
+                From site visit to trusted answer
               </h1>
               <p className="text-lg text-muted-foreground text-balance">
-                Stock condition surveys, live and demo-ready today. Surveyors capture
-                everything offline — components, HHSRS issues and photos — in basements,
-                stairwells and dead-signal estates. Nothing is lost, nothing overwrites
-                the master, and nothing reaches the live record until it passes QA. The
-                same engine is built to run any inspection you need.
+                Haven helps housing teams capture surveys, inspections and site updates
+                where the work happens — then bring that information back clearly for
+                review, reporting and action.
               </p>
+              <p className="text-muted-foreground text-balance">
+                It starts with stock condition surveys, which are live and ready to demo.
+                The same approach can support fire safety checks, monthly housing
+                inspections, damp and mould visits, follow-up actions and
+                before-and-after repairs evidence.
+              </p>
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <Button href="/contact" size="lg">
+                  Book a field operations demo
+                </Button>
+                <Button href="/" variant="secondary" size="lg">
+                  See how Haven works
+                </Button>
+              </div>
             </div>
             <FeatureComposite url="app.havenams.com/surveys" screen={<ServicesScreen />}>
               <DashboardPanel />
@@ -55,14 +65,13 @@ export default function SurveysPage() {
       </header>
 
       <FeatureShowcase
-        eyebrow="Offline capture"
-        status="live"
-        title="Capture anything offline"
-        description="The device is the source of truth during fieldwork. Open, answer, photograph and draft with no connection — then sync when signal returns."
+        eyebrow="Capture on site"
+        title="Work where the work happens"
+        description="Surveyors and inspectors often work in stairwells, basements, blocks, estates and homes where the connection is unreliable. Haven is built for that reality — capture inspections, photos, notes, issues and follow-up actions on site, even when signal is poor."
         points={[
-          { icon: WifiOff, title: "Works with no signal", body: "A template-driven survey runs entirely on-device — no connection required to capture a thing." },
-          { icon: ClipboardCheck, title: "Drafts & photos survive restart", body: "Close the app, lose battery, come back tomorrow — your in-progress survey is exactly where you left it." },
-          { icon: ShieldCheck, title: "Required-vs-observed prompts", body: "A missing CO or smoke alarm raises a pre-filled issue on the spot, so safety gaps are never quietly skipped." },
+          { icon: WifiOff, title: "Even with poor signal", body: "The work stays on the device and syncs back into Haven when the connection returns." },
+          { icon: ClipboardCheck, title: "Surveys and inspections", body: "Condition, components, issues, photos and notes — captured in one place on site." },
+          { icon: ShieldCheck, title: "Nothing lost", body: "Drafts and evidence survive an app restart, so a dropped connection never loses the visit." },
         ]}
         visual={
           <div className="flex justify-center">
@@ -74,14 +83,13 @@ export default function SurveysPage() {
       <FeatureShowcase
         reverse
         tinted
-        eyebrow="Evidence"
-        status="live"
-        title="Evidence bound to the record"
-        description="Photos attach to the exact question, component or issue they evidence — never a loose gallery. Provenance travels with every image."
+        eyebrow="Keep evidence with the work"
+        title="Evidence stays with the record it belongs to"
+        description="Photos, notes and issues should not sit in separate folders or email trails. Haven keeps the evidence attached to the right property, inspection, question or action — so teams can see what was found, who captured it, when, and what needs to happen next."
         points={[
-          { icon: Camera, title: "Photos tied to the record", body: "Each photo is parent-linked to its question, component, issue or access event — traceable forever." },
-          { icon: ClipboardCheck, title: "Named-user provenance", body: "Captured-at and uploaded-at timestamps, the surveyor and the device travel with every record." },
-          { icon: Send, title: "Embedded in the report", body: "Photos appear in the PDF beside the record they evidence, and in the structured export by stable key." },
+          { icon: Camera, title: "Linked, not loose", body: "Each photo and note attaches to the property, inspection, question or action." },
+          { icon: ClipboardCheck, title: "Who and when", body: "Captured-by and captured-at travel with every record." },
+          { icon: Send, title: "Easier to stand behind", body: "The position is easier to review, easier to report and easier to defend." },
         ]}
         visual={
           <div className="flex justify-center">
@@ -93,14 +101,13 @@ export default function SurveysPage() {
       />
 
       <FeatureShowcase
-        eyebrow="HHSRS & QA"
-        status="live"
-        title="Issues, HHSRS & the QA gate"
-        description="Every defect is a typed issue record. Surveys are point-in-time snapshots — they only update the live master after an independent reviewer accepts them."
+        eyebrow="Review before reporting"
+        title="Not every update should go straight live"
+        description="Haven gives teams a clear review step before information is used for reporting. Submissions can be checked, accepted, returned or flagged for further action — so teams report from information that has been reviewed, not just submitted."
         points={[
-          { icon: ShieldCheck, title: "Issue-level HHSRS", body: "Category 1 / Category 2 hazards with controlled reason codes, linked to the component and the question that raised them." },
-          { icon: GitMerge, title: "No silent overwrite", body: "Master-version conflict control blocks and logs any push that would clobber a changed record." },
-          { icon: Send, title: "Maker-checker QA", body: "Accept or reject with comments. Rejections return to the surveyor editable; acceptances promote to the live record and the export." },
+          { icon: ShieldCheck, title: "A clear review step", body: "Check the submission, manage comments and handle exceptions before it is used." },
+          { icon: GitMerge, title: "Safe handover", body: "Field updates come back into the record without quietly overwriting it." },
+          { icon: Send, title: "Report with confidence", body: "Only reviewed, accepted information feeds the reporting position." },
         ]}
         visual={
           <div className="flex justify-center">
@@ -114,59 +121,64 @@ export default function SurveysPage() {
       <InspectionTypes />
 
       <CtaSection
-        title="See offline capture survive the field"
-        description="We'll go offline mid-survey on a real batch of your stock — and show nothing is lost, nothing is overwritten, and everything reconciles."
+        title="See Haven working on site"
+        description="We'll show how a survey or inspection is assigned, captured on site, synced safely, reviewed and turned into clear outputs your team can use."
       />
     </>
   );
 }
 
-/* ─────────────── One engine, every inspection ─────────────── */
+/* ─────────────── One field approach. Many housing jobs. ─────────────── */
 const inspectionTypes = [
   {
     icon: ClipboardCheck,
     title: "Stock condition surveys",
     status: "live" as const,
-    body: "The flagship module, live and demo-ready: components, HHSRS, Decent Homes, damp & mould severity and the required-vs-observed safety checks — captured offline, QA-gated, reconciled.",
+    body: "Capture property, room, component, condition, HHSRS observations, Decent Homes checks, photos, issues and notes on site.",
   },
   {
     icon: Flame,
-    title: "Fire risk assessments (FRAs)",
-    status: "roadmap" as const,
-    body: "Block and communal fire safety, captured against the building hierarchy with actions tracked to evidence — the same offline, evidence-led pipeline as a question set.",
+    title: "Fire safety actions and inspections",
+    status: "next" as const,
+    body: "Record fire safety checks, observations, actions and evidence against the right property, block or communal area.",
   },
   {
     icon: CalendarCheck,
     title: "Monthly housing inspections",
-    status: "roadmap" as const,
-    body: "Recurring estate and communal checks on a schedule, so the routine inspection is logged, evidenced and reportable instead of living in a spreadsheet.",
+    status: "next" as const,
+    body: "Capture routine estate, block and communal checks in a consistent way, with clear evidence and follow-up actions.",
+  },
+  {
+    icon: Droplets,
+    title: "Damp and mould visits",
+    status: "next" as const,
+    body: "Record observations, severity, photos, actions and follow-up requirements in one place.",
   },
   {
     icon: Hammer,
-    title: "Before & after repairs",
-    status: "roadmap" as const,
-    body: "Paired before-and-after evidence that proves a repair was completed to standard — photos, timestamps and named-user provenance bound to the property.",
+    title: "Before-and-after repairs evidence",
+    status: "next" as const,
+    body: "Capture evidence before and after works, so teams can see what was reported, what was completed and what still needs attention.",
   },
   {
     icon: SlidersHorizontal,
-    title: "Your inspection type",
-    status: "roadmap" as const,
-    body: "Because capture is template-driven from a versioned question set, a new inspection is a configuration — not a months-long change request that arrives after the rules have moved again.",
+    title: "Other inspection types",
+    status: "next" as const,
+    body: "Haven can be shaped around different fieldwork processes without turning every change into a long system rebuild.",
   },
 ];
 
-const typeStatusLabel: Record<"live" | "roadmap", string> = {
+const typeStatusLabel: Record<"live" | "next", string> = {
   live: "Available now",
-  roadmap: "On the roadmap",
+  next: "Designed to support next",
 };
 
 function InspectionTypes() {
   return (
     <Section className="border-t border-border bg-muted/30">
       <SectionHeading
-        eyebrow="One engine, every inspection"
-        title="Stock condition today — any inspection next"
-        description="Rigid systems take too long to change, so operations and the in-house team drift apart. Haven AMS captures from a versioned question set, so the same offline, evidence-led, QA-gated flow extends to the next inspection without waiting for a rebuild."
+        title="One field approach. Many housing jobs."
+        description="Haven is starting with stock condition because understanding homes is the foundation for good asset management, compliance and investment planning. But the need is wider — capture the right information, keep evidence attached, review it properly, and report from a clear position."
       />
       <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {inspectionTypes.map((t) => (

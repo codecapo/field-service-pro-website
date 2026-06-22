@@ -8,16 +8,16 @@ import {
   LineChart,
   Table2,
 } from "lucide-react";
-import { Badge, Container } from "@/components/ui";
+import { Button, Container } from "@/components/ui";
 import { FeatureShowcase } from "@/components/sections/feature-showcase";
 import { CtaSection } from "@/components/sections/cta";
 import { ScaledBrowser } from "@/components/browser-frame";
 import { DashboardPanel } from "@/components/dashboard-panel";
 
 export const metadata: Metadata = {
-  title: "Reporting & analytics",
+  title: "Reporting & insights",
   description:
-    "Role-based dashboards, a day-one report library and stable-key, Power BI–ready feeds — every figure drawn from the same accepted source, so reports and data always reconcile.",
+    "Get to the answer faster. Haven turns surveys, inspections and site updates into clear reporting — see what is done, what needs review, what needs action and the evidence behind the position, without chasing spreadsheets.",
 };
 
 export default function ReportingPage() {
@@ -26,21 +26,30 @@ export default function ReportingPage() {
       <header className="relative overflow-hidden border-b border-border">
         <div className="absolute inset-0 bg-hero-glow" />
         <Container className="relative py-20 md:py-24">
-          <div className="grid items-center gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+          <div className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
             <div className="flex flex-col gap-5">
-              <Badge>
-                <span className="size-1.5 rounded-full bg-primary" />
-                Platform · Reporting
-              </Badge>
+              <p className="text-sm font-semibold text-primary">Reporting &amp; insights</p>
               <h1 className="text-4xl font-semibold tracking-tight md:text-5xl text-balance">
-                Every report from a single source of truth
+                Get to the answer faster
               </h1>
               <p className="text-lg text-muted-foreground text-balance">
-                Role-based dashboards, a day-one report library and warehouse-ready
-                feeds — all drawn from the same QA-accepted data, so the figures on a
-                board, in a PDF and in an export always reconcile.
+                Haven helps housing teams turn surveys, inspections and site updates into
+                clear reporting your team can actually use. See what has been completed,
+                what is waiting for review, what needs action and what evidence sits
+                behind the position — without chasing spreadsheets, folders or separate
+                reports.
               </p>
+              <p className="text-muted-foreground text-balance">
+                From day-to-day operational views to management reporting, Haven keeps the
+                work, evidence and outputs connected so teams can move from question to
+                answer with confidence.
+              </p>
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <Button href="/contact" size="lg">Book a reporting demo</Button>
+                <Button href="/" variant="secondary" size="lg">See how Haven works</Button>
+              </div>
             </div>
+
             <ScaledBrowser url="app.havenams.com/reporting">
               <DashboardPanel />
             </ScaledBrowser>
@@ -49,25 +58,24 @@ export default function ReportingPage() {
       </header>
 
       <FeatureShowcase
-        status="live"
-        eyebrow="Dashboards"
-        title="Role-based dashboards, from day one"
-        description="Every team lands on the view that matters to them, with traffic-light status that tells the truth — unknowns surface as exceptions, never false-green."
+        eyebrow="Clear views for different teams"
+        title="Different teams need different answers"
+        description="Asset teams may need survey progress, component condition and evidence gaps. Managers may need to see what is overdue, what needs review and what has changed. Assurance teams may need the context behind the reported position. Haven gives each team a simple view of what matters."
         points={[
           {
             icon: Gauge,
-            title: "Status at a glance",
-            body: "Traffic-light status by role across stock intelligence, compliance and HHSRS — no digging required.",
+            title: "Operational views",
+            body: "Survey progress, issues raised on site, evidence captured and what needs attention.",
+          },
+          {
+            icon: Filter,
+            title: "Management views",
+            body: "What is overdue, what is waiting for review and what has changed over time.",
           },
           {
             icon: BarChart3,
-            title: "The metrics that drive decisions",
-            body: "Decent Homes, HHSRS Category 1/2, no-access, repairs spend and void turnaround, all in one place.",
-          },
-          {
-            icon: LineChart,
-            title: "Trends, not snapshots",
-            body: "Track surveys synced, coverage and compliance over time so you can see direction, not just a number.",
+            title: "Assurance views",
+            body: "The context behind the reported position, with exceptions made visible.",
           },
         ]}
         visual={
@@ -80,66 +88,64 @@ export default function ReportingPage() {
       <FeatureShowcase
         reverse
         tinted
-        status="live"
-        eyebrow="Report library"
-        title="A library of reports — and the freedom to build your own"
-        description="Ship with the reports a social landlord actually needs, then let super-users compose their own saved views without waiting on a data team."
+        eyebrow="Reports with the evidence behind them"
+        title="A report should help you understand the number"
+        description="Haven links reporting back to the accepted survey, inspection, evidence and review position, so users can see where a figure came from and what still needs attention — and spend less time explaining differences between reports."
         points={[
           {
-            icon: Table2,
-            title: "Day-one report library",
-            body: "Stock intelligence, evidence-led compliance, denominator, HHSRS/Decent Homes, repairs spend and more, ready to run.",
-          },
-          {
-            icon: Filter,
-            title: "Super-user saved views",
-            body: "Filter, slice and save ad-hoc views — gas-required-no-cert, high-spend blocks — and share them across the team.",
+            icon: LineChart,
+            title: "Behind every number",
+            body: "Move from a reported figure back to the survey, inspection, photo or action behind it.",
           },
           {
             icon: Database,
-            title: "Permissioned by design",
-            body: "Every view respects role and scope, so partners and teams only ever see the stock they're entitled to.",
+            title: "One reviewed basis",
+            body: "Reporting draws on accepted, reviewed information — not raw, unchecked submissions.",
+          },
+          {
+            icon: Gauge,
+            title: "Less time explaining",
+            body: "Spend less time reconciling reports and more time acting on the information.",
           },
         ]}
         visual={
-          <ScaledBrowser url="app.havenams.com/reporting/decent-homes">
+          <ScaledBrowser url="app.havenams.com/reporting">
             <DashboardPanel />
           </ScaledBrowser>
         }
       />
 
       <FeatureShowcase
-        status="live"
-        eyebrow="Data feeds"
-        title="Power BI–ready, and always reconciled"
-        description="Export stable-key, referentially-joined data that loads cleanly into your warehouse — no manual interpretation, no parallel spreadsheets."
+        eyebrow="Outputs that line up"
+        title="Dashboards, reports and exports that tell the same story"
+        description="Haven uses the accepted record as the basis for reporting, so the information in dashboards, downloaded into spreadsheets or shared in reports stays aligned. Some teams work directly in Haven; others want clean exports — Haven supports both."
         points={[
           {
+            icon: Table2,
+            title: "Aligned outputs",
+            body: "Dashboards, downloads and shared reports come from the same reviewed information.",
+          },
+          {
             icon: FileSpreadsheet,
-            title: "Eight stable-key tables",
-            body: "Property, components, issues, photos, QA and sync events export as joined tables (XLSX + CSV).",
+            title: "Power BI-ready exports",
+            body: "Clean exports for Power BI, reporting packs and wider analysis.",
           },
           {
-            icon: Database,
-            title: "Warehouse & BI ready",
-            body: "Referential joins are preserved, so the feed lands in Power BI or a data warehouse without rework.",
-          },
-          {
-            icon: BarChart3,
-            title: "Reports and data agree",
-            body: "The PDF report and the export are generated from the same accepted record, so every ID and figure reconciles.",
+            icon: Filter,
+            title: "Less reconciliation",
+            body: "Reduce the time spent checking different versions before teams can act.",
           },
         ]}
         visual={
-          <ScaledBrowser url="app.havenams.com/reporting/exports">
+          <ScaledBrowser url="app.havenams.com/reporting">
             <DashboardPanel />
           </ScaledBrowser>
         }
       />
 
       <CtaSection
-        title="One source of truth, every report"
-        description="See dashboards, the report library and the warehouse feed running on a real batch of your stock."
+        title="See the answer behind the number"
+        description="We'll show how Haven turns surveys and inspections into clear reporting — with the evidence and exceptions behind every figure."
       />
     </>
   );

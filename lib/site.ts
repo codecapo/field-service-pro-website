@@ -8,7 +8,6 @@ export const site = {
 export const nav = [
   { label: "Platform", href: "/platform" },
   { label: "Solutions", href: "/solutions" },
-  { label: "Resources", href: "/resources" },
   { label: "Security", href: "/security" },
 ];
 
@@ -46,119 +45,95 @@ export const stages = [
     key: "assign",
     title: "Assign",
     blurb:
-      "Managers assign survey batches to named users. External surveyors see only their properties — nothing else.",
-  },
-  {
-    key: "preload",
-    title: "Pre-load",
-    blurb:
-      "Packs download to the device with a checksum and version. Property data, lookups and routing logic — ready for offline.",
+      "Send the work to the right person, with only the properties or inspections they need to see.",
   },
   {
     key: "capture",
-    title: "Capture offline",
+    title: "Capture on site",
     blurb:
-      "Full capture with no signal: components, HHSRS issues, photos. Everything survives an app restart on-device.",
+      "Record condition, issues, photos and notes while on site — even when signal is poor.",
   },
   {
     key: "sync",
-    title: "Sync",
+    title: "Sync safely",
     blurb:
-      "Reconnect and the queue drains automatically. Master-version conflicts are blocked and logged — never silently overwritten.",
+      "When the device reconnects, the update comes back into Haven without losing the record.",
   },
   {
-    key: "qa",
-    title: "QA gate",
+    key: "review",
+    title: "Review",
     blurb:
-      "A reviewer accepts or rejects with comments. Nothing reaches the live record until it passes the gate.",
+      "Check the submission, manage comments or exceptions, and make sure it is ready to use.",
   },
   {
-    key: "output",
-    title: "Output",
+    key: "report",
+    title: "Report",
     blurb:
-      "One accepted source produces the PDF report and the structured export — and the IDs reconcile across both.",
+      "Use the accepted record for dashboards, reports and exports — so the numbers stay aligned.",
   },
 ] as const;
 
-/* ── The differentiators: what legacy AMS platforms don't do ── */
+/* ── What Haven does differently (calm, non-comparative) ── */
 export const differentiators = [
   {
-    title: "Truly offline-first, not a sync-when-you-can bolt-on",
-    body: "The device is the source of truth. Surveyors capture in basements, stairwells and dead-signal estates and lose nothing — drafts and photos persist across restarts. Most housing AMS mobile apps assume a connection and fail where the work actually happens.",
-    others: "Online-only forms, or mobile apps that drop data when the signal dies.",
+    title: "Works where the work happens",
+    body: "Capture surveys, inspections, photos and issues on site — even when signal is poor.",
   },
   {
-    title: "No silent overwrite of the master record",
-    body: "Every push compares the master version it pre-loaded against the server. If the master moved, the change is blocked and logged as a conflict — not clobbered. Field data and back-office data can never quietly destroy each other.",
-    others: "Last-write-wins syncs that overwrite — or lose — whichever update lands last.",
+    title: "Keeps changes safe",
+    body: "Field updates and back-office changes are checked properly, so one update does not quietly replace another.",
   },
   {
-    title: "One source → a PDF and structured data that reconcile",
-    body: "The report and the data export are generated from the same accepted record, so every issue ID in the PDF matches the export row. No re-keying, no parallel spreadsheets, BI-ready on day one.",
-    others: "A PDF for the auditor and a separate data dump that never quite ties up.",
+    title: "Keeps evidence connected",
+    body: "Photos, notes, issues and actions stay linked to the right property, survey and record.",
   },
   {
-    title: "Evidence-led and structured before narrative",
-    body: "Issues are typed records — HHSRS Category 1/2, controlled reason codes, a linked component, photos bound to the exact question or defect — with named-user attribution on every action. Not a free-text box and a loose photo gallery.",
-    others: "Free-text notes, untagged photo folders, no audit of who recorded what.",
+    title: "Checks before it reports",
+    body: "Submissions can be reviewed before they feed into the reporting position.",
   },
   {
-    title: "A QA gate between the field and the live record",
-    body: "Surveys are point-in-time snapshots. They only update the live record after a reviewer accepts them — a true maker-checker step with a full audit trail. Rejections go straight back to the surveyor, editable again.",
-    others: "Field edits that hit the master immediately, with no review and no trail.",
+    title: "Shows what needs attention",
+    body: "Missing evidence, incomplete records and unresolved issues are flagged clearly, not hidden.",
   },
   {
-    title: "Compliance 'unknown' is an exception, never false-green",
-    body: "Programme status is derived from applicability, evidence and validity. Where applicability is unknown it surfaces as an exception that needs resolving — it never shows green by default. You see the real denominator, not a comforting dashboard.",
-    others: "Dashboards that count missing data as compliant and turn the gap green.",
+    title: "Keeps outputs aligned",
+    body: "Reports, dashboards and exports come from the same reviewed information, so teams are not left reconciling different versions.",
   },
 ] as const;
 
-/* ── Comparison table vs the field ── */
+/* ── A better way to handle field evidence (calm, text-based) ── */
 export const comparison = {
-  columns: ["Haven AMS", "Legacy housing AMS", "Generic CMMS / inspection apps"],
+  columns: ["Haven", "Traditional AMS", "Generic inspection apps"],
   rows: [
     {
-      capability: "Full offline field capture (no signal)",
-      values: [true, "partial", "partial"],
+      capability: "Works on site with poor signal",
+      values: ["Built in", "Often limited", "Varies"],
     },
     {
-      capability: "Survives app restart on-device",
-      values: [true, false, "partial"],
+      capability: "Evidence linked to the property and inspection",
+      values: ["Built in", "Often manual", "Sometimes"],
     },
     {
-      capability: "No-silent-overwrite conflict control",
-      values: [true, false, false],
+      capability: "Review before records update",
+      values: ["Built in", "Varies", "Often limited"],
     },
     {
-      capability: "PDF + structured export from one source",
-      values: [true, "partial", false],
+      capability: "Field and office changes checked safely",
+      values: ["Built in", "Varies", "Often limited"],
     },
     {
-      capability: "Issue-level HHSRS (Cat 1/2, reason codes)",
-      values: [true, "partial", false],
+      capability: "Reports and exports from the same accepted record",
+      values: ["Built in", "Often requires reconciliation", "Often separate"],
     },
     {
-      capability: "QA accept/reject gate before live update",
-      values: [true, "partial", false],
+      capability: "Clear exceptions and missing evidence",
+      values: ["Built in", "Varies", "Often manual"],
     },
     {
-      capability: "Named-user audit on every action",
-      values: [true, "partial", "partial"],
+      capability: "Flexible for different survey and inspection types",
+      values: ["Built in", "Often slower to configure", "Varies"],
     },
-    {
-      capability: "Template engine for any inspection type",
-      values: [true, false, "partial"],
-    },
-    {
-      capability: "Evidence-led compliance denominator",
-      values: [true, "partial", false],
-    },
-    {
-      capability: "Installable PWA — no app store",
-      values: [true, false, false],
-    },
-  ] as { capability: string; values: (boolean | "partial")[] }[],
+  ] as { capability: string; values: string[] }[],
 };
 
 /* ── Platform modules / feature areas ── */

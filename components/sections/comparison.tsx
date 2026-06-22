@@ -1,32 +1,17 @@
-import { Check, Minus, X } from "lucide-react";
+import { Check } from "lucide-react";
 import { Container, SectionHeading, cn } from "@/components/ui";
 import { comparison } from "@/lib/site";
 
-function Cell({ value, highlight }: { value: boolean | "partial"; highlight?: boolean }) {
-  if (value === true) {
+function Cell({ value, highlight }: { value: string; highlight?: boolean }) {
+  if (highlight) {
     return (
-      <span
-        className={cn(
-          "inline-grid size-6 place-items-center rounded-full",
-          highlight ? "bg-primary text-primary-foreground" : "bg-success/15 text-success",
-        )}
-      >
+      <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
         <Check className="size-3.5" strokeWidth={3} />
+        {value}
       </span>
     );
   }
-  if (value === "partial") {
-    return (
-      <span className="inline-grid size-6 place-items-center rounded-full bg-warning/15 text-warning">
-        <Minus className="size-3.5" strokeWidth={3} />
-      </span>
-    );
-  }
-  return (
-    <span className="inline-grid size-6 place-items-center rounded-full bg-muted text-muted-foreground/60">
-      <X className="size-3.5" strokeWidth={3} />
-    </span>
-  );
+  return <span className="text-sm text-muted-foreground">{value}</span>;
 }
 
 export function ComparisonSection() {
@@ -34,14 +19,13 @@ export function ComparisonSection() {
     <section id="compare" className="py-20 md:py-28">
       <Container>
         <SectionHeading
-          eyebrow="How we compare"
-          title="What legacy asset management platforms don't do"
-          description="The capabilities that decide whether field data is trustworthy — and where most platforms quietly fall short."
+          title="A better way to handle field evidence"
+          description="How Haven compares for the everyday work of capturing, checking and reporting field information."
         />
 
         <div className="mt-12 overflow-hidden rounded-2xl border border-border bg-card">
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[640px] border-collapse text-left">
+            <table className="w-full min-w-[680px] border-collapse text-left">
               <thead>
                 <tr className="border-b border-border">
                   <th className="p-4 text-sm font-medium text-muted-foreground">
@@ -55,16 +39,7 @@ export function ComparisonSection() {
                         i === 0 ? "text-primary" : "text-muted-foreground",
                       )}
                     >
-                      {i === 0 ? (
-                        <span className="inline-flex flex-col items-center gap-1">
-                          {col}
-                          <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[11px] font-medium text-primary">
-                            Us
-                          </span>
-                        </span>
-                      ) : (
-                        col
-                      )}
+                      {col}
                     </th>
                   ))}
                 </tr>
@@ -97,27 +72,6 @@ export function ComparisonSection() {
               </tbody>
             </table>
           </div>
-        </div>
-
-        <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-muted-foreground">
-          <span className="inline-flex items-center gap-1.5">
-            <span className="inline-grid size-4 place-items-center rounded-full bg-success/15 text-success">
-              <Check className="size-2.5" strokeWidth={3} />
-            </span>
-            Full support
-          </span>
-          <span className="inline-flex items-center gap-1.5">
-            <span className="inline-grid size-4 place-items-center rounded-full bg-warning/15 text-warning">
-              <Minus className="size-2.5" strokeWidth={3} />
-            </span>
-            Partial / add-on
-          </span>
-          <span className="inline-flex items-center gap-1.5">
-            <span className="inline-grid size-4 place-items-center rounded-full bg-muted text-muted-foreground/60">
-              <X className="size-2.5" strokeWidth={3} />
-            </span>
-            Not supported
-          </span>
         </div>
       </Container>
     </section>

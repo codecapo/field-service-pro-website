@@ -112,13 +112,6 @@ export function SiteNav() {
                           );
                         })}
                       </div>
-                      <Link
-                        href="/platform"
-                        className="flex items-center justify-between border-t border-border bg-muted/40 px-5 py-3 text-sm font-medium hover:bg-muted"
-                      >
-                        Platform overview
-                        <span className="text-primary">See the whole flow →</span>
-                      </Link>
                     </div>
                   </div>
                 )}
@@ -174,9 +167,6 @@ export function SiteNav() {
                   </button>
                   {mobilePlatform && (
                     <div className="ml-3 flex flex-col gap-0.5 border-l border-border pl-3">
-                      <Link href="/platform" className="rounded-lg px-3 py-2 text-sm text-muted-foreground hover:bg-muted hover:text-foreground">
-                        Overview
-                      </Link>
                       {platformSurfaces.map((s) => (
                         <Link
                           key={s.href}

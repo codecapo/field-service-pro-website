@@ -1,10 +1,10 @@
 import Link from "next/link";
 import {
   ArrowRight,
+  AlertTriangle,
   BarChart3,
   Boxes,
   Building2,
-  CloudOff,
   FileCheck2,
   GitMerge,
   ShieldCheck,
@@ -16,7 +16,6 @@ import {
   Lock,
 } from "lucide-react";
 import {
-  Badge,
   Button,
   Card,
   Container,
@@ -71,36 +70,25 @@ function Hero() {
       <Container className="relative">
         <div className="grid items-center gap-12 py-20 md:py-28 lg:grid-cols-2">
           <div className="flex flex-col items-start gap-6">
-            <div className="reveal">
-              <Badge>
-                <span className="size-1.5 rounded-full bg-primary" />
-                Stock condition surveys · offline-first
-              </Badge>
-            </div>
             <h1
               className="reveal text-4xl font-semibold leading-[1.05] tracking-tight md:text-5xl lg:text-6xl text-balance"
               style={{ animationDelay: "60ms" }}
             >
-              Understand your homes. Act faster.{" "}
-              <span className="text-primary">Prove what happened.</span>
+              Understand your homes. Respond faster.{" "}
+              <span className="text-primary">Report with confidence.</span>
             </h1>
             <div
               className="reveal flex max-w-xl flex-col gap-4 text-balance"
               style={{ animationDelay: "120ms" }}
             >
               <p className="text-lg text-muted-foreground">
-                Haven starts with stock condition surveys because that is where the
-                truth about a home begins.
+                Haven helps housing teams capture surveys, inspections and site updates
+                on site, keep the evidence in one place, and give teams the clarity they
+                need to act.
               </p>
               <p className="text-muted-foreground">
-                What is in the property? What condition is it in? What evidence exists?
-                What needs action? What is missing? What can you actually stand behind
-                when someone asks?
-              </p>
-              <p className="text-muted-foreground">
-                Haven helps housing teams capture that information in the field, keep
-                the evidence with the record, and turn it into clear answers — without
-                chasing spreadsheets, folders and disconnected reports.
+                From stock condition surveys to fire safety checks and monthly
+                inspections, Haven keeps the work, evidence and next steps connected.
               </p>
             </div>
             <div className="reveal flex flex-col gap-3 sm:flex-row" style={{ animationDelay: "180ms" }}>
@@ -108,7 +96,7 @@ function Hero() {
                 Book a demo
                 <ArrowRight className="size-4" />
               </Button>
-              <Button href="/platform" variant="secondary" size="lg">
+              <Button href="/platform/surveys" variant="secondary" size="lg">
                 Explore the platform
               </Button>
             </div>
@@ -164,45 +152,22 @@ function CredibilityBand() {
 
 /* ─────────────────────── Problem ─────────────────────── */
 function ProblemSection() {
-  const problems = [
-    {
-      icon: CloudOff,
-      title: "Apps that die without signal",
-      body: "Surveyors work in basements and stairwells. Online-only tools lose data exactly where the work happens.",
-    },
-    {
-      icon: GitMerge,
-      title: "Silent overwrites",
-      body: "Field updates and back-office edits clobber each other. Nobody can trust which version of the truth survived.",
-    },
-    {
-      icon: Database,
-      title: "PDFs that don't match the data",
-      body: "A report for the auditor and a spreadsheet for the analyst — generated separately, reconciled never.",
-    },
-    {
-      icon: ShieldCheck,
-      title: "Dashboards that go false-green",
-      body: "Missing data counts as compliant. The denominator is wrong, so the safety picture is wrong.",
-    },
-  ];
   return (
     <Section>
-      <SectionHeading
-        eyebrow="The problem"
-        title="Scrutiny is tightening — but the data breaks before it reaches you"
-        description="Regulators and residents expect safe, well-maintained homes. Yet too many manual touchpoints, fragmented rigid systems and false-green dashboards mean landlords can't always prove what was done. By the time a survey reaches the back office, it has passed through the weakest link in the chain — the field."
-      />
-      <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {problems.map((p) => (
-          <Card key={p.title} className="flex flex-col gap-3">
-            <span className="grid size-10 place-items-center rounded-lg bg-danger/10 text-danger">
-              <p.icon className="size-5" />
-            </span>
-            <h3 className="text-base font-semibold">{p.title}</h3>
-            <p className="text-sm text-muted-foreground">{p.body}</p>
-          </Card>
-        ))}
+      <div className="mx-auto flex max-w-2xl flex-col gap-5 text-center">
+        <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-balance">
+          Get to the answer faster.
+        </h2>
+        <p className="text-lg text-muted-foreground text-balance">
+          Housing teams are being asked harder questions about homes, inspections,
+          evidence and follow-up actions. Too often, the answer is buried across
+          surveys, spreadsheets, photos, emails and disconnected systems.
+        </p>
+        <p className="text-lg text-muted-foreground text-balance">
+          Haven puts the information back in your control — capturing it clearly on
+          site, keeping the evidence attached, and helping your team move from
+          question to answer without the usual chasing and reconciliation.
+        </p>
       </div>
     </Section>
   );
@@ -214,11 +179,10 @@ function FlowSection() {
     <section className="border-y border-border bg-muted/30 py-20 md:py-28">
       <Container>
         <SectionHeading
-          eyebrow="How it works"
-          title="One controlled flow, field to source of truth"
-          description="Every survey follows the same evidence-led path — and nothing reaches the live record until it has earned its place there."
+          title="How Haven works"
+          description="Capture it once. Check it properly. Report with confidence. Every survey, inspection or site update follows the same simple route — from work carried out on site to information your team can use with confidence."
         />
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
+        <div className="mt-14 grid gap-6 md:grid-cols-3 lg:grid-cols-5">
           {stages.map((stage, i) => (
             <div key={stage.key} className="relative flex flex-col gap-3">
               <div className="flex items-center gap-3">
@@ -231,6 +195,9 @@ function FlowSection() {
             </div>
           ))}
         </div>
+        <p className="mt-12 text-center text-base font-medium text-foreground/80">
+          One connected flow from site visit to trusted answer.
+        </p>
       </Container>
     </section>
   );
@@ -238,143 +205,83 @@ function FlowSection() {
 
 /* ───────────────── Differentiators (USPs) ───────────────── */
 function DifferentiatorsSection() {
+  const icons = [WifiOff, ShieldCheck, Camera, ClipboardCheck, AlertTriangle, BarChart3];
   return (
     <Section id="why">
       <SectionHeading
-        eyebrow="Why we're different"
-        title="The guarantees you won't find elsewhere"
-        description="Six design decisions that make field data trustworthy by default — and the shortcuts most platforms take instead."
+        title="What Haven does differently"
+        description="Haven is built around the way housing teams actually work — on site, under pressure, with evidence to capture and answers needed quickly. Every update follows a clear route from fieldwork to review to reporting, so teams can trust what they are looking at and act sooner."
       />
-      <div className="mt-12 grid gap-5 lg:grid-cols-2">
-        {differentiators.map((d, i) => (
-          <Card key={d.title} className="flex flex-col gap-4">
-            <div className="flex items-start gap-4">
-              <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-primary/10 font-mono text-sm font-semibold text-primary">
-                {String(i + 1).padStart(2, "0")}
+      <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {differentiators.map((d, i) => {
+          const Icon = icons[i];
+          return (
+            <Card key={d.title} className="flex flex-col gap-3">
+              <span className="grid size-10 place-items-center rounded-lg bg-primary/10 text-primary">
+                <Icon className="size-5" />
               </span>
-              <div className="flex flex-col gap-2">
-                <h3 className="text-lg font-semibold leading-snug">{d.title}</h3>
-                <p className="text-sm text-muted-foreground">{d.body}</p>
-              </div>
-            </div>
-            <div className="mt-auto flex items-start gap-2 rounded-lg border border-border bg-muted/50 px-3 py-2.5">
-              <span className="mt-0.5 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
-                Others
-              </span>
-              <span className="text-xs text-muted-foreground">{d.others}</span>
-            </div>
-          </Card>
-        ))}
+              <h3 className="text-base font-semibold leading-snug">{d.title}</h3>
+              <p className="text-sm text-muted-foreground">{d.body}</p>
+            </Card>
+          );
+        })}
       </div>
     </Section>
   );
 }
 
-/* ─────────────────────── Feature bento ─────────────────────── */
+/* ─────────────── Everything you need, site visit to report ─────────────── */
+const bentoCards = [
+  {
+    icon: ClipboardCheck,
+    title: "Capture on site",
+    body: "Record surveys, inspections, photos, issues and notes where the work happens — even when signal is poor.",
+  },
+  {
+    icon: Camera,
+    title: "Keep evidence attached",
+    body: "Photos, comments and updates stay linked to the right property, inspection, question or action.",
+  },
+  {
+    icon: GitMerge,
+    title: "Sync safely",
+    body: "Bring field updates back into Haven without losing work or quietly overwriting the record.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Review before reporting",
+    body: "Check submissions, manage comments and deal with exceptions before information feeds into reports.",
+  },
+  {
+    icon: BarChart3,
+    title: "Report with confidence",
+    body: "Use reviewed information for dashboards, reports and exports, so teams are not left reconciling different versions.",
+  },
+  {
+    icon: Lock,
+    title: "Control access and audit",
+    body: "Give users the right access for their role, and keep a clear record of who did what and when.",
+  },
+];
+
 function FeatureBento() {
   return (
     <section className="border-t border-border bg-muted/30 py-20 md:py-28">
       <Container>
         <SectionHeading
-          eyebrow="The platform"
-          title="Everything the survey-to-AMS flow needs"
-          description="A complete capture-to-output toolchain, with the asset register and compliance layers built on the same foundation."
+          title="Everything you need from site visit to report"
+          description="Haven gives housing teams a clearer way to manage surveys, inspections and site updates — from the moment work is assigned to the point it is reviewed, reported and ready to act on."
         />
-        <div className="mt-12 grid gap-4 md:grid-cols-6">
-          {/* large: offline capture */}
-          <Card className="md:col-span-4 flex flex-col justify-between gap-6 overflow-hidden">
-            <div className="flex flex-col gap-3">
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {bentoCards.map((c) => (
+            <Card key={c.title} className="flex flex-col gap-3">
               <span className="grid size-10 place-items-center rounded-lg bg-primary/10 text-primary">
-                <ClipboardCheck className="size-5" />
+                <c.icon className="size-5" />
               </span>
-              <h3 className="text-xl font-semibold">Offline survey capture</h3>
-              <p className="max-w-md text-sm text-muted-foreground">
-                A template-driven engine that runs fully offline — conditional
-                routing, count-driven components, required-vs-observed prompts and
-                submit-time validation, all on-device.
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {["Conditional routing", "Count-driven components", "On-device drafts", "Validation gate"].map(
-                (t) => (
-                  <span
-                    key={t}
-                    className="rounded-full border border-border bg-card px-3 py-1 text-xs text-muted-foreground"
-                  >
-                    {t}
-                  </span>
-                ),
-              )}
-            </div>
-          </Card>
-
-          {/* photos */}
-          <Card className="md:col-span-2 flex flex-col gap-3">
-            <span className="grid size-10 place-items-center rounded-lg bg-primary/10 text-primary">
-              <Camera className="size-5" />
-            </span>
-            <h3 className="text-lg font-semibold">Evidence & photos</h3>
-            <p className="text-sm text-muted-foreground">
-              Photos bound to the exact question, component or issue — with user,
-              device and timestamps that travel everywhere.
-            </p>
-          </Card>
-
-          {/* sync */}
-          <Card className="md:col-span-2 flex flex-col gap-3">
-            <span className="grid size-10 place-items-center rounded-lg bg-primary/10 text-primary">
-              <GitMerge className="size-5" />
-            </span>
-            <h3 className="text-lg font-semibold">Conflict-controlled sync</h3>
-            <p className="text-sm text-muted-foreground">
-              A retry queue that drains on reconnect and blocks any push that would
-              overwrite a changed master.
-            </p>
-          </Card>
-
-          {/* qa */}
-          <Card className="md:col-span-2 flex flex-col gap-3">
-            <span className="grid size-10 place-items-center rounded-lg bg-primary/10 text-primary">
-              <ShieldCheck className="size-5" />
-            </span>
-            <h3 className="text-lg font-semibold">QA & maker-checker</h3>
-            <p className="text-sm text-muted-foreground">
-              Accept or reject with comments. Nothing updates the live record until
-              it passes the gate — fully audited.
-            </p>
-          </Card>
-
-          {/* outputs */}
-          <Card className="md:col-span-2 flex flex-col gap-3">
-            <span className="grid size-10 place-items-center rounded-lg bg-primary/10 text-primary">
-              <Layers className="size-5" />
-            </span>
-            <h3 className="text-lg font-semibold">Reports & exports</h3>
-            <p className="text-sm text-muted-foreground">
-              A PDF report and an eight-table, stable-key export from one source —
-              Power BI-ready and always reconciled.
-            </p>
-          </Card>
-
-          {/* access */}
-          <Card className="md:col-span-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex flex-col gap-3">
-              <span className="grid size-10 place-items-center rounded-lg bg-primary/10 text-primary">
-                <Lock className="size-5" />
-              </span>
-              <h3 className="text-lg font-semibold">Access control & audit</h3>
-              <p className="max-w-md text-sm text-muted-foreground">
-                Named-user, least-privilege roles. External surveyors see only their
-                assigned properties, and every action is attributed.
-              </p>
-            </div>
-            <Link
-              href="/platform"
-              className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:gap-2 transition-all"
-            >
-              See all modules <ArrowRight className="size-4" />
-            </Link>
-          </Card>
+              <h3 className="text-base font-semibold">{c.title}</h3>
+              <p className="text-sm text-muted-foreground">{c.body}</p>
+            </Card>
+          ))}
         </div>
       </Container>
     </section>

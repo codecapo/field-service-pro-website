@@ -38,10 +38,10 @@ export function CtaSection({
               </Link>
               {/* outline button — white text on the indigo band */}
               <Link
-                href="/platform"
+                href="/platform/surveys"
                 className="inline-flex h-12 items-center justify-center gap-2 rounded-lg border border-white/30 bg-transparent px-6 text-[15px] font-medium text-white transition-[transform,background-color] duration-150 ease-[var(--ease-out)] hover:bg-white/10 active:scale-[0.97]"
               >
-                Explore the platform
+                Explore field operations
               </Link>
             </div>
           </div>

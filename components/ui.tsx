@@ -123,7 +123,6 @@ export function Card({
 }
 
 export function SectionHeading({
-  eyebrow,
   title,
   description,
   align = "center",
@@ -143,7 +142,7 @@ export function SectionHeading({
         className,
       )}
     >
-      {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
+      {/* eyebrow intentionally not rendered — removed the decorative dot/label per brand feedback */}
       <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-balance">
         {title}
       </h2>

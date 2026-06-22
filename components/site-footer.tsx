@@ -5,27 +5,15 @@ import { platformSurfaces, site } from "@/lib/site";
 const footerNav = [
   {
     heading: "Platform",
-    links: [
-      { label: "Overview", href: "/platform" },
-      ...platformSurfaces.map((s) => ({ label: s.label, href: s.href })),
-    ],
+    links: [...platformSurfaces.map((s) => ({ label: s.label, href: s.href }))],
   },
   {
     heading: "Solutions",
     links: [
-      { label: "Local authorities", href: "/solutions#councils" },
-      { label: "Housing associations", href: "/solutions#has" },
-      { label: "Supplier surveyors", href: "/solutions#suppliers" },
-      { label: "Compliance teams", href: "/solutions#compliance" },
-    ],
-  },
-  {
-    heading: "Resources",
-    links: [
-      { label: "All resources", href: "/resources" },
-      { label: "Awaab's Law readiness", href: "/resources/awaabs-law-readiness" },
-      { label: "Stock condition playbook", href: "/resources/stock-condition-survey-playbook" },
-      { label: "Glossary", href: "/resources/glossary" },
+      { label: "Stock condition & asset teams", href: "/solutions#asset" },
+      { label: "Field operations & inspections", href: "/solutions#field" },
+      { label: "Compliance & assurance", href: "/solutions#compliance" },
+      { label: "Contractors & partners", href: "/solutions#partners" },
     ],
   },
   {
@@ -42,7 +30,7 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-border bg-muted/40">
       <div className="container-page py-16">
-        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr_1fr]">
+        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div className="flex flex-col gap-4 max-w-xs">
             <Logo />
             <p className="text-sm text-muted-foreground">{site.tagline}</p>

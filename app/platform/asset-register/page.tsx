@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { Boxes, Building2, GitBranch, History, Layers, ListTree } from "lucide-react";
-import { Badge, Container } from "@/components/ui";
+import { Boxes, Building2, Camera, History, Layers, ListTree, ShieldCheck } from "lucide-react";
+import { Button, Container } from "@/components/ui";
 import { FeatureShowcase } from "@/components/sections/feature-showcase";
 import { CtaSection } from "@/components/sections/cta";
 import { ScaledBrowser } from "@/components/browser-frame";
@@ -10,7 +10,7 @@ import { AssetRegister } from "@/components/mockups";
 export const metadata: Metadata = {
   title: "Asset register",
   description:
-    "A live, effective-dated register of every property, block and component — drill from portfolio to component, with lifecycle and classification that QA-accepted surveys keep current.",
+    "Haven helps housing teams turn accepted surveys and inspections into a clearer, more reliable view of their stock — the property, the block, the components, the evidence and the latest condition in one place.",
 };
 
 export default function AssetRegisterPage() {
@@ -19,21 +19,30 @@ export default function AssetRegisterPage() {
       <header className="relative overflow-hidden border-b border-border">
         <div className="absolute inset-0 bg-hero-glow" />
         <Container className="relative py-20 md:py-24">
-          <div className="grid items-center gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+          <div className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
             <div className="flex flex-col gap-5">
-              <Badge>
-                <span className="size-1.5 rounded-full bg-primary" />
-                Platform · Asset register
-              </Badge>
+              <p className="text-sm font-semibold text-primary">Asset register</p>
               <h1 className="text-balance text-4xl font-semibold tracking-tight md:text-5xl">
-                The single source of truth for every asset you hold
+                A clearer view of every home, block and component
               </h1>
               <p className="text-balance text-lg text-muted-foreground">
-                A live, effective-dated register of property, block and component —
-                not a survey snapshot and not a spreadsheet. Drill from the whole
-                portfolio down to a single fire door, with lifecycle and
-                classification that stay current as QA-accepted surveys flow in.
+                Haven helps housing teams turn accepted surveys and inspections into a
+                clearer, more reliable view of their stock. See the property, the block,
+                the components, the evidence and the latest condition in one place — so
+                teams can understand what is known, what has changed and what needs
+                attention.
               </p>
+              <p className="text-balance text-muted-foreground">
+                From stock condition surveys to wider inspections, Haven keeps the
+                information connected to the right property, block or component, so the
+                record becomes easier to trust and easier to use.
+              </p>
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <Button href="/contact" size="lg">Book a demo</Button>
+                <Button href="/platform/surveys" variant="secondary" size="lg">
+                  See field operations
+                </Button>
+              </div>
             </div>
             <ScaledBrowser url="app.havenams.com/properties/100023001">
               <AssetRegister />
@@ -43,25 +52,24 @@ export default function AssetRegisterPage() {
       </header>
 
       <FeatureShowcase
-        status="live"
-        eyebrow="Hierarchy"
-        title="Portfolio → block → property → component"
-        description="Every level of the estate is a first-class record, linked by stable keys, so you can navigate the whole structure without losing the thread."
+        eyebrow="Property, block and component view"
+        title="See the whole picture, not just a survey file"
+        description="Housing teams need to understand the whole picture — not just a survey file or a dashboard total. Haven lets users move from portfolio to block, property and component, while keeping the evidence and history connected."
         points={[
           {
             icon: ListTree,
-            title: "Every level is a first-class record",
-            body: "Portfolios, blocks, properties and individual components each hold their own attributes, history and evidence.",
+            title: "Portfolio to property",
+            body: "Move from a wider view of the stock to the individual home or block that needs attention.",
           },
           {
-            icon: GitBranch,
-            title: "Drill-through in a couple of clicks",
-            body: "Move from a portfolio view to a block, to a property, to the exact component — and back — without leaving the record.",
+            icon: Boxes,
+            title: "Components in context",
+            body: "See kitchens, bathrooms, boilers, doors and other components against the property or block they belong to.",
           },
           {
             icon: Building2,
-            title: "Communal and block assets",
-            body: "Shared plant, roofs, lifts and communal areas are modelled as block-level assets, not lost inside individual dwellings.",
+            title: "Communal and block areas",
+            body: "Record shared spaces, communal areas and block-level assets without losing them inside individual dwelling records.",
           },
         ]}
         visual={
@@ -74,25 +82,24 @@ export default function AssetRegisterPage() {
       <FeatureShowcase
         reverse
         tinted
-        status="live"
-        eyebrow="Lifecycle"
-        title="Lifecycle data on every component"
-        description="Each component carries the numbers that drive planned investment — observed condition, remaining life, renewal year and unit cost — rolled up across the portfolio."
+        eyebrow="Lifecycle and condition"
+        title="Condition and lifecycle, kept with the component"
+        description="Accepted surveys should not sit in a file. Haven keeps condition and lifecycle information against the right component, so teams can see what was found, what evidence supports it and what may need action next."
         points={[
           {
             icon: Layers,
-            title: "Condition and remaining life",
-            body: "Observed condition ratings and remaining-life estimates sit on the component, ready to prioritise.",
+            title: "Condition captured on site",
+            body: "Surveyors record the condition of components while they are on site.",
           },
           {
             icon: Boxes,
-            title: "Renewal year and unit cost",
-            body: "Replacement years and unit costs turn the register into a costed forward programme, not a static inventory.",
+            title: "Renewal and remaining life",
+            body: "Component information helps teams understand future renewal needs and plan work more clearly.",
           },
           {
-            icon: GitBranch,
-            title: "Feeds planned investment",
-            body: "Component-level lifecycle aggregates up to block and portfolio, shaping the capital programme directly.",
+            icon: Camera,
+            title: "Evidence behind the view",
+            body: "Photos, notes and survey responses stay linked to the component, so the position is easier to review.",
           },
         ]}
         visual={
@@ -103,25 +110,24 @@ export default function AssetRegisterPage() {
       />
 
       <FeatureShowcase
-        status="live"
-        eyebrow="Governance"
-        title="Snapshot vs live record, effective-dated"
-        description="The register stays trustworthy because change is controlled: a survey is a point-in-time snapshot, and only a QA-accepted snapshot updates the live master."
+        eyebrow="Controlled updates"
+        title="The record updates only when information is accepted"
+        description="A survey is a point-in-time view. The asset record should change only when that information has been checked and accepted. Haven helps teams manage that handover, so the view is not updated by accident or overwritten without review."
         points={[
           {
-            icon: History,
-            title: "QA-gated promotion",
-            body: "A survey snapshot promotes into the live record only after it passes the QA gate — no silent overwrites of the master.",
+            icon: ShieldCheck,
+            title: "Reviewed before update",
+            body: "Accepted surveys and inspections update the record once they have passed review.",
           },
           {
             icon: History,
-            title: "History is preserved",
-            body: "Every prior state is effective-dated, so you can report the register as it stood at any point in time.",
+            title: "History is kept",
+            body: "Teams can see what changed, when it changed and what evidence supported the change.",
           },
           {
             icon: ListTree,
-            title: "Controlled classification",
-            body: "Tenure, portfolio and management category are held as controlled fields, keeping routing and reporting consistent.",
+            title: "Clear classifications",
+            body: "Property, tenure, block, component and management information can be held consistently, making reporting easier.",
           },
         ]}
         visual={
@@ -132,8 +138,8 @@ export default function AssetRegisterPage() {
       />
 
       <CtaSection
-        title="A live register, not a stale spreadsheet"
-        description="See how QA-accepted surveys keep a single, effective-dated source of truth current across your whole portfolio."
+        title="Turn fieldwork into a clearer asset view"
+        description="See how Haven takes accepted surveys and inspections and turns them into property, block and component information your team can use."
       />
     </>
   );
