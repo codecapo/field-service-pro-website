@@ -74,7 +74,7 @@ function Hero() {
             <div className="reveal">
               <Badge>
                 <span className="size-1.5 rounded-full bg-primary" />
-                Offline-first asset management
+                Stock condition surveys · offline-first
               </Badge>
             </div>
             <h1
@@ -89,8 +89,9 @@ function Hero() {
               style={{ animationDelay: "120ms" }}
             >
               Haven AMS captures stock condition surveys fully offline,
-              never overwrites the master record, and turns every survey into
-              evidence-led data your whole organisation can trust.
+              never overwrites the master record, and turns every inspection into
+              evidence-led data — one source of truth you can report from, with the
+              exceptions and context behind every number.
             </p>
             <div className="reveal flex flex-col gap-3 sm:flex-row" style={{ animationDelay: "180ms" }}>
               <Button href="/contact" size="lg">
@@ -128,9 +129,9 @@ function Hero() {
 function CredibilityBand() {
   const items = [
     "Stock condition surveys",
+    "FRAs & housing inspections",
     "HHSRS & Decent Homes",
     "Evidence-led compliance",
-    "Poor-network field teams",
     "Power BI–ready exports",
   ];
   return (
@@ -179,8 +180,8 @@ function ProblemSection() {
     <Section>
       <SectionHeading
         eyebrow="The problem"
-        title="Most asset management starts where the data is already broken"
-        description="By the time a survey reaches the back office, it has passed through the weakest link in the chain — the field."
+        title="Scrutiny is tightening — but the data breaks before it reaches you"
+        description="Regulators and residents expect safe, well-maintained homes. Yet too many manual touchpoints, fragmented rigid systems and false-green dashboards mean landlords can't always prove what was done. By the time a survey reaches the back office, it has passed through the weakest link in the chain — the field."
       />
       <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {problems.map((p) => (

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import {
   AlertTriangle,
-  Clock,
+  DoorClosed,
+  Droplets,
   FileCheck2,
   Gauge,
   KeyRound,
@@ -13,6 +14,7 @@ import { CtaSection } from "@/components/sections/cta";
 import { ScaledBrowser } from "@/components/browser-frame";
 import { DashboardPanel } from "@/components/dashboard-panel";
 import { ComplianceBoard } from "@/components/mockups";
+import { PhoneFrame, ServicesScreen } from "@/components/phone";
 
 export const metadata: Metadata = {
   title: "Compliance",
@@ -112,30 +114,32 @@ export default function CompliancePage() {
 
       <FeatureShowcase
         status="live"
-        eyebrow="Cycles & KPIs"
-        title="Statutory dates, internal targets and breach — kept distinct"
-        description="The statutory date, your internal target, the warning period and an actual breach are different things. They are tracked separately, so a programme that is past target but not yet breached never hides in the same number as one in breach."
+        eyebrow="Compliance in the field"
+        title="The compliance audit starts on site"
+        description="The regulated risks are captured during the survey itself — not retro-fitted later. Required-vs-observed safety alarms, fire-door self-closers, damp & mould severity and HHSRS hazards are each typed records with photo evidence, and a shortfall raises a pre-filled issue on the spot."
         points={[
           {
-            icon: Clock,
-            title: "Target vs breach",
-            body: "Distinguish compliant-but-outside-target, target-overdue and in-breach as separate KPI categories.",
+            icon: ShieldCheck,
+            title: "Required vs observed alarms",
+            body: "Smoke, heat and CO alarms are recorded as required against what's actually present — a gap auto-raises an evidenced issue.",
           },
           {
-            icon: KeyRound,
-            title: "Coordinated access",
-            body: "Difficult-to-access properties are flagged so any team booking a visit can bring forward other due work.",
+            icon: Droplets,
+            title: "Damp & mould severity (Awaab's Law)",
+            body: "Negligible, moderate or severe graded on site; moderate or severe becomes a tracked issue with a target date.",
           },
           {
-            icon: AlertTriangle,
-            title: "Buffers, not surprises",
-            body: "Internal targets sit ahead of statutory dates, giving a warning period before anything is at risk.",
+            icon: DoorClosed,
+            title: "Fire-door & HHSRS defects",
+            body: "Fire-door self-closers, window restrictors and HHSRS Category 1/2 hazards captured as evidenced, reason-coded issues.",
           },
         ]}
         visual={
-          <ScaledBrowser url="app.havenams.com/compliance">
-            <ComplianceBoard />
-          </ScaledBrowser>
+          <div className="flex justify-center">
+            <PhoneFrame>
+              <ServicesScreen />
+            </PhoneFrame>
+          </div>
         }
       />
 

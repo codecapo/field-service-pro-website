@@ -15,10 +15,10 @@ export const nav = [
 /* Main app surfaces — each gets its own page; surfaced in the Platform mega-menu. */
 export const platformSurfaces = [
   {
-    label: "Surveys",
+    label: "Field operations",
     href: "/platform/surveys",
     icon: "surveys",
-    description: "Offline field capture — photos, HHSRS issues and the QA gate.",
+    description: "Stock condition surveys today — and any inspection the same offline engine runs.",
   },
   {
     label: "Asset register",
@@ -299,11 +299,11 @@ export const capabilityMap: {
     items: [
       { title: "Property, block & component records (units linked to their block)", status: "live" },
       { title: "Full-text search by address, UPRN, postcode or reference", status: "live" },
-      { title: "Authoritative UPRNs via Ordnance Survey Places (address → UPRN)", status: "live" },
-      { title: "USRN (street) + TOID (building) via OS Linked Identifiers", status: "live" },
+      { title: "UPRN-keyed properties with map coordinates from OS Open UPRN", status: "live" },
       { title: "Council block lists exploded into individual surveyable units", status: "live" },
-      { title: "Satellite map per property; one-click Excel (.xlsx) export", status: "live" },
+      { title: "Map per property; one-click Excel (.xlsx) export", status: "live" },
       { title: "Confidence labelling (verified vs unverified records)", status: "live" },
+      { title: "USRN (street) + TOID (building) identifiers carried through to export", status: "delivery" },
     ],
   },
   {
@@ -346,8 +346,8 @@ export const capabilityMap: {
     ref: "Live",
     intro: "UK-resident, and isolated per council.",
     items: [
-      { title: "Per-council isolated backend — no shared database between councils", status: "live" },
-      { title: "UK data residency (London region)", status: "live" },
+      { title: "Dedicated UK-region instance per council — no shared tenancy", status: "live" },
+      { title: "UK data residency — Supabase London (eu-west-2)", status: "live" },
       { title: "Private photo storage; row-level security; signed-URL reads", status: "live" },
     ],
   },
@@ -393,7 +393,7 @@ export const faqs = [
   },
   {
     q: "Can we use it for inspections other than stock condition surveys?",
-    a: "The capture engine is template-driven from a versioned question set. Swapping the question-set definition lets you run gas, EICR, fire-risk or damp inspections with the same offline, evidence-led, QA-gated pipeline.",
+    a: "Stock condition surveys are live and demo-ready today. The capture engine is template-driven from a versioned question set, so the same offline, evidence-led, QA-gated pipeline extends to other inspection types — fire risk assessments, monthly housing inspections and before-and-after repair records are on the roadmap. One engine, configured per inspection, rather than a rigid form you wait months to change.",
   },
   {
     q: "How does it fit alongside our existing AMS or CRM?",
@@ -406,6 +406,14 @@ export const faqs = [
   {
     q: "What about authentication and access control?",
     a: "Access is named-user and least-privilege, with per-scope restriction so external surveyors only ever see their assigned properties. It's built to wire into SSO/MFA and remote revocation for production deployments.",
+  },
+  {
+    q: "Where is our data stored?",
+    a: "Every council runs on its own dedicated UK-region instance — no shared tenancy and no shared database between councils. Data resides in the Supabase London region (eu-west-2), photos sit in private storage read only through short-lived signed URLs, and row-level security scopes every query.",
+  },
+  {
+    q: "Can we ask Haven questions about our data?",
+    a: "Today you reach the answer in a few clicks — role-based dashboards, the No Access report and reconciled exports give you the number with the exceptions and context behind it. A natural-language assistant that answers questions directly from your assured data is on our roadmap.",
   },
 ];
 

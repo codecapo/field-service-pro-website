@@ -16,7 +16,7 @@ import {
   IssuesScreen,
   SurveyListScreen,
 } from "@/components/phone";
-import { modules, stages } from "@/lib/site";
+import { capabilityMap, capabilityStatus, modules, stages, type CapStatus } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Platform",
@@ -118,11 +118,65 @@ export default function PlatformPage() {
 
       <MockupMatrix />
       <ComparisonSection />
+      <CapabilityMapSection />
       <CtaSection
         title="Want the deep dive?"
         description="We'll walk your team through the flow end-to-end on a real batch of your stock."
       />
     </>
+  );
+}
+
+/* ── Capability map: the full inventory, with honest status tags ── */
+const statusPill: Record<CapStatus, string> = {
+  live: "bg-success/12 text-success",
+  delivery: "bg-warning/15 text-warning",
+  roadmap: "bg-muted text-muted-foreground border border-border",
+};
+
+function CapabilityMapSection() {
+  return (
+    <Section className="border-t border-border bg-muted/30">
+      <SectionHeading
+        eyebrow="Honest by default"
+        title="Every capability, with its real status"
+        description="We tell you what's live, what's in delivery and what's on the roadmap — the same clarity we put behind every number we report. No false-green here either."
+      />
+      <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-muted-foreground">
+        {(Object.keys(capabilityStatus) as CapStatus[]).map((s) => (
+          <span key={s} className="inline-flex items-center gap-1.5">
+            <span className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${statusPill[s]}`}>
+              {capabilityStatus[s].label}
+            </span>
+          </span>
+        ))}
+      </div>
+      <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {capabilityMap.map((group) => (
+          <div
+            key={group.group}
+            className="flex flex-col gap-4 rounded-2xl border border-border bg-card p-6"
+          >
+            <div className="flex flex-col gap-1">
+              <h3 className="text-base font-semibold">{group.group}</h3>
+              <p className="text-sm text-muted-foreground">{group.intro}</p>
+            </div>
+            <ul className="flex flex-col gap-3">
+              {group.items.map((item) => (
+                <li key={item.title} className="flex items-start justify-between gap-3 text-sm">
+                  <span className="text-foreground/80">{item.title}</span>
+                  <span
+                    className={`mt-0.5 shrink-0 rounded-full px-2 py-0.5 text-[10px] font-semibold ${statusPill[item.status]}`}
+                  >
+                    {capabilityStatus[item.status].label}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </Section>
   );
 }
 
