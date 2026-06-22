@@ -1,4 +1,4 @@
-# Design System — Newham SCS / AMS
+# Design System — Haven AMS
 
 A Stripe-Dashboard-grade design language for this app. Grounded in real Stripe
 Dashboard captures: customer detail, "More" launcher, Home overview grid,

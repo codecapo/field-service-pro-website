@@ -93,17 +93,17 @@ export function AssetRegister({ className }: { className?: string }) {
       <div className="flex items-center gap-1.5 border-b border-border px-5 py-3 text-xs text-muted-foreground">
         <span>Portfolio</span>
         <ChevronRight className="size-3" />
-        <span>Stratford</span>
+        <span>Camden Town</span>
         <ChevronRight className="size-3" />
-        <span>Vicarage Court</span>
+        <span>Hawley Court</span>
         <ChevronRight className="size-3" />
-        <span className="font-medium text-foreground">12 Vicarage Lane</span>
+        <span className="font-medium text-foreground">Flat 12, Hawley Court</span>
       </div>
 
       {/* property header */}
       <div className="flex items-start justify-between gap-3 px-5 py-4">
         <div>
-          <p className="text-[15px] font-semibold">12 Vicarage Lane</p>
+          <p className="text-[15px] font-semibold">Flat 12, Hawley Court</p>
           <p className="mt-0.5 font-mono text-[11px] text-muted-foreground">UPRN 100023001 · P0001772001</p>
         </div>
         <div className="flex flex-col items-end gap-1.5">

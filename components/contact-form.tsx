@@ -57,7 +57,7 @@ export function ContactForm() {
 
       <div className="grid gap-5 sm:grid-cols-2">
         <Field id="org" label="Organisation" required>
-          <input id="org" name="org" required className={inputClass} placeholder="London Borough of…" />
+          <input id="org" name="org" required className={inputClass} placeholder="Your council or housing association" />
         </Field>
         <Field id="role" label="Your role">
           <input id="role" name="role" className={inputClass} placeholder="Asset / compliance lead" />

@@ -36,7 +36,7 @@ export function SurveyBoard({ className }: { className?: string }) {
     <div className={cn("flex h-full w-full flex-col bg-card", className)}>
       {/* top bar */}
       <div className="flex shrink-0 items-center justify-between border-b border-border px-5 py-3">
-        <span className="text-[15px] font-semibold">Survey · 12 Vicarage Lane</span>
+        <span className="text-[15px] font-semibold">Survey · Flat 12, Hawley Court</span>
         <span className="text-xs text-muted-foreground">Stock condition · 2026</span>
       </div>
 

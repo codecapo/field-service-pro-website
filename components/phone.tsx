@@ -141,7 +141,7 @@ function ScreenShell({
         </span>
         <div className="mt-1 flex items-center justify-between">
           <div className="min-w-0">
-            <p className="truncate text-[11px] text-muted-foreground">12 Vicarage Lane</p>
+            <p className="truncate text-[11px] text-muted-foreground">Flat 12, Hawley Court</p>
             <h3 className="truncate text-sm font-semibold">{title}</h3>
           </div>
           {step && <span className="shrink-0 text-[11px] text-muted-foreground">{step}</span>}
@@ -338,9 +338,9 @@ export function IssuesScreen() {
 /** My Surveys list. */
 export function SurveyListScreen() {
   const rows = [
-    { addr: "12 Vicarage Lane", meta: "E15 4ES · Stratford", status: "In progress", cls: "bg-warning/15 text-warning" },
-    { addr: "Flat 4, 8 Romford Road", meta: "E15 4LD · Stratford", status: "Ready offline", cls: "bg-success/12 text-success" },
-    { addr: "27 Plashet Grove", meta: "E6 1AD · East Ham", status: "Ready offline", cls: "bg-success/12 text-success" },
+    { addr: "Flat 12, Hawley Court", meta: "NW1 8RP · Camden Town", status: "In progress", cls: "bg-warning/15 text-warning" },
+    { addr: "Flat 4, 8 Kentish Town Road", meta: "NW5 2AA · Kentish Town", status: "Ready offline", cls: "bg-success/12 text-success" },
+    { addr: "27 Lady Margaret Road", meta: "NW5 2XH · Kentish Town", status: "Ready offline", cls: "bg-success/12 text-success" },
   ];
   return (
     <div className="flex min-h-0 flex-1 flex-col">
