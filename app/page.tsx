@@ -81,18 +81,28 @@ function Hero() {
               className="reveal text-4xl font-semibold leading-[1.05] tracking-tight md:text-5xl lg:text-6xl text-balance"
               style={{ animationDelay: "60ms" }}
             >
-              The field is where housing data{" "}
-              <span className="text-primary">breaks down.</span> We fixed that.
+              Understand your homes. Act faster.{" "}
+              <span className="text-primary">Prove what happened.</span>
             </h1>
-            <p
-              className="reveal max-w-xl text-lg text-muted-foreground text-balance"
+            <div
+              className="reveal flex max-w-xl flex-col gap-4 text-balance"
               style={{ animationDelay: "120ms" }}
             >
-              Haven AMS captures stock condition surveys fully offline,
-              never overwrites the master record, and turns every inspection into
-              evidence-led data — one source of truth you can report from, with the
-              exceptions and context behind every number.
-            </p>
+              <p className="text-lg text-muted-foreground">
+                Haven starts with stock condition surveys because that is where the
+                truth about a home begins.
+              </p>
+              <p className="text-muted-foreground">
+                What is in the property? What condition is it in? What evidence exists?
+                What needs action? What is missing? What can you actually stand behind
+                when someone asks?
+              </p>
+              <p className="text-muted-foreground">
+                Haven helps housing teams capture that information in the field, keep
+                the evidence with the record, and turn it into clear answers — without
+                chasing spreadsheets, folders and disconnected reports.
+              </p>
+            </div>
             <div className="reveal flex flex-col gap-3 sm:flex-row" style={{ animationDelay: "180ms" }}>
               <Button href="/contact" size="lg">
                 Book a demo
