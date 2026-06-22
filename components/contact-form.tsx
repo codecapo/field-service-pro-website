@@ -11,12 +11,26 @@ const labelClass = "text-sm font-medium";
 
 export function ContactForm() {
   const [state, setState] = useState<"idle" | "sending" | "sent">("idle");
+  const [error, setError] = useState<string | null>(null);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setError(null);
     setState("sending");
-    // No backend wired yet — simulate submission.
-    setTimeout(() => setState("sent"), 700);
+    const data = Object.fromEntries(new FormData(e.currentTarget).entries());
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      const json = (await res.json().catch(() => ({}))) as { error?: string };
+      if (!res.ok) throw new Error(json.error || "Something went wrong.");
+      setState("sent");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+      setState("idle");
+    }
   }
 
   if (state === "sent") {
@@ -39,6 +53,18 @@ export function ContactForm() {
       onSubmit={handleSubmit}
       className="flex flex-col gap-5 rounded-2xl border border-border bg-card p-6 shadow-sm md:p-8"
     >
+      {/* Honeypot: hidden from humans, tempting to bots. Real users leave it blank. */}
+      <div aria-hidden className="absolute left-[-9999px] top-[-9999px] h-0 w-0 overflow-hidden" hidden>
+        <label htmlFor="company_website">Company website</label>
+        <input
+          id="company_website"
+          name="company_website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
+
       <div className="grid gap-5 sm:grid-cols-2">
         <Field id="name" label="Full name" required>
           <input id="name" name="name" required className={inputClass} placeholder="Jordan Patel" />
@@ -83,6 +109,15 @@ export function ContactForm() {
           placeholder="Portfolio size, current tools, timelines…"
         />
       </Field>
+
+      {error && (
+        <p
+          role="alert"
+          className="rounded-lg border border-danger/30 bg-danger/10 px-3.5 py-2.5 text-sm text-danger"
+        >
+          {error}
+        </p>
+      )}
 
       <button
         type="submit"

@@ -64,7 +64,7 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-12 flex flex-col gap-4 border-t border-border pt-6 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} {site.name}. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} {site.name} T/A Epic Software Labs. All rights reserved.</p>
           <p>
             Built offline-first for social housing.{" "}
             <a href={`mailto:${site.email}`} className="hover:text-foreground">
