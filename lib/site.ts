@@ -1,8 +1,15 @@
 export const site = {
+  /* Product/brand name, as it appears in the wordmark and body copy. */
   name: "Haven Beacon",
   tagline: "The offline-first asset management platform for social housing.",
   appUrl: "https://hub.havenbeacon.com",
   email: "hello@havenbeacon.com",
+
+  /* Legal entity and registered office, for the footer. Kept apart from the
+     brand name above: the company someone contracts with is not necessarily
+     the name on the door, and the two change independently. */
+  legalName: "Haven Strategic Asset Management Systems Ltd",
+  registeredOffice: "71–75 Shelton Street, Covent Garden, London WC2H 9JQ",
 };
 
 /* Header navigation. `menu` marks an item as a dropdown — the nav renders the
