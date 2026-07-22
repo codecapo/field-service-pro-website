@@ -4,6 +4,11 @@ export const site = {
   tagline: "The offline-first asset management platform for social housing.",
   appUrl: "https://hub.havenbeacon.com",
   email: "hello@havenbeacon.com",
+  /* Google appointment schedule. The site's CTAs still point at /contact
+     rather than straight here — the form captures who is asking and what stock
+     they manage, which is worth having before the call — but /contact offers
+     this as the no-friction path for anyone who just wants a slot. */
+  bookingUrl: "https://calendar.app.google/4gV67FZGAAHAax6j6",
 
   /* Legal entity and registered office, for the footer. Kept apart from the
      brand name above: the company someone contracts with is not necessarily

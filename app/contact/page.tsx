@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import {
+  ArrowUpRight,
   CalendarCheck,
   Mail,
   WifiOff,
@@ -70,15 +71,39 @@ export default function ContactPage() {
                 ))}
               </ul>
 
-              <div className="mt-2 flex items-center gap-3 rounded-xl border border-border bg-card p-4">
-                <CalendarCheck className="size-5 text-primary" />
+              {/* The no-friction path. Someone who already knows they want a
+                  call should not have to fill a form to get one — the form
+                  beside this is for people who would rather send the detail
+                  first. Opens in a new tab because it leaves the site. */}
+              <a
+                href={site.bookingUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group mt-2 flex items-center gap-3 rounded-xl border border-primary/30 bg-primary/[0.04] p-4 transition-colors hover:border-primary/60 hover:bg-primary/[0.07]"
+              >
+                <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-primary/10 text-primary">
+                  <CalendarCheck className="size-5" />
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="block text-sm font-semibold">
+                    Pick a time that suits you
+                  </span>
+                  <span className="block text-sm text-muted-foreground">
+                    Book a 30-minute slot directly — no form needed.
+                  </span>
+                </span>
+                <ArrowUpRight className="size-4 shrink-0 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" />
+              </a>
+
+              <div className="flex items-center gap-3 rounded-xl border border-border bg-card p-4">
+                <Mail className="size-5 text-muted-foreground" />
                 <p className="text-sm text-muted-foreground">
                   Prefer email?{" "}
                   <a
                     href={`mailto:${site.email}`}
                     className="inline-flex items-center gap-1 font-medium text-foreground hover:text-primary"
                   >
-                    <Mail className="size-3.5" /> {site.email}
+                    {site.email}
                   </a>
                 </p>
               </div>
