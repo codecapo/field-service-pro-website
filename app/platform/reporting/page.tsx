@@ -12,7 +12,11 @@ import { Button, Container } from "@/components/ui";
 import { FeatureShowcase } from "@/components/sections/feature-showcase";
 import { CtaSection } from "@/components/sections/cta";
 import { ScaledBrowser } from "@/components/browser-frame";
-import { DashboardPanel } from "@/components/dashboard-panel";
+import { PageBand } from "@/components/sections/page-band";
+import { DashboardMockup } from "@/components/app-mockups/dashboard";
+import { ReportsMockup } from "@/components/app-mockups/reports";
+import { OutputsMockup } from "@/components/app-mockups/outputs";
+import { PhotoPanel } from "@/components/media";
 
 export const metadata: Metadata = {
   title: "Reporting & insights",
@@ -50,8 +54,8 @@ export default function ReportingPage() {
               </div>
             </div>
 
-            <ScaledBrowser url="app.havenams.com/reporting">
-              <DashboardPanel />
+            <ScaledBrowser url="hub.havenbeacon.com/dashboard" designWidth={1440}>
+              <DashboardMockup />
             </ScaledBrowser>
           </div>
         </Container>
@@ -79,9 +83,9 @@ export default function ReportingPage() {
           },
         ]}
         visual={
-          <ScaledBrowser url="app.havenams.com/reporting">
-            <DashboardPanel />
-          </ScaledBrowser>
+          <ScaledBrowser url="hub.havenbeacon.com/reports" designWidth={1440}>
+              <ReportsMockup />
+            </ScaledBrowser>
         }
       />
 
@@ -109,9 +113,13 @@ export default function ReportingPage() {
           },
         ]}
         visual={
-          <ScaledBrowser url="app.havenams.com/reporting">
-            <DashboardPanel />
-          </ScaledBrowser>
+          <PhotoPanel
+            src="/images/feature-understand.jpg"
+            alt="Two colleagues reading a report together at a screen."
+            width={1400}
+            height={1050}
+            className="aspect-[4/3] rounded-2xl"
+          />
         }
       />
 
@@ -137,11 +145,19 @@ export default function ReportingPage() {
           },
         ]}
         visual={
-          <ScaledBrowser url="app.havenams.com/reporting">
-            <DashboardPanel />
+          <ScaledBrowser designWidth={1440} url="hub.havenbeacon.com/reporting">
+            <OutputsMockup />
           </ScaledBrowser>
         }
       />
+      <PageBand
+        src="/images/band-reporting.jpg"
+        alt="Two colleagues reviewing figures together at a screen."
+        eyebrow="A position you can defend"
+        title="Numbers someone can stand behind in a meeting"
+        body="Reporting is only useful if the person presenting it can say where each figure came from. Every number drills through to the survey, the evidence and the review that accepted it."
+      />
+
 
       <CtaSection
         title="See the answer behind the number"

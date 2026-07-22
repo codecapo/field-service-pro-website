@@ -1,6 +1,6 @@
 import { cn } from "@/components/ui";
 import { PhoneFrame } from "@/components/phone";
-import { BrowserFrame } from "@/components/browser-frame";
+import { ScaledBrowser } from "@/components/browser-frame";
 
 /* A to-scale desktop browser with a static phone overlapping in front.
    - The browser is in-flow so it defines the height; the phone is absolutely
@@ -13,20 +13,27 @@ export function FeatureComposite({
   children,
   reverse = false,
   browserWidth = 740,
+  designWidth,
   className,
 }: {
   url: string;
   screen: React.ReactNode;
   children: React.ReactNode;
   reverse?: boolean;
+  /* Rendered width of the browser on screen. */
   browserWidth?: number;
+  /* Logical viewport the browser's children are laid out at, before scaling —
+     pass 1440 for screens built from the real product components. */
+  designWidth?: number;
   className?: string;
 }) {
   return (
     <div className={cn("relative w-full", className)}>
       {/* mobile: plain full-width browser, no overlay */}
       <div className="sm:hidden">
-        <BrowserFrame url={url}>{children}</BrowserFrame>
+        <ScaledBrowser url={url} designWidth={designWidth}>
+          {children}
+        </ScaledBrowser>
       </div>
 
       {/* sm+ : browser defines height; phone bottom-flush, overlapping the inner edge */}
@@ -35,7 +42,9 @@ export function FeatureComposite({
           className={cn(reverse ? "ml-auto -mr-[14%]" : "-mr-[14%] ml-[14%]")}
           style={{ width: browserWidth, maxWidth: "none" }}
         >
-          <BrowserFrame url={url}>{children}</BrowserFrame>
+          <ScaledBrowser url={url} designWidth={designWidth}>
+            {children}
+          </ScaledBrowser>
         </div>
         <div
           className={cn(

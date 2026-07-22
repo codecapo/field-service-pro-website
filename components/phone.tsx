@@ -75,7 +75,7 @@ export function PhoneFrame({
             {src ? (
               <iframe
                 src={src}
-                title="Haven AMS field app — live demo"
+                title="Haven Beacon field app — live demo"
                 loading="lazy"
                 className="w-full flex-1 border-0 bg-background"
               />

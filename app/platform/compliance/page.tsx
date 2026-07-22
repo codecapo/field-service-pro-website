@@ -12,9 +12,11 @@ import { Button, Container } from "@/components/ui";
 import { FeatureShowcase } from "@/components/sections/feature-showcase";
 import { CtaSection } from "@/components/sections/cta";
 import { ScaledBrowser } from "@/components/browser-frame";
-import { DashboardPanel } from "@/components/dashboard-panel";
-import { ComplianceBoard } from "@/components/mockups";
 import { PhoneFrame, ServicesScreen } from "@/components/phone";
+import { PageBand } from "@/components/sections/page-band";
+import { ComplianceMockup } from "@/components/app-mockups/compliance";
+import { IssuesMockup } from "@/components/app-mockups/issues";
+import { PhotoPanel } from "@/components/media";
 
 export const metadata: Metadata = {
   title: "Compliance",
@@ -53,8 +55,8 @@ export default function CompliancePage() {
               </div>
             </div>
 
-            <ScaledBrowser url="app.havenams.com/compliance">
-              <ComplianceBoard />
+            <ScaledBrowser url="hub.havenbeacon.com/compliance" designWidth={1440}>
+              <ComplianceMockup />
             </ScaledBrowser>
           </div>
         </Container>
@@ -82,9 +84,9 @@ export default function CompliancePage() {
           },
         ]}
         visual={
-          <ScaledBrowser url="app.havenams.com/compliance">
-            <ComplianceBoard />
-          </ScaledBrowser>
+          <ScaledBrowser url="hub.havenbeacon.com/issues" designWidth={1440}>
+              <IssuesMockup />
+            </ScaledBrowser>
         }
       />
 
@@ -142,11 +144,23 @@ export default function CompliancePage() {
           },
         ]}
         visual={
-          <ScaledBrowser url="app.havenams.com/compliance">
-            <DashboardPanel />
-          </ScaledBrowser>
+          <PhotoPanel
+            src="/images/feature-answers.jpg"
+            alt="A compliance lead in a bright office."
+            width={1400}
+            height={1050}
+            className="aspect-[4/3] rounded-2xl"
+          />
         }
       />
+      <PageBand
+        src="/images/band-compliance.jpg"
+        alt="An engineer servicing a domestic boiler in a kitchen."
+        eyebrow="Evidence, not assertion"
+        title="Someone did the work. The record should prove it"
+        body="A certificate is the end of a visit, not the start of a spreadsheet row. Evidence stays attached to the property and the programme it satisfies, and anything missing surfaces as an exception."
+      />
+
 
       <CtaSection
         title="See the evidence behind the status"

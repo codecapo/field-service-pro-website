@@ -1,0 +1,33 @@
+<svg width="1536" height="1024" viewBox="0 0 1536 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="havenRing" gradientUnits="userSpaceOnUse" x1="1010" y1="155" x2="520" y2="605">
+      <stop offset="0" stop-color="#B83EFA"/>
+      <stop offset="0.55" stop-color="#8E2BFB"/>
+      <stop offset="1" stop-color="#6E1CFD"/>
+    </linearGradient>
+  </defs>
+
+  <!-- gradient ring (full circle) -->
+  <circle cx="766" cy="382" r="241" fill="none" stroke="url(#havenRing)" stroke-width="33"/>
+
+  <!-- white knockout: hides the ring inside and below the house -->
+  <path d="M766 288 L906 400 L906 655 L628 655 L628 400 Z" fill="#FDFDFD"/>
+
+  <!-- house: roof + two walls, open at the base, breaking through the ring -->
+  <path d="M645 610 L645 385 L766 303 L889 385 L889 610" fill="none"
+        stroke="#2C025E" stroke-width="31" stroke-linejoin="miter" stroke-linecap="butt"/>
+
+  <!-- window (2x2) -->
+  <g fill="#2C025E">
+    <rect x="725" y="430" width="36" height="36" rx="5"/>
+    <rect x="774" y="430" width="36" height="36" rx="5"/>
+    <rect x="725" y="477" width="36" height="36" rx="5"/>
+    <rect x="774" y="477" width="36" height="36" rx="5"/>
+  </g>
+
+  <!-- wordmark -->
+  <text x="271" y="841" textLength="1009" lengthAdjust="spacingAndGlyphs"
+        font-family="Poppins, Montserrat, 'Arial Black', Arial, sans-serif"
+        font-weight="800" font-size="222" fill="#2C025E"
+        style="font-variant-ligatures:none">HAVEN</text>
+</svg>

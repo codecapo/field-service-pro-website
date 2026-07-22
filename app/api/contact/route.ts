@@ -5,7 +5,7 @@ import { site } from "@/lib/site";
 export const runtime = "nodejs";
 
 const TO = process.env.CONTACT_TO_EMAIL || site.email;
-const FROM = process.env.CONTACT_FROM_EMAIL || "Haven AMS <onboarding@resend.dev>";
+const FROM = process.env.CONTACT_FROM_EMAIL || "Haven Beacon <onboarding@resend.dev>";
 
 type Payload = {
   name?: string;

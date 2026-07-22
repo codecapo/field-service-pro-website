@@ -5,7 +5,7 @@ import { cn } from "@/components/ui";
    an app screenshot. Provides the outer border, radius and frame shadow, so the
    content inside should be borderless. */
 export function BrowserFrame({
-  url = "app.havenams.com",
+  url = "hub.havenbeacon.com",
   children,
   className,
 }: {
@@ -45,25 +45,40 @@ export function BrowserFrame({
 
 /* Renders a BrowserFrame at a fixed design width and uniformly scales the whole
    thing to fill its container — so the chrome, text and cards all stay in the
-   same proportion at any display size (like a real screenshot zoomed). */
-const DESIGN_W = 760; // chrome 44 + content 760/1.43 ≈ 575 total
+   same proportion at any display size (like a real screenshot zoomed).
+
+   `designWidth` is the logical viewport the children are laid out at. The coded
+   mockups are drawn for 760. Screens built from the real product components need
+   1440: the app is designed for a desktop viewport, and laying it out at 760
+   would change its type scale, table columns and truncation — a lookalike rather
+   than the actual thing at a smaller size. */
+const CHROME_H = 44;
+const CONTENT_RATIO = 1.43;
+
 export function ScaledBrowser({
   url,
   children,
   className,
+  designWidth = 760,
 }: {
   url?: string;
   children: React.ReactNode;
   className?: string;
+  designWidth?: number;
 }) {
+  const totalH = Math.round(designWidth / CONTENT_RATIO) + CHROME_H;
   return (
     <div
       className={cn("relative w-full overflow-hidden [container-type:inline-size]", className)}
-      style={{ aspectRatio: "760 / 575" }}
+      style={{ aspectRatio: `${designWidth} / ${totalH}` }}
     >
       <div
-        className="absolute left-0 top-0 w-[760px] origin-top-left"
-        style={{ transform: "scale(calc(100cqw / 760px))" }}
+        className="absolute left-0 top-0 origin-top-left"
+        style={{
+          width: `${designWidth}px`,
+          /* length ÷ length yields a unitless ratio (CSS Values 4). */
+          transform: `scale(calc(100cqw / ${designWidth}px))`,
+        }}
       >
         <BrowserFrame url={url}>{children}</BrowserFrame>
       </div>

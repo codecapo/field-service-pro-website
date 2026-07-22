@@ -8,17 +8,17 @@ const geistSans = Geist({ variable: "--font-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://havenams.com"),
+  metadataBase: new URL("https://havenbeacon.com"),
   title: {
-    default: "Haven AMS — the offline-first asset management platform for social housing",
-    template: "%s · Haven AMS",
+    default: "Haven Beacon — offline-first stock condition surveys and compliance for social housing",
+    template: "%s · Haven Beacon",
   },
   description:
-    "An evidence-led asset management platform built for councils and housing associations. Capture stock condition surveys fully offline, never overwrite the master record, and turn the field into a single source of truth.",
+    "Haven Beacon helps housing teams capture surveys, inspections and site updates on site — even with no signal — keep the evidence in one place, and report with confidence. Built for councils and housing associations.",
   openGraph: {
-    title: "Haven AMS",
+    title: "Haven Beacon",
     description:
-      "Offline-first asset management for social housing — survey capture, evidence-led compliance, and a single source of truth.",
+      "Capture surveys and inspections on site, keep the evidence connected, and report with confidence. Offline-first, built for social housing.",
     type: "website",
   },
 };

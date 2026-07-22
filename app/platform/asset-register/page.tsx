@@ -4,8 +4,12 @@ import { Button, Container } from "@/components/ui";
 import { FeatureShowcase } from "@/components/sections/feature-showcase";
 import { CtaSection } from "@/components/sections/cta";
 import { ScaledBrowser } from "@/components/browser-frame";
-import { DashboardPanel } from "@/components/dashboard-panel";
 import { AssetRegister } from "@/components/mockups";
+import { PageBand } from "@/components/sections/page-band";
+import { AssetRegisterMockup } from "@/components/app-mockups/asset-register";
+import { BoardDetailMockup } from "@/components/app-mockups/board-detail";
+import { QaReviewMockup } from "@/components/app-mockups/qa-review";
+import { PhotoPanel } from "@/components/media";
 
 export const metadata: Metadata = {
   title: "Asset register",
@@ -44,8 +48,8 @@ export default function AssetRegisterPage() {
                 </Button>
               </div>
             </div>
-            <ScaledBrowser url="app.havenams.com/properties/100023001">
-              <AssetRegister />
+            <ScaledBrowser url="hub.havenbeacon.com/assets/100023336591" designWidth={1440}>
+              <AssetRegisterMockup />
             </ScaledBrowser>
           </div>
         </Container>
@@ -73,9 +77,9 @@ export default function AssetRegisterPage() {
           },
         ]}
         visual={
-          <ScaledBrowser url="app.havenams.com/properties/100023001">
-            <AssetRegister />
-          </ScaledBrowser>
+          <ScaledBrowser url="hub.havenbeacon.com/board/B00214-26" designWidth={1440}>
+              <BoardDetailMockup />
+            </ScaledBrowser>
         }
       />
 
@@ -103,9 +107,13 @@ export default function AssetRegisterPage() {
           },
         ]}
         visual={
-          <ScaledBrowser url="app.havenams.com/overview">
-            <DashboardPanel />
-          </ScaledBrowser>
+          <PhotoPanel
+            src="/images/feature-lifecycle.jpg"
+            alt="The ageing fabric of a house — sash windows, brickwork, downpipe and roof tiles."
+            width={1400}
+            height={1050}
+            className="aspect-[4/3] rounded-2xl"
+          />
         }
       />
 
@@ -131,11 +139,19 @@ export default function AssetRegisterPage() {
           },
         ]}
         visual={
-          <ScaledBrowser url="app.havenams.com/properties/100023001">
-            <AssetRegister />
+          <ScaledBrowser designWidth={1440} url="hub.havenbeacon.com/properties/100023001">
+            <QaReviewMockup />
           </ScaledBrowser>
         }
       />
+      <PageBand
+        src="/images/band-asset.jpg"
+        alt="A surveyor checking the condition of a window frame in a flat."
+        eyebrow="Down to the component"
+        title="A record that goes further than the front door"
+        body="Portfolio, block, property, then the individual window, boiler or kitchen — with its age, condition and remaining life. That is the level investment planning actually needs."
+      />
+
 
       <CtaSection
         title="Turn fieldwork into a clearer asset view"

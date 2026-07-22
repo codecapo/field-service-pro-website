@@ -16,6 +16,7 @@ import {
   SectionHeading,
 } from "@/components/ui";
 import { CtaSection } from "@/components/sections/cta";
+import { PageBand } from "@/components/sections/page-band";
 
 export const metadata: Metadata = {
   title: "Security & data governance",
@@ -134,6 +135,14 @@ export default function SecurityPage() {
           </div>
         </Container>
       </section>
+      <PageBand
+        src="/images/band-security.jpg"
+        alt="A colleague working at a laptop in a quiet, orderly office."
+        eyebrow="Handled carefully"
+        title="Housing data is people's homes"
+        body="Stock condition records, photographs inside someone's flat, the reason a repair was raised. It is treated as what it is — held in the UK, isolated per client, and reachable only by the people whose job needs it."
+      />
+
 
       <CtaSection
         title="Bring security questions to the demo"

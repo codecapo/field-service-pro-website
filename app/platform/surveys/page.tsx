@@ -16,8 +16,9 @@ import { Button, Card, Container, Section, SectionHeading } from "@/components/u
 import { FeatureShowcase } from "@/components/sections/feature-showcase";
 import { CtaSection } from "@/components/sections/cta";
 import { FeatureComposite } from "@/components/feature-composite";
-import { DashboardPanel } from "@/components/dashboard-panel";
+import { BoardListMockup } from "@/components/app-mockups/board-list";
 import { PhoneFrame, LivePhone, ServicesScreen, KitchenScreen, IssuesScreen } from "@/components/phone";
+import { PageBand } from "@/components/sections/page-band";
 
 export const metadata: Metadata = {
   title: "Field operations",
@@ -57,8 +58,12 @@ export default function SurveysPage() {
                 </Button>
               </div>
             </div>
-            <FeatureComposite url="app.havenams.com/surveys" screen={<ServicesScreen />}>
-              <DashboardPanel />
+            <FeatureComposite
+              url="hub.havenbeacon.com/board"
+              screen={<ServicesScreen />}
+              designWidth={1440}
+            >
+              <BoardListMockup />
             </FeatureComposite>
           </div>
         </Container>
@@ -119,6 +124,14 @@ export default function SurveysPage() {
       />
 
       <InspectionTypes />
+      <PageBand
+        src="/images/band-surveys.jpg"
+        alt="A surveyor recording condition on a tablet in a communal stairwell."
+        eyebrow="On site"
+        title="The work happens in stairwells, not spreadsheets"
+        body="Surveys get captured where the property is — on a stair, in a cupboard, in a void with no signal. Everything stays on the device until it can sync, so a dropped connection never costs a visit."
+      />
+
 
       <CtaSection
         title="See Haven working on site"

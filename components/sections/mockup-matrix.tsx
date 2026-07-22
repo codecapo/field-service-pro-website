@@ -18,7 +18,7 @@ const entries: {
   {
     group: "Stock condition surveys",
     ref: "Live",
-    url: "app.havenams.com/surveys/100023001",
+    url: "hub.havenbeacon.com/surveys/100023001",
     blurb: "The offline-first capture flow — photos, components and issue-level HHSRS.",
     features: ["Offline capture", "Count-driven components", "HHSRS Cat 1/2", "No-access close-out"],
     node: <SurveyBoard />,
@@ -27,7 +27,7 @@ const entries: {
   {
     group: "Asset register & search",
     ref: "Live",
-    url: "app.havenams.com/assets/5071190",
+    url: "hub.havenbeacon.com/assets/5071190",
     blurb: "A live property, block & component register, keyed on UPRN.",
     features: ["Full-text search", "UPRN-keyed records", "Block → unit", "Excel export"],
     node: <AssetRegister />,
@@ -36,7 +36,7 @@ const entries: {
   {
     group: "Compliance & safety capture",
     ref: "Live",
-    url: "app.havenams.com/compliance",
+    url: "hub.havenbeacon.com/compliance",
     blurb: "Evidence-led capture of the regulated risks — never false-green.",
     features: ["HHSRS Cat 1/2", "Awaab's Law damp/mould", "Required-vs-observed alarms", "Audit trail"],
     node: <ComplianceBoard />,
@@ -45,7 +45,7 @@ const entries: {
   {
     group: "Reporting & outputs",
     ref: "Live",
-    url: "app.havenams.com/reporting",
+    url: "hub.havenbeacon.com/reporting",
     blurb: "One accepted source → reports and BI-ready data that reconcile.",
     features: ["No Access report", "Reconciliation", "PDF + CSV + XLSX", "Power BI–ready"],
     node: <DashboardPanel />,

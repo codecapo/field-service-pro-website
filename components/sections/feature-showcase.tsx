@@ -21,7 +21,9 @@ export function FeatureShowcase({
   reverse,
   tinted,
 }: {
-  eyebrow: string;
+  /** Optional. Sub-pages use it to carry a real section label; the homepage
+   *  omits it per brand feedback on decorative eyebrows. */
+  eyebrow?: string;
   status?: keyof typeof showcaseStatus;
   title: string;
   description: string;
@@ -47,14 +49,18 @@ export function FeatureShowcase({
         >
           {/* text */}
           <div className={cn("flex flex-col gap-5", reverse && "lg:order-2")}>
-            <div className="flex items-center gap-3">
-              <span className="text-sm font-medium text-primary">{eyebrow}</span>
-              {st && (
-                <span className={cn("rounded-full px-2 py-0.5 text-[11px] font-medium", st.cls)}>
-                  {st.label}
-                </span>
-              )}
-            </div>
+            {(eyebrow || st) && (
+              <div className="flex items-center gap-3">
+                {eyebrow && (
+                  <span className="text-sm font-medium text-primary">{eyebrow}</span>
+                )}
+                {st && (
+                  <span className={cn("rounded-full px-2 py-0.5 text-[11px] font-medium", st.cls)}>
+                    {st.label}
+                  </span>
+                )}
+              </div>
+            )}
             <h2 className="text-3xl font-semibold tracking-tight md:text-4xl text-balance">
               {title}
             </h2>

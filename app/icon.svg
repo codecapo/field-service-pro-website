@@ -1,10 +1,13 @@
-<svg width="32" height="32" viewBox="6 4 36 37" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M14.8 35.1 A 16 16 0 1 1 33.2 35.1" stroke="#635BFF" stroke-width="3" stroke-linecap="round"/>
-  <path d="M18.5 39 L18.5 21.5 L15 21.5 L24 13 L33 21.5 L29.5 21.5 L29.5 39 Z" stroke="#161A2C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-  <g fill="#161A2C">
-    <rect x="20.6" y="26.2" width="2.8" height="2.8" rx="0.5"/>
-    <rect x="24.6" y="26.2" width="2.8" height="2.8" rx="0.5"/>
-    <rect x="20.6" y="30.2" width="2.8" height="2.8" rx="0.5"/>
-    <rect x="24.6" y="30.2" width="2.8" height="2.8" rx="0.5"/>
+<svg width="64" height="64" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Signal — Hub. Geometry and colours taken verbatim from direction D of the
+       "HB icon directions" artifact, so the site, the apps and the store
+       listings are one artwork rather than three near-misses. -->
+  <rect width="48" height="48" rx="11" fill="#7C74FF"/>
+  <g fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round">
+    <path d="M13.4 12.6 A 15 15 0 0 0 13.4 33.4"/>
+    <path d="M34.6 12.6 A 15 15 0 0 1 34.6 33.4"/>
+    <path d="M18.4 18.2 A 8.4 8.4 0 0 0 18.4 27.8"/>
+    <path d="M29.6 18.2 A 8.4 8.4 0 0 1 29.6 27.8"/>
   </g>
+  <circle cx="24" cy="23" r="4.4" fill="#FFFFFF"/>
 </svg>

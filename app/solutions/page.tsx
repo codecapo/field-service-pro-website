@@ -1,5 +1,13 @@
 import type { Metadata } from "next";
-import { ArrowRight, Building2, ClipboardCheck, HardHat, ShieldCheck, Check } from "lucide-react";
+import {
+  ArrowRight,
+  Building2,
+  ClipboardCheck,
+  HardHat,
+  KeyRound,
+  ShieldCheck,
+  Check,
+} from "lucide-react";
 import {
   Button,
   Card,
@@ -8,16 +16,18 @@ import {
   SectionHeading,
 } from "@/components/ui";
 import { CtaSection } from "@/components/sections/cta";
+import { PhotoPanel } from "@/components/media";
 
 export const metadata: Metadata = {
   title: "Solutions",
   description:
-    "Built for housing teams who need clearer answers. Haven helps teams capture surveys, inspections and site updates on the ground — then bring the evidence, actions and reporting back together in one clear flow.",
+    "Built for anyone accountable for housing — councils, housing associations, contractors and private landlords. Capture surveys and inspections on the ground, then bring the evidence, actions and reporting back together in one clear flow.",
 };
 
 const teams = [
   {
     key: "asset",
+    photo: { src: "/images/solution-asset.jpg", alt: "A council housing block on a quiet residential street." },
     icon: Building2,
     title: "Stock condition and asset teams",
     lead: "Understand what is in your homes, what condition it is in, what evidence exists and what needs attention. Haven helps teams capture stock condition information on site — components, photos, notes, issues and follow-up actions — and, once reviewed, use it to support reporting, planning and future investment decisions.",
@@ -31,6 +41,7 @@ const teams = [
   },
   {
     key: "field",
+    photo: { src: "/images/solution-field.jpg", alt: "A surveyor recording a reading on a communal staircase." },
     icon: ClipboardCheck,
     title: "Field operations and inspections",
     lead: "Give teams a simpler way to capture what they find on site and report it back clearly. Haven supports wider inspection activity where teams need evidence, consistency and quick follow-up — from monthly housing inspections to fire safety actions and communal area checks.",
@@ -45,6 +56,7 @@ const teams = [
   },
   {
     key: "compliance",
+    photo: { src: "/images/solution-compliance.jpg", alt: "A compliance lead in a bright, open office." },
     icon: ShieldCheck,
     title: "Compliance and assurance teams",
     lead: "See the evidence and exceptions behind the reported position. Haven helps teams make missing information, unresolved issues and follow-up actions visible, so compliance and assurance reporting is not just a number on a dashboard.",
@@ -57,7 +69,23 @@ const teams = [
     ],
   },
   {
+    key: "landlords",
+    photo: { src: "/images/solution-landlords.jpg", alt: "A terrace of privately let Victorian houses." },
+    icon: KeyRound,
+    title: "Private landlords",
+    lead: "A let property carries eight to twelve separate legal obligations, each on its own clock — gas annually, EICR every five years, EPC every ten, deposit protection within thirty days, Right to Rent before the tenancy starts. Haven runs each one as a survey pack on the same engine used in social housing: complete the pack, the evidence is captured against the property, and the record flags what is due, expiring or missing before it becomes a problem.",
+    helps: [
+      "Gas safety, EICR, EPC, smoke and CO alarms, Legionella",
+      "Deposit protection, Right to Rent and tenancy documents",
+      "Advance flags before a certificate expires",
+      "Every certificate held against the right property and tenancy",
+      "An evidence pack for a council, lender or insurer on request",
+      "Unknowns shown as exceptions, not counted as compliant",
+    ],
+  },
+  {
     key: "partners",
+    photo: { src: "/images/solution-partners.jpg", alt: "A visiting surveyor walking up to a block to start a round of visits." },
     icon: HardHat,
     title: "Contractors and survey partners",
     lead: "Let external teams work in Haven without losing control of the record. Surveyors and partners can be assigned only the work they need to complete, capture information on site, add evidence and submit it for review before it becomes part of the reporting position.",
@@ -106,8 +134,26 @@ export default function SolutionsPage() {
               <Card
                 key={t.key}
                 id={t.key}
-                className="grid scroll-mt-24 gap-6 md:grid-cols-[1.1fr_1fr] md:items-center"
+                className="grid scroll-mt-24 gap-6 md:items-center lg:grid-cols-[260px_1.1fr_1fr]"
               >
+                {/* Its own photography — alternate frames from the same shoots
+                    as the homepage row, so the pages look related without
+                    sharing a single file. No image on this site appears twice;
+                    scripts/check-image-usage.mjs enforces it.
+
+                    Shown at every width, but reshaped rather than hidden: a
+                    letterbox banner above the copy on small screens, the tall
+                    side column once there is room for three tracks. Hiding it
+                    on mobile would take the photography away from the readers
+                    most likely to be meeting the brand for the first time. */}
+                <PhotoPanel
+                  src={t.photo.src}
+                  alt={t.photo.alt}
+                  width={1000}
+                  height={1250}
+                  scrim={false}
+                  className="aspect-[16/9] rounded-xl lg:aspect-[4/5]"
+                />
                 <div className="flex flex-col gap-4">
                   <span className="grid size-11 place-items-center rounded-lg bg-primary/10 text-primary">
                     <Icon className="size-5" />

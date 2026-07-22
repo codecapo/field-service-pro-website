@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Logo } from "@/components/logo";
-import { platformSurfaces, site } from "@/lib/site";
+import { platformSurfaces, resourceSurfaces, site } from "@/lib/site";
 
 const footerNav = [
   {
@@ -13,8 +13,13 @@ const footerNav = [
       { label: "Stock condition & asset teams", href: "/solutions#asset" },
       { label: "Field operations & inspections", href: "/solutions#field" },
       { label: "Compliance & assurance", href: "/solutions#compliance" },
+      { label: "Private landlords", href: "/solutions#landlords" },
       { label: "Contractors & partners", href: "/solutions#partners" },
     ],
+  },
+  {
+    heading: "Resources",
+    links: [...resourceSurfaces.map((s) => ({ label: s.label, href: s.href }))],
   },
   {
     heading: "Company",

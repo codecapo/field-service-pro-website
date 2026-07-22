@@ -63,7 +63,7 @@ export const resourceCategories: {
     key: "tools",
     title: "Templates & tools",
     blurb:
-      "Reference artefacts you can put to work today — data dictionaries, role matrices and readiness checklists.",
+      "Self-assessments and reference artefacts you can put to work today.",
   },
   {
     key: "glossary",

@@ -3,124 +3,12 @@ import { awaabsLawReadiness } from "@/lib/resources/awaabs-law-readiness";
 import { decentHomesReadiness } from "@/lib/resources/decent-homes-readiness";
 import { stockConditionSurveyPlaybook } from "@/lib/resources/stock-condition-survey-playbook";
 import { hhsrsFieldReference } from "@/lib/resources/hhsrs-field-reference";
+import { rentersRightsActReadiness } from "@/lib/resources/renters-rights-act-readiness";
 
 export { resourceCategories } from "@/lib/resources-types";
 export type { Resource, ResourceCategory } from "@/lib/resources-types";
 
-/* ── Templates & tools: Survey data dictionary (the §10 export tables) ── */
-const surveyDataDictionary: Resource = {
-  slug: "survey-data-dictionary",
-  title: "Survey data dictionary: the eight structured export tables",
-  summary:
-    "The stable-key, referentially-joined tables every accepted survey produces — the schema behind a Power BI-ready feed.",
-  category: "tools",
-  kind: "reference",
-  readTime: "6 min read",
-  updated: "June 2026",
-  blocks: [
-    {
-      type: "paragraph",
-      text: "A stock condition survey is only as useful as the data it leaves behind. Haven AMS emits every accepted survey as eight flat tables with stable string keys, so the same record reconciles across the PDF report and the structured export — and loads cleanly into a warehouse or BI tool with no manual interpretation.",
-    },
-    {
-      type: "callout",
-      tone: "info",
-      title: "One source, two outputs",
-      body: "The PDF report and this export are generated from the same accepted record. Every issue ID in the report matches its export row — there is no second, divergent copy of the truth.",
-    },
-    { type: "heading", id: "the-tables", text: "The eight tables" },
-    {
-      type: "table",
-      caption: "Each table is keyed by a stable string ID and joins on the keys below.",
-      columns: ["Table", "Grain / primary key", "Representative fields", "Joins on"],
-      rows: [
-        ["property_survey", "One row per survey · surveyId", "uprn, propertyReference, surveyorId, schemaVersion, questionSetVersion, status, startedAt, submittedAt, intelligence summary", "surveyId"],
-        ["access_attempt", "One row per access attempt", "surveyId, outcome (gained / no_access), reasonCode, attemptedAt, surveyor", "surveyId"],
-        ["component_observation", "One row per component instance · componentRecordId", "surveyId, componentType, instanceLabel, conditionRating, remainingLifeYears, renewalYear, unableToAssessReason", "surveyId, componentRecordId"],
-        ["issue_record", "One row per issue · issueId", "surveyId, uprn, propertyReference, issueType, hazardCategory (Cat 1/2), location, action, priority, reasonCode, componentRecordId, questionId", "surveyId, issueId, componentRecordId"],
-        ["photo_evidence", "One row per photo · photoId", "parentEntityType, parentEntityId, capturedAt, uploadedAt, user, device, caption", "photoId, parentEntityId"],
-        ["qa_event", "One row per QA decision", "surveyId, decision (accept / reject), comment, reviewer, decidedAt", "surveyId"],
-        ["sync_event", "One row per sync event", "surveyId, type (response / photo / partial / failed / conflict), occurredAt", "surveyId"],
-        ["lookup_version", "One row per controlled vocabulary version", "lookupVersionId, schemaVersion, questionSetVersion, lookups", "lookupVersionId"],
-      ],
-    },
-    { type: "heading", id: "why-stable-keys", text: "Why stable keys matter" },
-    {
-      type: "paragraph",
-      text: "Stable string identifiers mean a component, issue or photo can be traced from capture, through QA, into the report and the export, and onward into a warehouse — without re-keying or fuzzy matching. It is the difference between a data dump and a feed you can build dashboards on.",
-    },
-    {
-      type: "bullets",
-      items: [
-        "issue_record.componentRecordId links each defect to the exact component it was found on.",
-        "issue_record.questionId links a defect back to the question that raised it (e.g. a missing CO alarm).",
-        "photo_evidence.parentEntityId binds every photo to its question, component, issue or access event — never a loose gallery.",
-        "lookup_version pins the controlled vocabularies that were valid at survey time, so historic records stay interpretable.",
-      ],
-    },
-    {
-      type: "callout",
-      tone: "success",
-      title: "Power BI / warehouse ready",
-      body: "Exported as an XLSX workbook (a sheet per table) and per-table CSV. Referential joins are preserved, so it lands in a data warehouse without manual interpretation.",
-    },
-  ],
-  sources: [
-    { label: "Stock condition data and asset management good practice", publisher: "Chartered Institute of Housing", url: "https://www.cih.org" },
-    { label: "Regulatory reporting and data quality expectations", publisher: "Regulator of Social Housing (GOV.UK)", url: "https://www.gov.uk/government/organisations/regulator-of-social-housing" },
-  ],
-};
 
-/* ── Templates & tools: RBAC role matrix (the 5 named roles) ── */
-const rbacRoleMatrix: Resource = {
-  slug: "rbac-role-matrix",
-  title: "RBAC role matrix: named-user, least-privilege access",
-  summary:
-    "Five roles with per-role landing pages and per-scope restriction — the access model that keeps external surveyors to their own batch.",
-  category: "tools",
-  kind: "reference",
-  readTime: "5 min read",
-  updated: "June 2026",
-  blocks: [
-    {
-      type: "paragraph",
-      text: "Access is named-user and least-privilege: no shared accounts, every action attributed, and external surveyors restricted to only the properties assigned to them. Each role lands on the area relevant to its job and is guarded from the rest.",
-    },
-    { type: "heading", id: "the-roles", text: "The role matrix" },
-    {
-      type: "table",
-      columns: ["Role", "Lands on", "Can", "Scope / cannot"],
-      rows: [
-        ["System administrator", "Admin", "Manage users and roles; see the role matrix", "Governs access; not a field capture role"],
-        ["Survey manager", "Manage", "Assign survey batches, pre-load packs, monitor sync", "Cannot accept their own surveys through QA"],
-        ["Internal surveyor", "Surveys", "Capture assigned surveys, photos, issues offline", "Sees only assigned properties"],
-        ["External supplier surveyor", "Surveys", "Capture assigned surveys offline", "Restricted to an allow-list of assigned UPRNs only — never the wider portfolio"],
-        ["QA reviewer", "QA", "Accept / reject submitted surveys with comments", "Read-only on capture; decisions are audited"],
-      ],
-    },
-    { type: "heading", id: "principles", text: "The principles behind it" },
-    {
-      type: "bullets",
-      items: [
-        "Named users, not shared logins — every capture, photo, QA decision and sync event is attributed.",
-        "Least privilege — each role sees only the lanes its job requires; wrong-role deep links are blocked.",
-        "Per-scope restriction — external surveyors are scoped to an explicit UPRN allow-list.",
-        "Offline identity — sign-in works from a cached identity so field work continues with no signal.",
-        "SSO/MFA-ready — built to wire into single sign-on, multi-factor auth and remote revocation for production.",
-      ],
-    },
-    {
-      type: "callout",
-      tone: "info",
-      title: "Maker-checker by design",
-      body: "The QA reviewer role is the maker-checker gate: a survey only updates the live record after an independent reviewer accepts it — the same shape that generalises to delegated-partner assurance.",
-    },
-  ],
-  sources: [
-    { label: "Data protection by design and default", publisher: "Information Commissioner's Office", url: "https://ico.org.uk" },
-    { label: "Access control guidance", publisher: "National Cyber Security Centre", url: "https://www.ncsc.gov.uk" },
-  ],
-};
 
 /* ── Templates & tools: Compliance readiness checklist ── */
 const complianceReadinessChecklist: Resource = {
@@ -250,8 +138,7 @@ export const resources: Resource[] = [
   decentHomesReadiness,
   stockConditionSurveyPlaybook,
   hhsrsFieldReference,
-  surveyDataDictionary,
-  rbacRoleMatrix,
+  rentersRightsActReadiness,
   complianceReadinessChecklist,
   glossary,
 ];

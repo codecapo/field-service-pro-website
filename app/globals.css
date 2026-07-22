@@ -1,23 +1,43 @@
 @import "tailwindcss";
+@import "./haven-app.css";
 
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(0.992 0.002 280);
-  --foreground: oklch(0.18 0.02 275);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.02 275);
-  --muted: oklch(0.97 0.004 280);
-  --muted-foreground: oklch(0.5 0.02 275);
-  --primary: oklch(0.55 0.235 277);
-  --primary-foreground: oklch(0.99 0 0);
-  --accent: oklch(0.96 0.02 277);
-  --accent-foreground: oklch(0.4 0.18 277);
-  --border: oklch(0.92 0.005 280);
-  --ring: oklch(0.55 0.235 277);
-  --success: oklch(0.62 0.16 150);
-  --warning: oklch(0.72 0.16 70);
-  --danger: oklch(0.6 0.22 20);
+  /* Warm, desaturated system. Nothing is pure white and nothing is fully
+     saturated — that combination is what reads as generic/templated. The
+     indigo stays in the family but drops a long way in chroma. */
+  --background: #faf8f5; /* warm off-white, never #fff */
+  --foreground: #17161f;
+  --card: #ffffff;
+  --card-foreground: #17161f;
+  --muted: #f1ede7; /* warm sand tint */
+  --muted-foreground: #6b6675;
+  /* Brand purple, from direction D of the icon set — the same value the app
+     icons and store listings use, so the mark never shifts hue between the site
+     header and a home screen. Note this is brighter than the #6f68c9 that sat
+     here before, which was a deliberate desaturation of #635bff; the icon set
+     pulls the family back up in chroma and the site follows it rather than
+     running a second, quieter purple. */
+  --primary: #7c74ff;
+  --primary-foreground: #ffffff;
+  --accent: #f4f3ff; /* --tint from the icon set */
+  --accent-foreground: #4a4494;
+  --border: #e5e0d8; /* warm hairline */
+  --ring: #7c74ff;
+
+  /* Dark surface for inverted sections (hero, bands, CTA). */
+  --ink: #1e1b33;
+  --ink-soft: #2a2645;
+  --ink-foreground: #f0ede7;
+  /* The icon set's dark-ground purple. #7c74ff is mixed for a light page and
+     goes muddy against ink, so inverted surfaces lift to this instead. */
+  --primary-on-ink: #8f88ff;
+
+  /* Semantics, desaturated to match. */
+  --success: #3f7a63;
+  --warning: #9a6f33;
+  --danger: #a85040;
   --radius: 0.7rem;
 
   /* Strong custom easings (per emil-design-eng). Built-in CSS easings are too weak. */
@@ -39,9 +59,49 @@
   --color-accent-foreground: var(--accent-foreground);
   --color-border: var(--border);
   --color-ring: var(--ring);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-foreground: var(--ink-foreground);
+  /* Mapped not because a utility needs it, but because Tailwind v4 strips any
+     :root custom property that no @theme entry references — and the Logo reads
+     this one straight out of var() in an inline style, where the pruner cannot
+     see the usage. Without this line the mark silently loses its stroke on ink. */
+  --color-primary-on-ink: var(--primary-on-ink);
   --color-success: var(--success);
   --color-warning: var(--warning);
   --color-danger: var(--danger);
+
+  /* Token names used only by the vendored product components (see
+     haven-app.css). Tailwind emits a utility only for names declared here, so
+     these must exist even though the marketing pages never use them — without
+     the mapping, classes like bg-sidebar-accent are simply never generated and
+     the mockups render unstyled. Their values resolve inside .haven-app. */
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-destructive: var(--destructive);
+  --color-input: var(--input);
+  --color-link: var(--link);
+  --color-primary-50: var(--primary-50);
+  --color-success-bg: var(--success-bg);
+  --color-warning-bg: var(--warning-bg);
+  --color-danger-bg: var(--danger-bg);
+  --color-info: var(--info);
+  --color-info-bg: var(--info-bg);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
 
   --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-mono), ui-monospace, monospace;
@@ -52,6 +112,16 @@
   --radius-xl: calc(var(--radius) * 1.5);
   --radius-2xl: calc(var(--radius) * 2);
   --radius-3xl: calc(var(--radius) * 2.6);
+  --radius-4xl: calc(var(--radius) * 3.2);
+
+  /* The product's soft, layered elevation scale. Overrides Tailwind's defaults
+     so vendored components cast the same shadows they do in the real app. */
+  --shadow-2xs: 0 1px 2px rgba(16, 24, 40, 0.05);
+  --shadow-xs: 0 1px 2px rgba(16, 24, 40, 0.05);
+  --shadow-sm: 0 1px 3px rgba(16, 24, 40, 0.1), 0 1px 2px -1px rgba(16, 24, 40, 0.06);
+  --shadow-md: 0 4px 8px -2px rgba(16, 24, 40, 0.1), 0 2px 4px -2px rgba(16, 24, 40, 0.06);
+  --shadow-lg: 0 12px 16px -4px rgba(16, 24, 40, 0.08), 0 4px 6px -2px rgba(16, 24, 40, 0.03);
+  --shadow-xl: 0 20px 24px -4px rgba(16, 24, 40, 0.08), 0 8px 8px -4px rgba(16, 24, 40, 0.03);
 }
 
 @layer base {
@@ -127,5 +197,44 @@
   .bg-hero-glow {
     background:
       radial-gradient(60% 50% at 50% 0%, color-mix(in oklch, var(--primary) 16%, transparent) 0%, transparent 70%);
+  }
+
+  /* ── Editorial type ──────────────────────────────────────────────
+     Restraint over scale: impact comes from space and image, not from
+     large bold text. Weights sit at 400–500, never 600+, with tight
+     tracking and generous leading. */
+  .type-display {
+    font-size: clamp(2.25rem, 1.35rem + 3.4vw, 3.25rem); /* 36 → 52px */
+    line-height: 1.08;
+    letter-spacing: -0.022em;
+    font-weight: 450;
+  }
+  .type-h2 {
+    font-size: clamp(1.625rem, 1.2rem + 1.5vw, 2rem); /* 26 → 32px */
+    line-height: 1.15;
+    letter-spacing: -0.018em;
+    font-weight: 450;
+  }
+  .type-h3 {
+    font-size: 1.0625rem; /* 17px */
+    line-height: 1.35;
+    letter-spacing: -0.008em;
+    font-weight: 500;
+  }
+  .type-body {
+    font-size: 1.0625rem; /* 17px */
+    line-height: 1.65;
+  }
+  .type-lead {
+    font-size: 1.1875rem; /* 19px */
+    line-height: 1.6;
+    letter-spacing: -0.004em;
+  }
+  /* Bellrock-style eyebrow: tracked caps, no dot, no colour fill. */
+  .eyebrow-caps {
+    font-size: 0.6875rem; /* 11px */
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
   }
 }

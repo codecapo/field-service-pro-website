@@ -1,40 +1,39 @@
-import Link from "next/link";
 import {
   ArrowRight,
   AlertTriangle,
   BarChart3,
-  Boxes,
   Building2,
-  FileCheck2,
-  GitMerge,
-  ShieldCheck,
-  WifiOff,
   Camera,
   ClipboardCheck,
-  Database,
+  FileCheck2,
+  GitMerge,
   Layers,
-  Lock,
+  Monitor,
+  ShieldCheck,
+  Smartphone,
+  WifiOff,
 } from "lucide-react";
+import { Button, Container, Section, SectionHeading } from "@/components/ui";
+import { AppCarousel, type CarouselSlide } from "@/components/sections/app-carousel";
 import {
-  Button,
-  Card,
-  Container,
-  Section,
-  SectionHeading,
-  cn,
-} from "@/components/ui";
-import { HeroVisual } from "@/components/hero-visual";
+  KitchenScreen,
+  IssuesScreen,
+  SurveyListScreen,
+} from "@/components/phone";
+import { PhotoBand, PhotoPanel } from "@/components/media";
 import { FeatureComposite } from "@/components/feature-composite";
 import { ScaledBrowser } from "@/components/browser-frame";
-import { DashboardPanel } from "@/components/dashboard-panel";
-import { ComplianceBoard, AssetRegister } from "@/components/mockups";
-import { ServicesScreen } from "@/components/phone";
+import { BoardDetailMockup } from "@/components/app-mockups/board-detail";
+import { DashboardMockup } from "@/components/app-mockups/dashboard";
+import { ComplianceMockup } from "@/components/app-mockups/compliance";
+import { AssetRegisterMockup } from "@/components/app-mockups/asset-register";
+import { QaReviewMockup } from "@/components/app-mockups/qa-review";
+import { PhoneFrame, ServicesScreen } from "@/components/phone";
 import { ComparisonSection } from "@/components/sections/comparison";
 import { FeatureShowcase } from "@/components/sections/feature-showcase";
-import { SurfacesSection } from "@/components/sections/surfaces";
+import { FlowDiagram } from "@/components/sections/flow-diagram";
 import { FaqSection } from "@/components/sections/faq";
-import { CtaSection } from "@/components/sections/cta";
-import { differentiators, personas, stages, stats } from "@/lib/site";
+import { apps, differentiators, personas, stats } from "@/lib/site";
 
 export default function HomePage() {
   return (
@@ -42,81 +41,185 @@ export default function HomePage() {
       <Hero />
       <CredibilityBand />
       <ProblemSection />
-      <FlowSection />
+      <FlowDiagram />
       <DifferentiatorsSection />
+      <FieldBand />
       <ComparisonSection />
-      <FeatureBento />
       <PlatformShowcase />
-      <SurfacesSection
-        tinted
-        eyebrow="The full platform"
-        title="Explore every surface of the AMS"
-        description="From offline field capture to the live asset register, evidence-led compliance and day-one reporting — every main surface, built on one flow."
-      />
+      <AppsSection />
       <RolesSection />
       <StatsSection />
       <FaqSection />
-      <CtaSection />
+      <FinalCta />
     </>
   );
 }
 
-/* ───────────────────────── Hero ───────────────────────── */
+/* A phone screen sized to the shared carousel stage. The frame is a fixed
+   336px design width, scaled to the stage height via container queries so it
+   sits alongside the browser slides without changing the stage aspect. */
+function PhoneSlide({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="relative h-full w-full [container-type:size]">
+      <div
+        className="absolute left-1/2 top-1/2 w-[336px]"
+        style={{ transform: "translate(-50%, -50%) scale(calc(100cqh / 720px))" }}
+      >
+        <PhoneFrame>{children}</PhoneFrame>
+      </div>
+    </div>
+  );
+}
+
+/* Each slide falls back to its coded mockup until a real capture is dropped
+   into public/images/screens/<key>.png — then it swaps automatically. */
+const heroSlides: CarouselSlide[] = [
+  {
+    key: "overview",
+    label: "Portfolio overview",
+    caption: "Surveys accepted, Decent Homes position and HHSRS counts across the stock.",
+    visual: (
+      <ScaledBrowser url="hub.havenbeacon.com/dashboard" designWidth={1440}>
+        <DashboardMockup />
+      </ScaledBrowser>
+    ),
+  },
+  {
+    key: "compliance",
+    label: "Compliance programmes",
+    caption: "Every programme with what is evidenced, what is missing and what needs review.",
+    visual: (
+      <ScaledBrowser url="hub.havenbeacon.com/compliance" designWidth={1440}>
+        <ComplianceMockup />
+      </ScaledBrowser>
+    ),
+  },
+  {
+    key: "asset-register",
+    label: "Property & components",
+    caption: "Portfolio to block to property to the exact component and its condition.",
+    visual: (
+      <ScaledBrowser url="hub.havenbeacon.com/assets/100023336591" designWidth={1440}>
+        <AssetRegisterMockup />
+      </ScaledBrowser>
+    ),
+  },
+  {
+    key: "survey-board",
+    label: "Survey manager",
+    caption: "Assignments, pack readiness and sync status across every surveyor.",
+    visual: (
+      <ScaledBrowser url="hub.havenbeacon.com/board/B00214-26" designWidth={1440}>
+        <BoardDetailMockup />
+      </ScaledBrowser>
+    ),
+  },
+  {
+    key: "field-surveys",
+    label: "HB Field — my surveys",
+    caption: "Assigned packs pre-loaded to the device and ready to work offline.",
+    visual: (
+      <PhoneSlide>
+        <SurveyListScreen />
+      </PhoneSlide>
+    ),
+  },
+  {
+    key: "field-services",
+    label: "HB Field — services & safety",
+    caption: "Required-vs-observed checks raise an issue the moment something falls short.",
+    visual: (
+      <PhoneSlide>
+        <ServicesScreen />
+      </PhoneSlide>
+    ),
+  },
+  {
+    key: "field-kitchen",
+    label: "HB Field — component condition",
+    caption: "Condition, age and defects captured against each component on site.",
+    visual: (
+      <PhoneSlide>
+        <KitchenScreen />
+      </PhoneSlide>
+    ),
+  },
+  {
+    key: "field-issues",
+    label: "HB Field — issues & hazards",
+    caption: "HHSRS hazards, repairs and damp raised as typed records with photo evidence.",
+    visual: (
+      <PhoneSlide>
+        <IssuesScreen />
+      </PhoneSlide>
+    ),
+  },
+];
+
+/* ───────────────────────── Hero ─────────────────────────
+   Product-forward: the carousel is the hero. Dark ink surface keeps the
+   restrained, filmic register; the screens carry the message. */
 function Hero() {
   return (
-    <section className="relative overflow-hidden border-b border-border">
-      <div className="absolute inset-0 bg-grid [mask-image:linear-gradient(to_bottom,white,transparent_75%)]" />
-      <div className="absolute inset-0 bg-hero-glow" />
+    <section className="relative isolate overflow-hidden bg-ink">
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10"
+        style={{
+          background:
+            "radial-gradient(70% 55% at 15% 10%, color-mix(in srgb, var(--ink-soft) 90%, transparent) 0%, transparent 70%)",
+        }}
+      />
+
       <Container className="relative">
-        <div className="grid items-center gap-12 py-20 md:py-28 lg:grid-cols-2">
-          <div className="flex flex-col items-start gap-6">
+        <div className="grid items-center gap-14 py-28 pt-36 md:py-32 md:pt-40 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+          <div className="flex flex-col gap-7">
+            <span
+              className="reveal eyebrow-caps text-ink-foreground/60"
+              style={{ animationDelay: "40ms" }}
+            >
+              Stock condition &amp; compliance
+            </span>
+
             <h1
-              className="reveal text-4xl font-semibold leading-[1.05] tracking-tight md:text-5xl lg:text-6xl text-balance"
-              style={{ animationDelay: "60ms" }}
+              className="reveal type-display text-ink-foreground text-balance"
+              style={{ animationDelay: "100ms" }}
             >
-              Understand your homes. Respond faster.{" "}
-              <span className="text-primary">Report with confidence.</span>
+              Understand your homes. Respond faster. Report with confidence.
             </h1>
-            <div
-              className="reveal flex max-w-xl flex-col gap-4 text-balance"
-              style={{ animationDelay: "120ms" }}
+
+            <p
+              className="reveal type-lead text-ink-foreground/75"
+              style={{ animationDelay: "160ms" }}
             >
-              <p className="text-lg text-muted-foreground">
-                Haven helps housing teams capture surveys, inspections and site updates
-                on site, keep the evidence in one place, and give teams the clarity they
-                need to act.
-              </p>
-              <p className="text-muted-foreground">
-                From stock condition surveys to fire safety checks and monthly
-                inspections, Haven keeps the work, evidence and next steps connected.
-              </p>
-            </div>
-            <div className="reveal flex flex-col gap-3 sm:flex-row" style={{ animationDelay: "180ms" }}>
+              Haven Beacon helps housing teams capture surveys, inspections and site
+              updates on site, keep the evidence in one place, and give teams the
+              clarity they need to act.
+            </p>
+
+            <div
+              className="reveal flex flex-col gap-3 pt-1 sm:flex-row sm:items-center"
+              style={{ animationDelay: "220ms" }}
+            >
               <Button href="/contact" size="lg">
                 Book a demo
                 <ArrowRight className="size-4" />
               </Button>
-              <Button href="/platform/surveys" variant="secondary" size="lg">
+              <Button
+                href="/platform/surveys"
+                size="lg"
+                variant="ghost"
+                className="!text-ink-foreground hover:!bg-white/10"
+              >
                 Explore the platform
               </Button>
             </div>
-            <div
-              className="reveal flex flex-wrap items-center gap-x-5 gap-y-2 pt-2 text-sm text-muted-foreground"
-              style={{ animationDelay: "240ms" }}
-            >
-              <span className="inline-flex items-center gap-1.5">
-                <WifiOff className="size-4 text-primary" /> Works with no signal
-              </span>
-              <span className="inline-flex items-center gap-1.5">
-                <ShieldCheck className="size-4 text-primary" /> No silent overwrite
-              </span>
-              <span className="inline-flex items-center gap-1.5">
-                <FileCheck2 className="size-4 text-primary" /> PDF + data, reconciled
-              </span>
-            </div>
           </div>
 
-          <HeroVisual className="reveal [animation-delay:300ms]" />
+          <AppCarousel
+            slides={heroSlides}
+            className="reveal [animation-delay:280ms]"
+          />
         </div>
       </Container>
     </section>
@@ -133,14 +236,14 @@ function CredibilityBand() {
     "Power BI–ready exports",
   ];
   return (
-    <div className="border-b border-border bg-muted/40">
-      <Container className="py-8">
-        <p className="text-center text-xs font-medium uppercase tracking-wider text-muted-foreground">
+    <div className="border-b border-border">
+      <Container className="flex flex-col items-center gap-6 py-10">
+        <p className="eyebrow-caps text-muted-foreground">
           Built for the realities of social housing asset management
         </p>
-        <div className="mt-5 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+        <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-3">
           {items.map((i) => (
-            <span key={i} className="text-sm font-medium text-foreground/70">
+            <span key={i} className="text-sm text-foreground/65">
               {i}
             </span>
           ))}
@@ -150,79 +253,63 @@ function CredibilityBand() {
   );
 }
 
-/* ─────────────────────── Problem ─────────────────────── */
+/* ─────────────────────── Problem ───────────────────────
+   Editorial: one idea, lots of air, left-aligned. */
 function ProblemSection() {
   return (
-    <Section>
-      <div className="mx-auto flex max-w-2xl flex-col gap-5 text-center">
-        <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-balance">
-          Get to the answer faster.
-        </h2>
-        <p className="text-lg text-muted-foreground text-balance">
-          Housing teams are being asked harder questions about homes, inspections,
-          evidence and follow-up actions. Too often, the answer is buried across
-          surveys, spreadsheets, photos, emails and disconnected systems.
-        </p>
-        <p className="text-lg text-muted-foreground text-balance">
-          Haven puts the information back in your control — capturing it clearly on
-          site, keeping the evidence attached, and helping your team move from
-          question to answer without the usual chasing and reconciliation.
-        </p>
+    <Section space="spacious">
+      <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+        <h2 className="type-h2 text-balance">Get to the answer faster.</h2>
+        <div className="flex flex-col gap-6">
+          <p className="type-lead text-foreground/80 text-balance">
+            Housing teams are being asked harder questions about homes, inspections,
+            evidence and follow-up actions. Too often, the answer is buried across
+            surveys, spreadsheets, photos, emails and disconnected systems.
+          </p>
+          <p className="type-body text-muted-foreground text-balance">
+            Haven Beacon puts the information back in your control — capturing it
+            clearly on site, keeping the evidence attached, and helping your team move
+            from question to answer without the usual chasing and reconciliation.
+          </p>
+        </div>
       </div>
     </Section>
   );
 }
 
-/* ─────────────────── The survey-to-AMS flow ─────────────────── */
-function FlowSection() {
-  return (
-    <section className="border-y border-border bg-muted/30 py-20 md:py-28">
-      <Container>
-        <SectionHeading
-          title="How Haven works"
-          description="Capture it once. Check it properly. Report with confidence. Every survey, inspection or site update follows the same simple route — from work carried out on site to information your team can use with confidence."
-        />
-        <div className="mt-14 grid gap-6 md:grid-cols-3 lg:grid-cols-5">
-          {stages.map((stage, i) => (
-            <div key={stage.key} className="relative flex flex-col gap-3">
-              <div className="flex items-center gap-3">
-                <span className="grid size-9 place-items-center rounded-full border border-primary/30 bg-primary/10 font-mono text-sm font-semibold text-primary">
-                  {i + 1}
-                </span>
-                <h3 className="text-lg font-semibold">{stage.title}</h3>
-              </div>
-              <p className="text-sm text-muted-foreground">{stage.blurb}</p>
-            </div>
-          ))}
-        </div>
-        <p className="mt-12 text-center text-base font-medium text-foreground/80">
-          One connected flow from site visit to trusted answer.
-        </p>
-      </Container>
-    </section>
-  );
-}
+/* ───────────── What Haven Beacon does differently ─────────────
+   Hairline grid rather than a wall of icon-chip cards. */
+const differentiatorIcons = [
+  WifiOff,
+  ShieldCheck,
+  Camera,
+  ClipboardCheck,
+  AlertTriangle,
+  BarChart3,
+];
 
-/* ───────────────── Differentiators (USPs) ───────────────── */
 function DifferentiatorsSection() {
-  const icons = [WifiOff, ShieldCheck, Camera, ClipboardCheck, AlertTriangle, BarChart3];
   return (
-    <Section id="why">
+    <Section id="why" space="spacious">
       <SectionHeading
-        title="What Haven does differently"
-        description="Haven is built around the way housing teams actually work — on site, under pressure, with evidence to capture and answers needed quickly. Every update follows a clear route from fieldwork to review to reporting, so teams can trust what they are looking at and act sooner."
+        align="left"
+        eyebrow="Why Haven Beacon"
+        title="What Haven Beacon does differently"
+        description="Built around the way housing teams actually work — on site, under pressure, with evidence to capture and answers needed quickly. Every update follows a clear route from fieldwork to review to reporting."
       />
-      <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-16 grid gap-x-12 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
         {differentiators.map((d, i) => {
-          const Icon = icons[i];
+          const Icon = differentiatorIcons[i];
           return (
-            <Card key={d.title} className="flex flex-col gap-3">
-              <span className="grid size-10 place-items-center rounded-lg bg-primary/10 text-primary">
-                <Icon className="size-5" />
-              </span>
-              <h3 className="text-base font-semibold leading-snug">{d.title}</h3>
-              <p className="text-sm text-muted-foreground">{d.body}</p>
-            </Card>
+            <div
+              key={d.title}
+              className="reveal flex flex-col gap-3 border-t border-border pt-6"
+              style={{ animationDelay: `${60 + i * 60}ms` }}
+            >
+              <Icon className="size-5 text-primary" strokeWidth={1.6} />
+              <h3 className="type-h3 mt-1">{d.title}</h3>
+              <p className="text-sm leading-relaxed text-muted-foreground">{d.body}</p>
+            </div>
           );
         })}
       </div>
@@ -230,85 +317,74 @@ function DifferentiatorsSection() {
   );
 }
 
-/* ─────────────── Everything you need, site visit to report ─────────────── */
-const bentoCards = [
-  {
-    icon: ClipboardCheck,
-    title: "Capture on site",
-    body: "Record surveys, inspections, photos, issues and notes where the work happens — even when signal is poor.",
-  },
-  {
-    icon: Camera,
-    title: "Keep evidence attached",
-    body: "Photos, comments and updates stay linked to the right property, inspection, question or action.",
-  },
-  {
-    icon: GitMerge,
-    title: "Sync safely",
-    body: "Bring field updates back into Haven without losing work or quietly overwriting the record.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Review before reporting",
-    body: "Check submissions, manage comments and deal with exceptions before information feeds into reports.",
-  },
-  {
-    icon: BarChart3,
-    title: "Report with confidence",
-    body: "Use reviewed information for dashboards, reports and exports, so teams are not left reconciling different versions.",
-  },
-  {
-    icon: Lock,
-    title: "Control access and audit",
-    body: "Give users the right access for their role, and keep a clear record of who did what and when.",
-  },
-];
-
-function FeatureBento() {
+/* ─────────────────── Field band (photographic) ─────────────────── */
+function FieldBand() {
   return (
-    <section className="border-t border-border bg-muted/30 py-20 md:py-28">
-      <Container>
-        <SectionHeading
-          title="Everything you need from site visit to report"
-          description="Haven gives housing teams a clearer way to manage surveys, inspections and site updates — from the moment work is assigned to the point it is reviewed, reported and ready to act on."
-        />
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {bentoCards.map((c) => (
-            <Card key={c.title} className="flex flex-col gap-3">
-              <span className="grid size-10 place-items-center rounded-lg bg-primary/10 text-primary">
-                <c.icon className="size-5" />
-              </span>
-              <h3 className="text-base font-semibold">{c.title}</h3>
-              <p className="text-sm text-muted-foreground">{c.body}</p>
-            </Card>
-          ))}
+    <PhotoBand
+      src="/images/field-band.jpg"
+      alt="Surveyor working offline in a communal stairwell of a housing block."
+      overlay={0.62}
+    >
+      <Container className="relative py-28 md:py-40">
+        <div className="flex max-w-xl flex-col gap-6 text-ink-foreground">
+          <span className="eyebrow-caps text-ink-foreground/60">In the field</span>
+          <h2 className="type-h2 text-balance">
+            Built for the stairwell, not just the office.
+          </h2>
+          <p className="type-body text-ink-foreground/75 text-balance">
+            Fieldwork rarely happens somewhere with perfect signal. Surveyors work in
+            stairwells, basements, blocks and homes where connection is unreliable.
+            Haven Beacon is built for that reality — the work stays on the device and
+            comes back safely when connection returns.
+          </p>
+          <div className="flex flex-wrap items-center gap-x-7 gap-y-3 border-t border-white/15 pt-6">
+            {["No app store needed", "Drafts survive a restart", "Syncs when you reconnect"].map(
+              (chip) => (
+                <span key={chip} className="eyebrow-caps text-ink-foreground/60">
+                  {chip}
+                </span>
+              ),
+            )}
+          </div>
         </div>
       </Container>
-    </section>
+    </PhotoBand>
   );
 }
 
-/* ───────────────── Platform showcase (illustrated AMS) ───────────────── */
+/* ───────────────── Platform showcase ───────────────── */
 function PlatformShowcase() {
   return (
     <>
       <FeatureShowcase
-        eyebrow="Field operations"
         status="live"
-        title="From the field to a single source of truth"
-        description="Surveys captured offline sync, pass QA, and roll up into a live portfolio dashboard — the same accepted data behind every report and export."
+        title="From site visit to trusted answer"
+        description="Surveys and inspections captured on site come back into Haven Beacon, get checked, and feed the reporting position — the same accepted record behind every report and export."
         points={[
-          { icon: WifiOff, title: "Capture offline", body: "Full survey capture with no signal; drafts and photos survive any restart." },
-          { icon: GitMerge, title: "Sync without overwrite", body: "Master-version conflict control blocks and logs — it never clobbers the record." },
-          { icon: BarChart3, title: "Live portfolio metrics", body: "Accepted surveys roll up into surveys-accepted, coverage and HHSRS counts." },
+          {
+            icon: WifiOff,
+            title: "Capture on site",
+            body: "Record condition, issues, photos and notes where the work happens — even when signal is poor.",
+          },
+          {
+            icon: GitMerge,
+            title: "Sync safely",
+            body: "Field updates come back without losing work or quietly overwriting the record.",
+          },
+          {
+            icon: BarChart3,
+            title: "See progress live",
+            body: "Track what has been assigned, completed, synced, reviewed and accepted.",
+          },
         ]}
         visual={
           <FeatureComposite
-            url="app.havenams.com/overview"
+            url="hub.havenbeacon.com/qa"
             screen={<ServicesScreen />}
             browserWidth={740}
+            designWidth={1440}
           >
-            <DashboardPanel />
+            <QaReviewMockup />
           </FeatureComposite>
         }
       />
@@ -316,35 +392,57 @@ function PlatformShowcase() {
       <FeatureShowcase
         reverse
         tinted
-        eyebrow="Evidence-led compliance"
         status="live"
-        title="A controlled denominator, never a false-green dashboard"
-        description="Programme status is derived from applicability, evidence and validity. Where applicability is unknown, it surfaces as an exception — not a comforting green tick."
+        title="See the evidence behind the status"
+        description="Instead of relying on a status alone, teams can see what evidence has been captured, what is missing, what needs review and what needs to happen next."
         points={[
-          { icon: ShieldCheck, title: "Every programme, one view", body: "Gas, EICR, FRA, asbestos, lifts and water — valid, due and missing at a glance." },
-          { icon: FileCheck2, title: "Certificate drill-through", body: "From the dashboard to the asset to the evidence in two or three clicks." },
-          { icon: Database, title: "Power BI–ready feeds", body: "Stable-key exports load cleanly into your warehouse — no manual interpretation." },
+          {
+            icon: FileCheck2,
+            title: "Evidence attached to the record",
+            body: "Certificates, photos, notes and inspection outcomes stay linked to the right property, block or programme.",
+          },
+          {
+            icon: AlertTriangle,
+            title: "Missing information made visible",
+            body: "Unclear, incomplete or missing records are flagged so teams know what needs review.",
+          },
+          {
+            icon: BarChart3,
+            title: "Reporting with context",
+            body: "Dashboards and exports show the position with the evidence and exceptions behind it.",
+          },
         ]}
         visual={
-          <ScaledBrowser url="app.havenams.com/compliance">
-            <ComplianceBoard />
+          <ScaledBrowser url="hub.havenbeacon.com/compliance" designWidth={1440}>
+            <ComplianceMockup />
           </ScaledBrowser>
         }
       />
 
       <FeatureShowcase
-        eyebrow="Live asset register"
         status="live"
-        title="Property, block and component as durable records"
-        description="Promote the accepted survey snapshot into a live, effective-dated register — drill from portfolio to block to property to the exact component and its lifecycle."
+        title="A clearer view of every home, block and component"
+        description="Accepted surveys and inspections build a clearer, more reliable view of your stock — the property, the block, the components, the evidence and the latest condition in one place."
         points={[
-          { icon: Building2, title: "The full hierarchy", body: "Portfolio → block → property → component, each a first-class record." },
-          { icon: Boxes, title: "Lifecycle on every component", body: "Condition, remaining life and renewal year feed planned investment." },
-          { icon: Layers, title: "Snapshot vs live record", body: "History stays intact; the live master updates only after QA acceptance." },
+          {
+            icon: Building2,
+            title: "Portfolio to property",
+            body: "Move from a wider view of the stock to the individual home or block that needs attention.",
+          },
+          {
+            icon: Layers,
+            title: "Condition and remaining life",
+            body: "Component information helps teams understand future renewal needs and plan work more clearly.",
+          },
+          {
+            icon: ShieldCheck,
+            title: "Reviewed before update",
+            body: "Accepted surveys update the record once they have passed review, and the history is kept.",
+          },
         ]}
         visual={
-          <ScaledBrowser url="app.havenams.com/properties/100023001">
-            <AssetRegister />
+          <ScaledBrowser url="hub.havenbeacon.com/assets/100023336591" designWidth={1440}>
+            <AssetRegisterMockup />
           </ScaledBrowser>
         }
       />
@@ -352,33 +450,132 @@ function PlatformShowcase() {
   );
 }
 
+/* ─────────────── The two apps: HB Field and HB Hub ─────────────── */
+const appIcons = { field: Smartphone, hub: Monitor } as const;
+
+function AppsSection() {
+  return (
+    <section className="border-t border-border py-28 md:py-40">
+      <Container>
+        <SectionHeading
+          align="left"
+          eyebrow="The products"
+          title="Two apps, one connected flow"
+          description="Haven Beacon is a field app and an office app that share the same record. What the surveyor captures is what the office reviews, and what the office accepts is what the reports are built from."
+        />
+        <div className="mt-16 grid items-center gap-14 lg:grid-cols-[0.75fr_1.25fr]">
+          <div className="flex justify-center">
+            <PhoneFrame>
+              <ServicesScreen />
+            </PhoneFrame>
+          </div>
+          <div className="grid gap-12 sm:grid-cols-2">
+            {apps.map((app) => {
+              const Icon = appIcons[app.key];
+              return (
+                <div
+                  key={app.key}
+                  className="flex flex-col gap-4 border-t border-border pt-6"
+                >
+                  <Icon className="size-5 text-primary" strokeWidth={1.6} />
+                  <div>
+                    <h3 className="type-h3">{app.name}</h3>
+                    <p className="eyebrow-caps mt-2 text-muted-foreground">
+                      {app.audience}
+                    </p>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    {app.body}
+                  </p>
+                  <ul className="flex flex-col gap-2.5 pt-1">
+                    {app.points.map((p) => (
+                      <li key={p} className="flex items-start gap-2.5 text-sm">
+                        <span
+                          aria-hidden
+                          className="mt-[0.5em] size-1 shrink-0 rounded-full bg-primary"
+                        />
+                        <span className="leading-relaxed text-muted-foreground">{p}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
 /* ─────────────────────── Roles ─────────────────────── */
+/* Place for the organisations, people for the roles — see
+   scripts/install-personas.mjs for why, and for the UK-vernacular constraint. */
+const personaPhotos: Record<string, { src: string; alt: string }> = {
+  councils: {
+    src: "/images/persona-councils.jpg",
+    alt: "A post-war red brick council housing block on a residential street.",
+  },
+  has: {
+    src: "/images/persona-has.jpg",
+    alt: "A modern housing association development of mixed-tenure homes.",
+  },
+  suppliers: {
+    src: "/images/persona-suppliers.jpg",
+    alt: "Surveyor in a hi-vis vest holding a rugged tablet inside a property.",
+  },
+  compliance: {
+    src: "/images/persona-compliance.jpg",
+    alt: "Compliance lead standing in a bright housing office.",
+  },
+  landlords: {
+    src: "/images/persona-landlords.jpg",
+    alt: "A street of Victorian terraced houses of the kind let privately.",
+  },
+};
+
 function RolesSection() {
   return (
-    <Section>
+    <Section space="spacious">
       <SectionHeading
+        align="left"
         eyebrow="Who it's for"
         title="One platform, every part of the operating model"
-        description="From the surveyor in a dead-signal stairwell to the compliance lead who has to certify the whole portfolio."
+        description="From the surveyor in a dead-signal stairwell to the compliance lead certifying a whole portfolio — and the private landlord with a dozen obligations per property."
       />
-      <div className="mt-12 grid gap-4 sm:grid-cols-2">
-        {personas.map((p) => (
-          <Card key={p.key} className="flex flex-col gap-4">
-            <h3 className="text-lg font-semibold">{p.title}</h3>
-            <div className="flex flex-col gap-3 text-sm">
-              <p className="text-muted-foreground">
-                <span className="font-medium text-foreground/80">Today: </span>
-                {p.pain}
-              </p>
-              <p className="text-muted-foreground">
-                <span className="font-medium text-primary">With us: </span>
-                {p.gain}
-              </p>
+      {/* Five audiences: two-up on small screens, then a single row from lg so
+          the set reads as one group rather than a row of four plus a straggler. */}
+      <div className="mt-16 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-5">
+        {personas.map((p, i) => {
+          const photo = personaPhotos[p.key];
+          return (
+            <div
+              key={p.key}
+              className="reveal flex flex-col gap-5"
+              style={{ animationDelay: `${60 + i * 80}ms` }}
+            >
+              <PhotoPanel
+                src={photo.src}
+                alt={photo.alt}
+                width={1000}
+                height={1250}
+                scrim={false}
+                className="aspect-[4/5] rounded-xl"
+              />
+              <div className="flex flex-col gap-3">
+                <h3 className="type-h3">{p.title}</h3>
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  {p.pain}
+                </p>
+                <p className="border-t border-border pt-3 text-sm leading-relaxed text-foreground/80">
+                  {p.gain}
+                </p>
+              </div>
             </div>
-          </Card>
-        ))}
+          );
+        })}
       </div>
-      <div className="mt-8 text-center">
+      <div className="mt-14">
         <Button href="/solutions" variant="secondary">
           See solutions by team <ArrowRight className="size-4" />
         </Button>
@@ -390,15 +587,16 @@ function RolesSection() {
 /* ─────────────────────── Stats ─────────────────────── */
 function StatsSection() {
   return (
-    <section className="border-y border-border bg-primary/[0.03] py-16">
+    <section className="border-y border-border">
       <Container>
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((s) => (
-            <div key={s.label} className="flex flex-col items-center gap-2 text-center">
-              <span className="text-4xl font-semibold tracking-tight text-primary md:text-5xl">
-                {s.value}
-              </span>
-              <span className="text-sm text-muted-foreground text-balance">
+            <div
+              key={s.label}
+              className="flex flex-col gap-3 border-border py-14 pr-8 sm:[&:nth-child(n+3)]:border-t lg:border-t-0 lg:[&:not(:first-child)]:border-l lg:[&:not(:first-child)]:pl-8 lg:[&:nth-child(n+3)]:border-t-0"
+            >
+              <span className="type-h2 text-primary">{s.value}</span>
+              <span className="text-sm leading-relaxed text-muted-foreground">
                 {s.label}
               </span>
             </div>
@@ -406,5 +604,42 @@ function StatsSection() {
         </div>
       </Container>
     </section>
+  );
+}
+
+/* ─────────────────────── Final CTA ─────────────────────── */
+function FinalCta() {
+  return (
+    <PhotoBand
+      src="/images/cta-band.jpg"
+      alt="Asset and compliance team reviewing housing data together."
+      overlay={0.7}
+    >
+      <Container className="relative py-28 md:py-36">
+        <div className="flex max-w-xl flex-col gap-6 text-ink-foreground">
+          <h2 className="type-h2 text-balance">
+            Bring your field data in from the cold.
+          </h2>
+          <p className="type-body text-ink-foreground/75 text-balance">
+            See a survey assigned, captured on site, synced safely, reviewed and turned
+            into clear outputs your team can use. No app store, no signal required.
+          </p>
+          <div className="flex flex-col gap-3 pt-1 sm:flex-row sm:items-center">
+            <Button href="/contact" size="lg" className="!bg-white !text-ink">
+              Book a demo
+              <ArrowRight className="size-4" />
+            </Button>
+            <Button
+              href="/platform/surveys"
+              size="lg"
+              variant="ghost"
+              className="!text-ink-foreground hover:!bg-white/10"
+            >
+              Explore the platform
+            </Button>
+          </div>
+        </div>
+      </Container>
+    </PhotoBand>
   );
 }

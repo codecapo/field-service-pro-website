@@ -1,15 +1,54 @@
 export const site = {
-  name: "Haven AMS",
+  name: "Haven Beacon",
   tagline: "The offline-first asset management platform for social housing.",
-  appUrl: "https://app.havenams.com",
-  email: "hello@havenams.com",
+  appUrl: "https://hub.havenbeacon.com",
+  email: "hello@havenbeacon.com",
 };
 
+/* Header navigation. `menu` marks an item as a dropdown — the nav renders the
+   named menu rather than a plain link, and the item's own href stays the
+   destination for the parent hub page. */
 export const nav = [
-  { label: "Platform", href: "/platform" },
+  /* `hub` is the "see everything" link at the foot of a mega-menu. Platform has
+     no hub: /platform is deliberately disabled (it returns notFound), so
+     linking it from the menu would send people to a 404. The individual
+     surfaces below it are the destinations. */
+  { label: "Platform", href: "/platform/surveys", menu: "platform" },
   { label: "Solutions", href: "/solutions" },
+  { label: "Resources", href: "/resources", menu: "resources", hub: "Browse all resources" },
   { label: "Security", href: "/security" },
-];
+] as const;
+
+/* Resources mega-menu. Deliberately a small static list rather than derived from
+   lib/resources.ts — the nav is a client component, and importing the resource
+   module would pull every guide's full body into the client bundle to render
+   four labels. Mirrors `resourceCategories` in lib/resources-types.ts. */
+export const resourceSurfaces = [
+  {
+    label: "Regulatory explainers",
+    href: "/resources#regulatory",
+    icon: "shield",
+    description: "Awaab's Law, Decent Homes and the Renters' Rights Act.",
+  },
+  {
+    label: "Practical guides",
+    href: "/resources#practical",
+    icon: "surveys",
+    description: "Field playbooks for stock condition surveys and HHSRS.",
+  },
+  {
+    label: "Templates & tools",
+    href: "/resources#tools",
+    icon: "reporting",
+    description: "Readiness checklists and self-assessments.",
+  },
+  {
+    label: "Glossary",
+    href: "/resources#glossary",
+    icon: "assets",
+    description: "Plain-English definitions for social housing asset management.",
+  },
+] as const;
 
 /* Main app surfaces — each gets its own page; surfaced in the Platform mega-menu. */
 export const platformSurfaces = [
@@ -103,7 +142,7 @@ export const differentiators = [
 
 /* ── A better way to handle field evidence (calm, text-based) ── */
 export const comparison = {
-  columns: ["Haven", "Traditional AMS", "Generic inspection apps"],
+  columns: ["Haven Beacon", "Traditional AMS", "Generic inspection apps"],
   rows: [
     {
       capability: "Works on site with poor signal",
@@ -135,6 +174,34 @@ export const comparison = {
     },
   ] as { capability: string; values: string[] }[],
 };
+
+/* ── The two apps that make up Haven Beacon ── */
+export const apps = [
+  {
+    key: "field",
+    name: "HB Field",
+    full: "Haven Beacon Field",
+    audience: "For surveyors and inspectors",
+    body: "The app your field team carries. Pre-load the properties they need, then work entirely offline — condition, components, photos, issues and notes all captured on site and held safely on the device until there's a connection.",
+    points: [
+      "Installs to the home screen — no app store, no managed rollout",
+      "Drafts and photos survive closing the app, losing signal or a restart",
+      "External surveyors only ever see the properties assigned to them",
+    ],
+  },
+  {
+    key: "hub",
+    name: "HB Hub",
+    full: "Haven Beacon Hub",
+    audience: "For the office",
+    body: "Where the work is assigned, reviewed and reported. Submissions arrive for checking, accepted records update the property and component view, and dashboards and exports all draw on the same reviewed information.",
+    points: [
+      "Assign work, track progress and see what's still outstanding",
+      "Review submissions before they feed the reporting position",
+      "Dashboards, reports and Power BI–ready exports that line up",
+    ],
+  },
+] as const;
 
 /* ── Platform modules / feature areas ── */
 export const modules = [
@@ -333,26 +400,32 @@ export const personas = [
   {
     key: "councils",
     title: "Local authorities",
-    pain: "Stock data scattered across spreadsheets and legacy systems, with no confidence in the compliance denominator.",
-    gain: "A single, evidence-led source of truth — and a controlled survey pipeline that feeds it without overwriting the master.",
+    pain: "Stock information spread across spreadsheets and legacy systems, with little confidence in the numbers being reported.",
+    gain: "One reviewed view of the stock, fed by surveys that are checked before they change the record.",
   },
   {
     key: "has",
     title: "Housing associations",
-    pain: "Decent Homes, HHSRS and damp/mould obligations to evidence, often across mixed-tenure and delegated stock.",
-    gain: "Issue-level HHSRS, photo evidence and a QA gate that makes every claim auditable and every gap visible.",
+    pain: "Decent Homes, HHSRS and damp and mould obligations to evidence, often across mixed-tenure and delegated stock.",
+    gain: "Issue-level records, photo evidence and a review step that makes every claim easy to stand behind.",
   },
   {
     key: "suppliers",
     title: "Supplier surveyors",
     pain: "Field teams working in dead-signal estates with apps that lose data the moment the connection drops.",
-    gain: "Capture everything offline, restricted to your assigned batch, with drafts and photos that survive any restart.",
+    gain: "Capture everything on site, restricted to your assigned batch, with drafts and photos that survive any restart.",
   },
   {
     key: "compliance",
     title: "Compliance & assurance",
-    pain: "Dashboards that show green because data is missing, not because the building is safe.",
-    gain: "A controlled denominator where unknowns are exceptions, with maker-checker approval on every protected change.",
+    pain: "Dashboards that show green because information is missing, not because the building is safe.",
+    gain: "Missing and unclear records surface as exceptions, and changes are reviewed before they reach the reported position.",
+  },
+  {
+    key: "landlords",
+    title: "Private landlords",
+    pain: "Eight to twelve legal obligations per let property, each on its own clock, tracked across spreadsheets and calendar reminders.",
+    gain: "Run the pack for each obligation, and the same engine flags what is due, expiring or missing before it costs you.",
   },
 ] as const;
 
@@ -367,12 +440,16 @@ export const faqs = [
     a: "Every sync compares the master version the device pre-loaded against the current server version. If the master changed, the push is blocked and logged as a conflict for review — it is never silently overwritten in either direction.",
   },
   {
+    q: "Is this only for social housing, or can private landlords use it?",
+    a: "Both. A private landlord carries eight to twelve legal obligations per let property — gas annually, EICR every five years, EPC every ten, deposit protection within thirty days, Right to Rent before the tenancy starts — each on its own clock. Those are not a separate product: each is a survey pack running on the same offline, evidence-led engine social landlords already use. Complete the pack, the evidence is captured against the property and tenancy, and the record flags what is due, expiring or missing in advance. The same rule applies too — an obligation with no evidence shows as unknown, not as compliant.",
+  },
+  {
     q: "Can we use it for inspections other than stock condition surveys?",
     a: "Stock condition surveys are live and demo-ready today. The capture engine is template-driven from a versioned question set, so the same offline, evidence-led, QA-gated pipeline extends to other inspection types — fire risk assessments, monthly housing inspections and before-and-after repair records are on the roadmap. One engine, configured per inspection, rather than a rigid form you wait months to change.",
   },
   {
     q: "How does it fit alongside our existing AMS or CRM?",
-    a: "Haven AMS is built to feed a single source of truth. It exports stable-key, referentially-joined data that loads cleanly into a warehouse or BI tool, and its conflict-control model is designed to reconcile against external systems rather than overwrite them.",
+    a: "Haven Beacon is built to feed a single source of truth. It exports stable-key, referentially-joined data that loads cleanly into a warehouse or BI tool, and its conflict-control model is designed to reconcile against external systems rather than overwrite them.",
   },
   {
     q: "Is it installable without an app store?",
@@ -395,7 +472,7 @@ export const faqs = [
 export const stats = [
   { value: "100%", label: "Field capture works offline" },
   { value: "0", label: "Silent overwrites of the master record" },
-  { value: "8", label: "Stable-key tables in every structured export" },
-  { value: "1", label: "Source behind both the PDF and the data" },
+  { value: "8", label: "Tables in every structured export" },
+  { value: "1", label: "Source behind both the report and the data" },
 ];
 
