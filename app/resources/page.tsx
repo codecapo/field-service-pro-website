@@ -1,9 +1,26 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, BookOpen, Clock, FileText, ListChecks, Library } from "lucide-react";
-import { Badge, Card, Container, Section, SectionHeading } from "@/components/ui";
+import {
+  ArrowRight,
+  BookOpen,
+  Clock,
+  FileText,
+  ListChecks,
+  Library,
+} from "lucide-react";
+import {
+  Badge,
+  Card,
+  Container,
+  Section,
+  SectionHeading,
+} from "@/components/ui";
 import { CtaSection } from "@/components/sections/cta";
-import { resourceCategories, resources, resourcesByCategory } from "@/lib/resources";
+import {
+  resourceCategories,
+  resources,
+  resourcesByCategory,
+} from "@/lib/resources";
 import { PageBand } from "@/components/sections/page-band";
 
 export const metadata: Metadata = {
@@ -43,8 +60,8 @@ export default function ResourcesHub() {
               Knowledge for housing teams who carry the evidence burden
             </h1>
             <p className="text-lg text-muted-foreground text-balance">
-              Plain-English guides on the obligations shaping social housing, practical
-              field playbooks, and tools you can put to work today.
+              Plain-English guides on the obligations shaping social housing,
+              practical field playbooks, and tools you can put to work today.
             </p>
           </div>
         </Container>
@@ -57,8 +74,12 @@ export default function ResourcesHub() {
           className="group grid gap-6 overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-primary/[0.06] to-card p-6 transition-colors hover:border-primary/40 md:grid-cols-[1.4fr_1fr] md:p-8"
         >
           <div className="flex flex-col gap-3">
-            <span className="text-xs font-medium text-primary">Featured guide</span>
-            <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">{featured.title}</h2>
+            <span className="text-xs font-medium text-primary">
+              Featured guide
+            </span>
+            <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
+              {featured.title}
+            </h2>
             <p className="text-muted-foreground">{featured.summary}</p>
             <span className="mt-2 inline-flex items-center gap-1.5 text-sm font-medium text-primary">
               Read the guide
@@ -71,50 +92,71 @@ export default function ResourcesHub() {
         </Link>
       </Section>
 
-      {/* categories */}
-      {resourceCategories.map((cat) => {
-        const items = resourcesByCategory(cat.key);
-        if (items.length === 0) return null;
-        return (
-          /* id lets the Resources menu deep-link straight to a category. */
-          <Section
-            key={cat.key}
-            id={cat.key}
-            className="scroll-mt-24 !pb-0 last:!pb-20 md:last:!pb-28"
-          >
-            <SectionHeading align="left" title={cat.title} description={cat.blurb} className="max-w-2xl" />
-            <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {items.map((r) => {
-                const Icon = kindIcon[r.kind];
-                return (
-                  <Link key={r.slug} href={`/resources/${r.slug}`} className="group">
-                    <Card className="flex h-full flex-col gap-3">
-                      <div className="flex items-center justify-between">
-                        <span className="grid size-9 place-items-center rounded-lg bg-primary/10 text-primary">
-                          <Icon className="size-4.5" />
-                        </span>
-                        <span className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
-                          {kindLabel[r.kind]}
-                        </span>
-                      </div>
-                      <h3 className="text-base font-semibold leading-snug">{r.title}</h3>
-                      <p className="text-sm text-muted-foreground">{r.summary}</p>
-                      <div className="mt-auto flex items-center justify-between pt-2 text-xs text-muted-foreground">
-                        <span className="inline-flex items-center gap-1.5">
-                          <Clock className="size-3.5" /> {r.readTime}
-                        </span>
-                        <span className="inline-flex items-center gap-1 font-medium text-primary">
-                          Read <ArrowRight className="size-3 transition-transform group-hover:translate-x-0.5" />
-                        </span>
-                      </div>
-                    </Card>
-                  </Link>
-                );
-              })}
-            </div>
-          </Section>
-        );
-      })}
+      {/* Categories are wrapped so `last:` below still means "last category".
+          These sections collapse their bottom padding so consecutive categories
+          sit tight, and the final one restores it — but `last:` is
+          :last-child, so without this wrapper the PageBand that follows would
+          steal the match and leave the last card butted against it. */}
+      <div>
+        {resourceCategories.map((cat) => {
+          const items = resourcesByCategory(cat.key);
+          if (items.length === 0) return null;
+          return (
+            /* id lets the Resources menu deep-link straight to a category. */
+            <Section
+              key={cat.key}
+              id={cat.key}
+              className="scroll-mt-24 !pb-0 last:!pb-20 md:last:!pb-28"
+            >
+              <SectionHeading
+                align="left"
+                title={cat.title}
+                description={cat.blurb}
+                className="max-w-2xl"
+              />
+              <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                {items.map((r) => {
+                  const Icon = kindIcon[r.kind];
+                  return (
+                    <Link
+                      key={r.slug}
+                      href={`/resources/${r.slug}`}
+                      className="group"
+                    >
+                      <Card className="flex h-full flex-col gap-3">
+                        <div className="flex items-center justify-between">
+                          <span className="grid size-9 place-items-center rounded-lg bg-primary/10 text-primary">
+                            <Icon className="size-4.5" />
+                          </span>
+                          <span className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+                            {kindLabel[r.kind]}
+                          </span>
+                        </div>
+                        <h3 className="text-base font-semibold leading-snug">
+                          {r.title}
+                        </h3>
+                        <p className="text-sm text-muted-foreground">
+                          {r.summary}
+                        </p>
+                        <div className="mt-auto flex items-center justify-between pt-2 text-xs text-muted-foreground">
+                          <span className="inline-flex items-center gap-1.5">
+                            <Clock className="size-3.5" /> {r.readTime}
+                          </span>
+                          <span className="inline-flex items-center gap-1 font-medium text-primary">
+                            Read{" "}
+                            <ArrowRight className="size-3 transition-transform group-hover:translate-x-0.5" />
+                          </span>
+                        </div>
+                      </Card>
+                    </Link>
+                  );
+                })}
+              </div>
+            </Section>
+          );
+        })}
+      </div>
+
       <PageBand
         src="/images/band-resources.jpg"
         alt="A housing professional reading at a desk in a bright office."
@@ -122,7 +164,6 @@ export default function ResourcesHub() {
         title="Guides for the people who carry the evidence"
         body="Plain-English briefings on the obligations shaping social housing and the private rented sector — what they actually ask of you, and what you need to be able to show."
       />
-
 
       <CtaSection />
     </>
